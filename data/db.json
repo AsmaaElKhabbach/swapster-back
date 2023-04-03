@@ -6,7 +6,7 @@
         "email": "John@oclock.io",
         "password": "john",
         "city": "Paris",
-        "photo": "https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-image-sociale-utilisateur-m%C3%A9dias-social-182145777.jpg"
+        "picture": "https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-image-sociale-utilisateur-m%C3%A9dias-social-182145777.jpg"
         },
         {
         "id" : 2, 
@@ -14,7 +14,7 @@
         "email": "Donneur@oclock.io",
         "password": "Donneur",
         "city": "Creteil",
-        "photo": "https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-image-sociale-utilisateur-m%C3%A9dias-social-182145777.jpg"
+        "picture": "https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-image-sociale-utilisateur-m%C3%A9dias-social-182145777.jpg"
         }
     ],
 
@@ -27,7 +27,7 @@
         },
         {
         "id" : 2,
-        "title": "Harry Potter et l'école des sorciers",
+        "title": "Harry Potter et l’école des sorciers",
         "resume": "loremdnkjndlqskdjqlsjdqklzope o ,dqod ,qd qzpd,zq,dzqpokdqlmkdzqmldqpzq",
         "category_id": 1
         }
