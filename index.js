@@ -6,7 +6,7 @@ const router = require('./app/router');
 
 
 
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // app.use(session({
 //     saveUninitialized: true,
