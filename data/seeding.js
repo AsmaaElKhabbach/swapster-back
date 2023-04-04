@@ -23,29 +23,9 @@ async function generateSQL() {
   db.user.forEach((user) => {
     transaction += `
         INSERT INTO "user"
-        ("id", "name", "email", "password", "city", "picture")
+        ("name", "email", "password", "city", "picture")
         VALUES
-        ('${user.id}', '${user.name}', '${user.email}', '${user.password}', '${user.city}', '${user.picture}');
-        `;
-  });
-
-  // Table work
-  db.work.forEach((work) => {
-    transaction += `
-        INSERT INTO "work"
-        ("id", "title", "resume", "category_id")
-        VALUES
-        ('${work.id}', '${work.title}', '${work.resume}', '${work.category_id}');
-        `;
-  });
-
-  // Table author
-  db.author.forEach((author) => {
-    transaction += `
-        INSERT INTO "author"
-        ("id", "lastname", "firstname")
-        VALUES
-        ('${author.id}', '${author.lastname}', '${author.firstname}');
+        ('${user.name}', '${user.email}', '${user.password}', '${user.city}', '${user.picture}');
         `;
   });
 
@@ -53,19 +33,40 @@ async function generateSQL() {
   db.category.forEach((category) => {
     transaction += `
         INSERT INTO "category"
-        ("id", "name")
+        ("name")
         VALUES
-        ('${category.id}', '${category.name}');
+        ('${category.name}');
         `;
   });
+
+  // Table work
+  db.work.forEach((work) => {
+    transaction += `
+        INSERT INTO "work"
+        ("title", "resume", "category_id")
+        VALUES
+        ('${work.title}', '${work.resume}', '${work.category_id}');
+        `;
+  });
+
+  // Table author
+  db.author.forEach((author) => {
+    transaction += `
+        INSERT INTO "author"
+        ( "lastname", "firstname")
+        VALUES
+        ( '${author.lastname}', '${author.firstname}');
+        `;
+  });
+
 
   // Table book
   db.book.forEach((book) => {
     transaction += `
         INSERT INTO "book"
-        ("id", "isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
+        ("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
         VALUES
-        ('${book.id}', '${book.isbn_13}', '${book.cover_page}', '${book.editor}', '${book.publication_date}', '${book.language}', '${book.pages_number}', '${book.height}', '${book.width}', '${book.thickness}', '${book.work_id}');
+        ('${book.isbn_13}', '${book.cover_page}', '${book.editor}', '${book.publication_date}', '${book.language}', '${book.pages_number}', '${book.height}', '${book.width}', '${book.thickness}', '${book.work_id}');
         `;
   });
 
@@ -73,9 +74,9 @@ async function generateSQL() {
   db.author_has_work.forEach((authorHasWork) => {
     transaction += `
         INSERT INTO "author_has_work"
-        ("id", "work_id", "author_id")
+        ("work_id", "author_id")
         VALUES
-        ('${authorHasWork.id}', '${authorHasWork.work_id}', '${authorHasWork.author_id}');
+        ( '${authorHasWork.work_id}', '${authorHasWork.author_id}');
         `;
   });
 
@@ -84,9 +85,9 @@ async function generateSQL() {
   db.user_has_book.forEach((userHasBook) => {
     transaction += `
         INSERT INTO "user_has_book"
-        ("id", "book_id", "user_id","disponibility", "status")
+        ("book_id", "user_id","disponibility", "status")
         VALUES
-        ('${userHasBook.id}', '${userHasBook.book_id}', '${userHasBook.user_id}', '${userHasBook.disponibility}', '${userHasBook.status}');
+        ( '${userHasBook.book_id}', '${userHasBook.user_id}', '${userHasBook.disponibility}', '${userHasBook.status}');
         `;
   });
 
