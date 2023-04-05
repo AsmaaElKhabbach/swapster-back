@@ -3,21 +3,11 @@ const express = require('express');
 const userController = require('../controller/userController');
 const router = express.Router();
 
-
 router.get('/', (req, res) => {
     res.send('Youpi');
 });
 
-
-// router.get('/book/:bookId', )
-
-
-// router.post('/login', );
-
-// router.get('/logout', );
-
-router.post('/signup', userController.register);
-
-
+router.post('/login', userController.login)
+router.post('/logout', userController.logout)
 
 module.exports = router;

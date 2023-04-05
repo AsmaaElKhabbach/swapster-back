@@ -14,15 +14,16 @@ const dataMapper = {
         return result.rows[0];
     },
 
+    // Methode pour récupérer le user via l'email
     async getOneUserByEmail(email){
+        // La requête : on interroge la bdd
         const query = 'SELECT * FROM "user" WHERE "email"=$1';
+        // On retourne le résultat
         const result = await client.query(query, [email])
         return result.rows[0];
     }
 
 
-
-    
 };
 
 module.exports = dataMapper;
