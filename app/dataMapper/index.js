@@ -15,13 +15,22 @@ const dataMapper = {
     },
 
     // Methode pour récupérer le user via l'email
-    async getOneUserByEmail(email){
+    async getOneUserByEmail(email) {
         // La requête : on interroge la bdd
         const query = 'SELECT * FROM "user" WHERE "email"=$1';
         // On retourne le résultat
         const result = await client.query(query, [email])
         return result.rows[0];
+    },
+
+    // Methode pour supprimer un utilisateur
+
+    async deleteUser(id) {
+        const query = 'DELETE FROM "user" WHERE id=$1'
+        const result = await client.query(query, [id])
+        return result.row[0];
     }
+
 
 
 };

@@ -1,4 +1,5 @@
 const dataMapper = require('../dataMapper');
+const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -17,7 +18,15 @@ const sessionController = {
     try {
       // On stock le resultat de la requête
       const user = await dataMapper.getOneUserByEmail(email);
-      
+
+      // // On vérifie si l'email est valide
+
+      // if (!emailValidator.validate(email)) {
+      //   return res.status(500).json({ error: "email invalide" });
+
+      // };
+
+
       // On vérifie que l'email correspond 
 
       if (!user) {
@@ -27,7 +36,7 @@ const sessionController = {
       const passwordIsGood = await bcrypt.compare(password, user.password);
 
       if (!passwordIsGood) {
-        return res.status(500).json({ error: "mot de passe incorrect" })
+        return res.status(500).json({ error: "Mot de passe incorrect" })
 
       }
 
