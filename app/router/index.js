@@ -1,13 +1,20 @@
 // const { Router } = require('express')
 const express = require('express');
 const userController = require('../controller/userController');
+const sessionController = require('../controller/sessionController');
 const router = express.Router();
 
 router.get('/', (req, res) => {
     res.send('Youpi');
 });
 
-router.post('/login', userController.login)
-router.post('/logout', userController.logout)
+
+
+router.post('/signup', userController.signup);
+router.patch('/user/:userId', userController.update);
+router.delete('/user/:userId', userController.delete);
+
+router.post('/login', sessionController.login);
+// router.post('/logout', sessionController.logout)
 
 module.exports = router;

@@ -4,97 +4,235 @@ const bcrypt = require('bcrypt');
 // const jwt = require
 
 
+
+
+
 const userController = {
 
-    //signup
+		// Méthode pour un nouvel user
 
-    register: async (req, res) => {
-        try {
-            const { name, email, password, passwordConfirm } = req.body;
+		signup: async (req, res) => {
+				try {
+						const { name, email, city, password, passwordConfirm } = req.body;
 
-            if (!name) {
-                res.status(500).json({error:"manque name"});
-                console.log(user.name);
-                return;
-            };
+						if (!name) {
+								res.status(500).json({error:"manque name"});
+								return;
+						};
 
-            if (!emailValidator.validate(email)) {
-                res.status(500).json({error:"email invalide"});
-                console.log(email);
-                return;
-            };
+						if (!city) {
+								res.status(500).json({error:"manque city"});
+								return;
+						};
 
-            const checkUser = await dataMapper.getOneUserByEmail(email);
+						if (!emailValidator.validate(email)) {
+								res.status(500).json({error:"email invalide"});
+								return;
+						};
 
-            if (checkUser) {
-                res.status(500).json({error:"email déjà utilisé"});
-                return;
-            };
+						const checkUserName = await dataMapper.getOneUserByName(name);
 
-            if (password !== passwordConfirm) {
-                res.status(500).json({error:"Le mot de passe ne correspond pas."});
-                return;
-            };
+						if (checkUserName) {
+								res.status(500).json({error:"pseudo (name) déjà utilisé"});
+								return;
+						};
 
-            password = await bcrypt.hash(password, 10);
+						const checkUserEmail = await dataMapper.getOneUserByEmail(email);
 
-            const userData = await dataMapper.insertUser(user);
-            console.log(userData);
-            res.status(201).json(userData);
+						if (checkUserEmail) {
+								res.status(500).json({error:"email déjà utilisé"});
+								return;
+						};    
 
-          } catch(err) {
-            res.status(500).json({error:"Erreur lors de l'insertion de l'utilisateur dans la base de données"});
-          }
-        },
-    
-    // Methode pour se logger
+						if (password !== passwordConfirm) {
+								res.status(500).json({error:"Le mot de passe ne correspond pas."});
+								return;
+						};
 
-    login: async (req, res) => {
-        // On récupère l'email et le password dans le body
-        const { email, password } = req.body;
+						const user = {
+								name: name,
+								email: email,
+								city: city,
+								password: await bcrypt.hash(password, 10)
+						};
 
-        try {
-            // On stock le resultat de la requête
-            const user = await dataMapper.getOneUserByEmail(email);
+						const userData = await dataMapper.insertUser(user);
 
-            // On vérifie que l'email correspond 
+						console.log(userData);
+						res.status(201).json(userData);
+						return;
 
-            if (!user) {
-              return res.status(401).json({ error: "Email ou mot de passe incorrect" });
-            }
-            // On vérifie que le password correspond avec bcrypt
-            //  const passwordIsGood = await bcrypt.compare(password, user.password);
+				} catch(err) {
+						console.log(err);
+						res.status(500).json({error:"Erreur lors de l'insertion de l'utilisateur dans la base de données"});
+						return;
+				}		
+		},
 
-            //  if (!passwordIsGood) {
-            //    res.status(500).send("Email ou mot de passe incorrect")
+		// Méthode pour MAJ le user
+		update: async(req, res) => {
+				// pour savoir s'il y a eu une modif sur le user : 0 = pas de modif ; 1 = modif
+				let userHasChanged = 0;
+			
+				// on vérifie dans la requête du front que l'id est bien un nombre
+				if (req.params.userId.match(/^\d+$/) == null){
+					res.status(400).json({error: `${req.params.userId} n'est pas un nombre`});
+					return;
+				} 
+			
+				// on convertit le userId en INT
+				const userId = parseInt(req.params.userId);
+		
+				// on vérifie que l'id du user est bien dans la BDD
+				let checkUser;
+				try {
+						checkUser =  await dataMapper.getOneUser(userId);
+				} catch(err) {
+						res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
+						return;
+				}
 
-            //  }
+				if (!checkUser) {
+						res.status(404).json({error: `Pas de user avec l'id ${userId}`});
+						return;
+				}
+				
+				// on récupère les données du front
+				const { name, email, city, password, passwordConfirm } = req.body;
+				console.log(name);
+				console.log(email);
+				console.log(city);
+				console.log(password);
+				console.log(passwordConfirm);
+				// on vérifie s'il y a eu du changement sur le name du user
+				if (name && name !== checkUser.name) {
+						let checkUserName;
 
-            if (user.password !== password) {
-              return res.status(401).json({ error: "Email ou mot de passe incorrect" })
+						try {
+								checkUserName = await dataMapper.getOneUserByName(name);
+						} catch(err) {
+								res.status(500).json({error:"Problème de requête lors de la vérification du userName dans la BDD"});
+								return;
+						}
 
-            }
-            // On crée un token et on le renvoie au client 
-            // const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
-            // res.json({ token });
+						if (checkUserName) {
+								res.status(404).json({error:`le name ${name} existe déjà`});
+								return;
+						}
+
+						// mise à jour dans la variable checkUser
+						checkUser.name = name;
+						userHasChanged = 1;
+				}
+				
+				// on vérifie s'il y a eu du changement sur l'email du user
+				if (email && email !== checkUser.email) {
+						let checkUserEmail;
+
+						try {
+								checkUserEmail = await dataMapper.getOneUserByEmail(email);
+						} catch(err) {
+								res.status(500).json({error:"Problème de requête lors de la vérification du userEmail dans la BDD"});
+								return;
+						}
+
+						if (checkUserEmail) {
+								res.status(404).json({error:`l'email ${email} existe déjà`});
+								return;
+						};
+
+						// mise à jour dans la variable checkUser
+						checkUser.email = email;
+						userHasChanged = 1;
+				}
+
+				// on vérifie s'il y a eu du changement sur le city du user
+				if (city && city !== checkUser.city) {
+
+						// mise à jour dans la variable checkUser
+						checkUser.city = city;
+						userHasChanged = 1;
+				}
 
 
-            res.status(201).json(user)
+				// on vérifie s'il y a eu du changement sur le password du user
+				if (password){
+						if(!passwordConfirm){
+								res.status(400).json({error: "pas de confirmation du password dans la requête"});
+								return;
+						}
 
-    } catch (error) {
-      console.error(error)
-      res.status(500).send("Erreur serveur")
+						if (password !== passwordConfirm){
+								res.status(400).json({error: "les 2 passwords sont différents"});
+								return;
+						}
 
-    }
-  },
-  // Logout Method
+						const hashPassword = await bcrypt.hash(password, 10);
 
-  // logout: async (req, res) => {
-  //   // On supprime le token du local storage
-  //   localStorage.removeItem('token');
-  //   res.status(200).json({ message: "Vous êtes bien déconnecté" })
+						if (hashPassword == checkUser.password) {
+								res.status(400).json({error: "le mot de passe est le même"});
+								return;
+						}
 
-  // }
+						// mise à jour dans la variable checkUser
+						checkUser.password = hashPassword;
+						userHasChanged = 1;
+				}
+
+				// est-ce qu'il y a eu du changement ?
+				if (userHasChanged == 0) {
+						res.status(200).json({warn: "Pas de changement"});
+						return;
+				}
+
+				// mise à jour de user en BDD
+				try {
+						await dataMapper.updateUser(checkUser);
+						res.status(201).json(checkUser);
+						return;
+				} catch(err) {
+						res.status(500).json({error:"Problème de requête lors de la mise à jour du user dans la BDD"});
+						return;
+				}
+		},
+
+		// Méthode pour supprimer le user
+		delete: async(req, res) => {
+				// on vérifie dans la requête du front que l'id est bien un nombre
+				if (req.params.userId.match(/^\d+$/) == null){
+					res.status(400).json({error: `${req.params.userId} n'est pas un nombre`});
+					return;
+				} 
+
+				// on convertit le userId en INT
+				const userId = parseInt(req.params.userId);
+
+				// on vérifie que l'id du user est bien dans la BDD
+				let checkUser;
+				try {
+						checkUser =  await dataMapper.getOneUser(userId);
+				} catch(err) {
+						res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
+						return;
+				}
+
+				if (!checkUser) {
+						res.status(404).json({error: `Pas de user avec l'id ${userId}`});
+						return;
+				}
+
+				// on supprime de la BDD
+				try {
+						await dataMapper.deleteUser(userId);
+						res.status(200).json({info: "User correctement supprimé"});
+						return;
+				} catch (err) {
+						res.status(500).json({error:"Problème de requête lors de la suppression du user dans la BDD"});
+						return;
+				}
+			
+		}
+
 
 }
 
