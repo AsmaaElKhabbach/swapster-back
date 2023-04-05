@@ -7,13 +7,18 @@ const dataMapper = {
         return result.rows[0];
     },
 
-    async getUserByEmail(email){
+    // Methode pour récupérer le user via l'email
 
-
-
+    async getUserByEmail(email) {
+        // La requête : on interroge la bdd
+        const query = 'SELECT * from "user" WHERE email=$1'
+        // On stocke le résultat
+        const result = await client.query(query, [email])
+        // On retourne le résultat
+        return result.rows[0]
     }
 
-    
+
 };
 
 module.exports = dataMapper;

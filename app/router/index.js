@@ -7,4 +7,6 @@ router.get('/', (req, res) => {
     res.send('Youpi');
 });
 
+router.post('/login', userController.login)
+
 module.exports = router;
