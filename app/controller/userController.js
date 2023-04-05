@@ -4,9 +4,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 
-function generateAccessToken(email) {
-  return jwt.sign(email, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
-}
+// function generateAccessToken(email) {
+//   return jwt.sign(email, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+// }
 
 const userController = {
 
@@ -50,10 +50,10 @@ const userController = {
         password: await bcrypt.hash(password, 10)
       };
 
-      const token = generateAccessToken({ email: req.body.email });
+      // const token = generateAccessToken({ email: req.body.email });
 
       const userData = await dataMapper.insertUser(user);
-      res.status(201).json(userData, token);
+      res.status(201).json(userData);
 
     } catch (err) {
       console.log(err);
