@@ -48,6 +48,11 @@ const userController = {
         return res.status(401).json({ error: "Email ou mot de passe incorrect" })
 
       }
+      // On crée un token et on le renvoie au client 
+      // const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
+      // res.json({ token });
+
+
       res.status(201).json(user)
 
     } catch (error) {
@@ -56,6 +61,14 @@ const userController = {
 
     }
   },
+  // Logout Method
+
+  logout: async (req, res) => {
+    // On supprime le token du local storage
+    localStorage.removeItem('token');
+    res.status(200).json({ message: "Vous êtes bien déconnecté" })
+
+  }
 
 }
 
