@@ -8,10 +8,12 @@ const router = express.Router();
 router.get('/', (req, res) => {
     res.send('Youpi');
 });
-router.post('/signup', authenticateToken, userController.signup)
+router.post('/signup', userController.signup)
 
 router.post('/login', sessionController.login)
 
-// router.post('/logout', userController.logout)
+router.post('/logout', sessionController.logout)
+
+router.delete('/user/:userId', userController.deleteUser)
 
 module.exports = router;
