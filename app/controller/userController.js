@@ -59,7 +59,9 @@ const userController = {
       console.log(err);
       res.status(500).json({ error: "Erreur lors de l'insertion de l'utilisateur dans la base de données" });
     }
-  }
+  },
+
+
 
 
 
