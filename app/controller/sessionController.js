@@ -46,12 +46,12 @@ const sessionController = {
   },
   // Logout Method
 
-  // logout: async (req, res) => {
-  //   // On supprime le token du local storage
-  //   localStorage.removeItem('token');
-  //   res.status(200).json({ message: "Vous êtes bien déconnecté" })
+  logout: async (req, res) => {
+    // On supprime le token du local storage
+    localStorage.removeItem('token');
+    res.status(200).json({ message: "Vous êtes bien déconnecté" })
 
-  // }
+  }
 };
 
 module.exports = sessionController;
