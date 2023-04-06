@@ -65,6 +65,38 @@ const userController = {
 		}
 	},
 
+	// Methode pour afficher les détails d'un user 
+
+	userDetails: async (req, res) => {
+
+		// on vérifie dans la requête du front que l'id est bien un nombre
+		if (req.params.userId.match(/^\d+$/) == null) {
+			res.status(400).json({ error: `${req.params.userId} n'est pas un nombre` });
+			return;
+		}
+
+		// on convertit le userId en INT
+		const userId = parseInt(req.params.userId);
+
+		// on vérifie que l'id du user est bien dans la BDD
+		let checkUser;
+		try {
+			checkUser = await dataMapper.getOneUser(userId);
+			if (!checkUser) {
+				res.status(404).json({ error: `Pas de user avec l'id ${userId}` });
+				return;
+			}
+		} catch (err) {
+			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
+			return;
+		}
+		const userData = await dataMapper.getOneUser(userId);
+
+		return res.status(201).json(userData);
+	},
+
+
+
 	// Méthode pour MAJ le user
 	update: async (req, res) => {
 		// pour savoir s'il y a eu une modif sur le user : 0 = pas de modif ; 1 = modif
@@ -237,7 +269,7 @@ const userController = {
 	}
 
 
-}
+};
 
 
 module.exports = userController;
