@@ -1,5 +1,8 @@
 const dataMapper = require('../dataMapper');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+require('dotenv').config();
+
 
 const sessionController = {
 
@@ -36,11 +39,8 @@ const sessionController = {
         return res.status(500).json({ error: "Email ou mot de passe incorrect" });
       }
 
-      // On crée un token et on le renvoie au client 
-      // const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
-      // res.json({ token });
-
-
+      // Authentification : on génère un token à la connexion
+      user.token = jwt.sign({ userId: user.id }, process.env.TOKEN_SECRET, { expiresIn: "1h" });
       res.status(201).json(user)
 
     } catch (error) {

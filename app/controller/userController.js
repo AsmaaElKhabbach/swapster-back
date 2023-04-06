@@ -82,12 +82,13 @@ const userController = {
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUser(userId);
-			if (!checkUser) {
-				res.status(404).json({ error: `Pas de user avec l'id ${userId}` });
-				return;
-			}
+
 		} catch (err) {
 			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
+			return;
+		}
+		if (!checkUser) {
+			res.status(404).json({ error: `Pas de user avec l'id ${userId}` });
 			return;
 		}
 		const userData = await dataMapper.getOneUser(userId);

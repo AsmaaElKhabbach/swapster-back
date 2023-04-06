@@ -1,22 +1,23 @@
 const jwt = require('jsonwebtoken');
 
-function authenticateToken(req, res, next) {
-  const authHeader = req.headers['authorization']
-  const token = authHeader && authHeader.split(' ')[1]
+const authentication = {
+  validateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    console.log(token)
+    if (token == null) return res.status(401).json({ error: "token null" });
 
-  if (token == null) {
-    return res.status(401).json({ error: 'token invalid' });
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, payload) => {
+      console.log(err)
+
+      if (err) return res.status(403).json({ error: "token invalide" });
+
+      req.userId = payload.userId;
+
+      next();
+    })
   }
-
-  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
-    console.log(err)
-
-    if (err) return res.sendStatus(403)
-
-    req.user = user
-
-    next()
-  });
 }
 
-module.exports = authenticateToken;
+
+module.exports = authentication;
