@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/signup', userController.signup);
+router.get('/user/:userId', userController.userDetails);
 router.patch('/user/:userId', userController.update);
 router.delete('/user/:userId', userController.delete);
 
