@@ -3,10 +3,6 @@ const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 // const jwt = require
 
-
-
-
-
 const userController = {
 
 		// Méthode pour un nouvel user
@@ -14,7 +10,7 @@ const userController = {
 		signup: async (req, res) => {
 				try {
 						const { name, email, city, password, passwordConfirm } = req.body;
-
+						console.log(req.body);
 						if (!name) {
 								res.status(500).json({error:"manque name"});
 								return;
@@ -104,6 +100,7 @@ const userController = {
 				console.log(city);
 				console.log(password);
 				console.log(passwordConfirm);
+
 				// on vérifie s'il y a eu du changement sur le name du user
 				if (name && name !== checkUser.name) {
 						let checkUserName;
@@ -124,9 +121,15 @@ const userController = {
 						checkUser.name = name;
 						userHasChanged = 1;
 				}
-				
+			
 				// on vérifie s'il y a eu du changement sur l'email du user
 				if (email && email !== checkUser.email) {
+						// on vérifie si c'est un mail 	
+						if (!emailValidator.validate(email)) {
+							res.status(400).json({error:"email invalide"});
+							return;
+						};
+
 						let checkUserEmail;
 
 						try {
