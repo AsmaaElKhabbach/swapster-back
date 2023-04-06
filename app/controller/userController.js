@@ -12,44 +12,44 @@ const userController = {
 			const { name, email, city, password, passwordConfirm } = req.body;
 			console.log(req.body);
 			if (!name) {
-					res.status(500).json({error:"manque name"});
-					return;
+				res.status(500).json({error:"manque name"});
+				return;
 			};
 
 			if (!city) {
-					res.status(500).json({error:"manque city"});
-					return;
+				res.status(500).json({error:"manque city"});
+				return;
 			};
 
 			if (!emailValidator.validate(email)) {
-					res.status(500).json({error:"email invalide"});
-					return;
+				res.status(500).json({error:"email invalide"});
+				return;
 			};
 
 			const checkUserName = await dataMapper.getOneUserByName(name);
 
 			if (checkUserName) {
-					res.status(500).json({error:"pseudo (name) déjà utilisé"});
-					return;
+				res.status(500).json({error:"pseudo (name) déjà utilisé"});
+				return;
 			};
 
 			const checkUserEmail = await dataMapper.getOneUserByEmail(email);
 
 			if (checkUserEmail) {
-					res.status(500).json({error:"email déjà utilisé"});
-					return;
+				res.status(500).json({error:"email déjà utilisé"});
+				return;
 			};    
 
 			if (password !== passwordConfirm) {
-					res.status(500).json({error:"Le mot de passe ne correspond pas."});
-					return;
+				res.status(500).json({error:"Le mot de passe ne correspond pas."});
+				return;
 			};
 
 			const user = {
-					name: name,
-					email: email,
-					city: city,
-					password: await bcrypt.hash(password, 10)
+				name: name,
+				email: email,
+				city: city,
+				password: await bcrypt.hash(password, 10)
 			};
 
 			const userData = await dataMapper.insertUser(user);
@@ -78,18 +78,20 @@ const userController = {
 
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
+			//
 		try {
 			checkUser =  await dataMapper.getOneUser(userId);
-			if (!checkUser) {
-				res.status(404).json({error: `Pas de user avec l'id ${userId}`});
-				return;
-			}
 		} catch(err) {
 			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
 			return;
 		}
 
-		
+		if (!checkUser) {
+			res.status(404).json({error: `Pas de user avec l'id ${userId}`});
+			return;
+		}
+
+		// on va chercher le détail d'un user dans la BDD
 		const userData = await dataMapper.getOneUser(userId);
 		res.status(201).json(userData);
 		return;
@@ -114,17 +116,15 @@ const userController = {
 		let checkUser;
 		try {
 			checkUser =  await dataMapper.getOneUser(userId);
-			if (!checkUser) {
-				res.status(404).json({error: `Pas de user avec l'id ${userId}`});
-				return;
-			}
-
 		} catch(err) {
 			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
 			return;
 		}
 
-	
+		if (!checkUser) {
+			res.status(404).json({error: `Pas de user avec l'id ${userId}`});
+			return;
+		}
 		
 		// on récupère les données du front
 		const { name, email, city, password, passwordConfirm } = req.body;
@@ -139,15 +139,15 @@ const userController = {
 			let checkUserName;
 
 			try {
-					checkUserName = await dataMapper.getOneUserByName(name);
+				checkUserName = await dataMapper.getOneUserByName(name);
 			} catch(err) {
-					res.status(500).json({error:"Problème de requête lors de la vérification du userName dans la BDD"});
-					return;
+				res.status(500).json({error:"Problème de requête lors de la vérification du userName dans la BDD"});
+				return;
 			}
 
 			if (checkUserName) {
-					res.status(404).json({error:`le name ${name} existe déjà`});
-					return;
+				res.status(404).json({error:`le name ${name} existe déjà`});
+				return;
 			}
 
 			// mise à jour dans la variable checkUser
@@ -166,15 +166,15 @@ const userController = {
 			let checkUserEmail;
 
 			try {
-					checkUserEmail = await dataMapper.getOneUserByEmail(email);
+				checkUserEmail = await dataMapper.getOneUserByEmail(email);
 			} catch(err) {
-					res.status(500).json({error:"Problème de requête lors de la vérification du userEmail dans la BDD"});
-					return;
+				res.status(500).json({error:"Problème de requête lors de la vérification du userEmail dans la BDD"});
+				return;
 			}
 
 			if (checkUserEmail) {
-					res.status(404).json({error:`l'email ${email} existe déjà`});
-					return;
+				res.status(404).json({error:`l'email ${email} existe déjà`});
+				return;
 			};
 
 			// mise à jour dans la variable checkUser
@@ -194,20 +194,20 @@ const userController = {
 		// on vérifie s'il y a eu du changement sur le password du user
 		if (password){
 			if(!passwordConfirm){
-					res.status(400).json({error: "pas de confirmation du password dans la requête"});
-					return;
+				res.status(400).json({error: "pas de confirmation du password dans la requête"});
+				return;
 			}
 
 			if (password !== passwordConfirm){
-					res.status(400).json({error: "les 2 passwords sont différents"});
-					return;
+				res.status(400).json({error: "les 2 passwords sont différents"});
+				return;
 			}
 
 			const hashPassword = await bcrypt.hash(password, 10);
 
 			if (hashPassword == checkUser.password) {
-					res.status(400).json({error: "le mot de passe est le même"});
-					return;
+				res.status(400).json({error: "le mot de passe est le même"});
+				return;
 			}
 
 			// mise à jour dans la variable checkUser

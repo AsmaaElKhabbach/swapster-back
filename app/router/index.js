@@ -2,6 +2,7 @@
 const express = require('express');
 const userController = require('../controller/userController');
 const sessionController = require('../controller/sessionController');
+const {validateToken} = require('../middelware/authentication');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/signup', userController.signup);
-router.get('/user/:userId', userController.userDetails);
+router.get('/user/:userId', validateToken, userController.userDetails);
 router.patch('/user/:userId', userController.update);
 router.delete('/user/:userId', userController.delete);
 
