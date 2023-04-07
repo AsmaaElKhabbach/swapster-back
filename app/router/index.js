@@ -2,7 +2,7 @@
 const express = require('express');
 const userController = require('../controller/userController');
 const sessionController = require('../controller/sessionController');
-const { validateToken } = require('../middelware/jwt')
+const { validateToken } = require('../middelware/authentication');
 const router = express.Router();
 
 router.get('/', (req, res) => {

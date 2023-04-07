@@ -1,8 +1,6 @@
 const dataMapper = require('../dataMapper');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
-require('dotenv').config();
-
+const jwt = require('jsonwebtoken');
 
 const sessionController = {
 
@@ -39,8 +37,11 @@ const sessionController = {
         return res.status(500).json({ error: "Email ou mot de passe incorrect" });
       }
 
-      // Authentification : on génère un token à la connexion
-      user.token = jwt.sign({ userId: user.id }, process.env.TOKEN_SECRET, { expiresIn: "1h" });
+      // On crée un token et on le renvoie au client 
+      // const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
+      // res.json({ token });
+
+
       res.status(201).json(user)
 
     } catch (error) {
@@ -51,12 +52,12 @@ const sessionController = {
   },
   // Logout Method
 
-  logout: async (req, res) => {
-    // On supprime le token du local storage
-    localStorage.removeItem('token');
-    res.status(200).json({ message: "Vous êtes bien déconnecté" })
+  // logout: async (req, res) => {
+  //   // On supprime le token du local storage
+  //   localStorage.removeItem('token');
+  //   res.status(200).json({ message: "Vous êtes bien déconnecté" })
 
-  }
+  // }
 
 }
 

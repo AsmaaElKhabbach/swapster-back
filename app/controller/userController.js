@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const userController = {
 
 	// Méthode pour un nouvel user
+	// Méthode pour un nouvel user
 
 	signup: async (req, res) => {
 		try {
@@ -27,12 +28,14 @@ const userController = {
 			};
 
 			const checkUserName = await dataMapper.getOneUserByName(name);
+			const checkUserName = await dataMapper.getOneUserByName(name);
 
 			if (checkUserName) {
 				res.status(500).json({ error: "pseudo (name) déjà utilisé" });
 				return;
 			};
 
+			const checkUserEmail = await dataMapper.getOneUserByEmail(email);
 			const checkUserEmail = await dataMapper.getOneUserByEmail(email);
 
 			if (checkUserEmail) {
@@ -64,39 +67,6 @@ const userController = {
 			return;
 		}
 	},
-
-	// Methode pour afficher les détails d'un user 
-
-	userDetails: async (req, res) => {
-
-		// on vérifie dans la requête du front que l'id est bien un nombre
-		if (req.params.userId.match(/^\d+$/) == null) {
-			res.status(400).json({ error: `${req.params.userId} n'est pas un nombre` });
-			return;
-		}
-
-		// on convertit le userId en INT
-		const userId = parseInt(req.params.userId);
-
-		// on vérifie que l'id du user est bien dans la BDD
-		let checkUser;
-		try {
-			checkUser = await dataMapper.getOneUser(userId);
-
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
-			return;
-		}
-		if (!checkUser) {
-			res.status(404).json({ error: `Pas de user avec l'id ${userId}` });
-			return;
-		}
-		const userData = await dataMapper.getOneUser(userId);
-
-		return res.status(201).json(userData);
-	},
-
-
 
 	// Méthode pour MAJ le user
 	update: async (req, res) => {
@@ -268,6 +238,9 @@ const userController = {
 		}
 
 	}
+
+
+}
 
 
 };

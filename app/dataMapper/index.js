@@ -36,7 +36,7 @@ const dataMapper = {
 
     // Méthode pour mettre à jour le user 
     async updateUser(user) {
-        const query = 'UPDATE "user" SET "name" = $1, "email" = $2, "city" = $3, "password" = $4 WHERE "id" = $5';
+        const query = 'UPDATE "user" SET "name" = $1, "email" = $2, "city" = $3, "password" = $4, "updated_at" = NOW() WHERE "id" = $5';
         await client.query(query, [user.name, user.email, user.city, user.password, user.id]);
     },
 
