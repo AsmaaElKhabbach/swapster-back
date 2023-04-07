@@ -4,7 +4,7 @@
         "id" : 1,
         "name": "John",
         "email": "John@oclock.io",
-        "password": "john",
+        "password": "$2b$10$yZznjHJCENsDpS4SFDcLQuOiaNKHLPsJ9qURrKTFyWOqMdVVR46/.",
         "city": "Paris",
         "picture": "https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-image-sociale-utilisateur-m%C3%A9dias-social-182145777.jpg"
         },
@@ -12,7 +12,7 @@
         "id" : 2, 
         "name": "Donneur",
         "email": "Donneur@oclock.io",
-        "password": "Donneur",
+        "password": "$2b$10$nol..oNKvA4TsQICrBrAte/XAhbceVBadwuREuGqu7mEqj62ci//G",
         "city": "Creteil",
         "picture": "https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-image-sociale-utilisateur-m%C3%A9dias-social-182145777.jpg"
         }
@@ -30,20 +30,66 @@
         "title": "Harry Potter et l’école des sorciers",
         "resume": "loremdnkjndlqskdjqlsjdqklzope o ,dqod ,qd qzpd,zq,dzqpokdqlmkdzqmldqpzq",
         "category_id": 1
+        }, 
+        {
+        "id" : 3,
+        "title": "Les misérables",
+        "resume": "Ce livre est un vrai chef d’ oeuvre de la littérature française. Ce roman historique écrit par le grand Victor Hugo est très fidèle au condition de l’ époque. Je remercie le ministère de l’ éducation de l’ avoir mit au programme",
+        "category_id": 5
+        },
+        {
+        "id" : 4,
+        "title": "1984",
+        "resume": "dnsqmldjkmql,zlmq,qslk,ddqsdq",
+        "category_id": 1
+        },
+        {
+        "id" : 5,
+        "title": "Pierre et Jean",
+        "resume": "Au cours d’une partie de pêche familiale en compagnie de Mme Rosémilly, les deux frères, pour séduire la jeune femme, se livrent à une compétition acharnée à la rame. Le lecteur découvre que sous une apparence d’union et d’affection, une vraie rivalité oppose les deux frères.",
+        "category_id": 6
+        },
+        {
+        "id" : 6,
+        "title": "Le Petit Prince",
+        "resume": "loremdnkjndlqskdjqlsjdqklzope o ,dqod ,qd qzpd,zq,dzqpokdqlmkdzqmldqpzq skqldjqsdq",
+        "category_id": 4
         }
+            
     ],
 
     "author" : [
         {
         "id" : 1,
-        "lastname" : "Lewis",
-        "firstname" : "Carroll"
+        "lastname" : "Carroll",
+        "firstname" : "Lewis"
         },
         {
         "id" : 2,
-        "lastname" : "JK",
-        "firstname" : "Rowling"
+        "lastname" : "Rowling",
+        "firstname" : "JK"
+        },
+        {
+        "id" : 3,
+        "lastname" : "Hugo",
+        "firstname" : "Victor"
+        },
+        {
+        "id" : 4,
+        "lastname" : "Orwell",
+        "firstname" : "George"
+        },
+        {
+        "id" : 5,
+        "lastname" : "de Maupassant",
+        "firstname" : "Guy"
+        },
+        {
+        "id" : 6,
+        "lastname" : "de Saint-exupéry",
+        "firstname" : "Antoine"
         }
+
     ],
     
     "category" : [
@@ -62,7 +108,16 @@
         {
         "id" : 4,
         "name" : "Littérature pour enfants"
+        },
+        {
+        "id" : 5,
+        "name" : "Roman"
+        }, 
+        {
+        "id" : 6,
+        "name" : "Fiction"
         }
+
     ],
 
     "book" : [
@@ -91,7 +146,113 @@
         "width" : "15",
         "thickness": "8",
         "work_id" : 2
+        },
+        {
+        "id" : 3,
+        "isbn_13" : 9782211238465,
+        "cover_page" : "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/511RqGjjD2L._SX322_BO1,204,203,200_.jpg",
+        "editor" : "J. Hetzel et A. Lacroix",
+        "publication_date" : "10 octobre 1866",
+        "language" : "Français",
+        "pages_number" : 799,
+        "height" :"10",
+        "width" : "15",
+        "thickness": "8",
+        "work_id" : 3
+        
+        },
+        {
+        "id" : 4,
+        "isbn_13" : 9782211238465,
+        "cover_page" : "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/511RqGjjD2L._SX322_BO1,204,203,200_.jpg",
+        "editor" : "Abridged",
+        "publication_date" : "9 janvier 2019",
+        "language" : "Français",
+        "pages_number" : 324,
+        "height" :"12.5",
+        "width" : "18.9",
+        "thickness": "2.5",
+        "work_id" : 3
+        },
+        {
+        "id" : 5,
+        "isbn_13" : 9780547249643,
+        "cover_page" : "https://books.google.fr/books/content?id=kotPYEqx7kMC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72TqNul0l5EyeKZn_DRiLR3Gt5LiRGcjn1UWQz0vZV3k-0t5JqM7wpJjJUFB90kto2WYIyFsKaSMt0ilNiEMkAQe29MB5iIQzJBc86FuDjphgTauJ8rXdCpcVcJ5RXFllWmMrTY",
+        "editor" : "HarperCollins",
+        "publication_date" : "9 janvier 2013",
+        "language" : "Français",
+        "pages_number" : 304,
+        "height" :"11",
+        "width" : "15",
+        "thickness": "1.5",
+        "work_id" : 4
+        },
+        {
+        "id" : 6,
+        "isbn_13" : 9782290106075,
+        "cover_page" : "https://sp.yimg.com/ib/th?id=OPE.6yF7N2NrMv6c3g300C300&pid=21.1&w=174&h=174",
+        "editor" : "Librio",
+        "publication_date" : "6 juin 2018",
+        "language" : "Français",
+        "pages_number" : 192,
+        "height" :"17.7",
+        "width" : "12.5",
+        "thickness": "1.2",
+        "work_id" : 5
+        },
+        {
+        "id" : 7,
+        "isbn_13" : 9782072878497,
+        "cover_page" : "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41Hdsa+X4jL._SX302_BO1,204,203,200_.jpg",
+        "editor" : "Folio",
+        "publication_date" : "28 mai 2020",
+        "language" : "Français",
+        "pages_number" : 400,
+        "height" :"11",
+        "width" : "17",
+        "thickness": "1.5",
+        "work_id" : 4
+        },
+        {
+        "id" : 8,
+        "isbn_13" : 9782070410859,
+        "cover_page" : "https://sp.yimg.com/ib/th?id=OPE.6yF7N2NrMv6c3g300C300&pid=21.1&w=174&h=174",
+        "editor" : "Folio",
+        "publication_date" : "2 juillet 1999",
+        "language" : "Français",
+        "pages_number" : 282,
+        "height" :"18",
+        "width" : "11",
+        "thickness": "1.3",
+        "work_id" : 5
+        },
+        {
+        "id" : 9,
+        "isbn_13" : 9782070667222,
+        "cover_page" : "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41B-d58s3GL._SX353_BO1,204,203,200_.jpg",
+        "editor" : "Gallimard Jeunesse",
+        "publication_date" : "27 août 2015",
+        "language" : "Français",
+        "pages_number" : 64,
+        "height" :"18.3",
+        "width" : "25.7",
+        "thickness": "4.3",
+        "work_id" : 6
+        },
+        {
+        "id" : 10,
+        "isbn_13" : 9782072730849,
+        "cover_page" : "https://images2.medimops.eu/product/cd0774/M02072730848-large.jpg",
+        "editor" : "Gallimard",
+        "publication_date" : "15 juin 2015",
+        "language" : "Français",
+        "pages_number" : 179,
+        "height" :"11",
+        "width" : "28",
+        "thickness": "8",
+        "work_id" : 6
         }
+            
         
     ],
 
@@ -105,24 +266,68 @@
         "id" : 2,
         "work_id" :2,
         "author_id" : 2
+        },
+         {
+        "id" : 3,
+        "work_id" :3,
+        "author_id" :3
+        },
+        {
+        "id" : 4,
+        "work_id" :4,
+        "author_id" :4
+        },
+        {
+        "id" : 5,
+        "work_id" :5,
+        "author_id" :5
+        },
+        {
+        "id" : 6,
+        "work_id" :6,
+        "author_id" :6
         }
     ],
 
     "user_has_book" : [ 
         {
         "id": 1,
-        "book_id" : 1 ,
+        "book_id" : 1,
         "user_id" : 2,
         "disponibility" : "disponible",
         "status" : "bon état"
         },
         {
         "id": 2,
-        "book_id" : 2 ,
+        "book_id" : 2,
         "user_id" : 2,
         "disponibility" : "donné",
         "status" : "mauvais"
+        },
+        {
+        "id": 3,
+        "book_id" : 4,
+        "user_id" : 1,
+        "disponibility" : "disponible",
+        "status" : "correct"
+        },
+        {
+        "id": 4,
+        "book_id" : 6,
+        "user_id" : 1,
+        "disponibility" : "disponible",
+        "status" : "mauvais"
+        },
+        {
+        "id": 5,
+        "book_id" : 8,
+        "user_id" : 2,
+        "disponibility" : "disponible",
+        "status" : "correct"
         }
+
+
+
     ]    
 
 }

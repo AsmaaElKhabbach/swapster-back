@@ -45,7 +45,7 @@ async function generateSQL() {
         INSERT INTO "work"
         ("title", "resume", "category_id")
         VALUES
-        ('${work.title}', '${work.resume}', '${work.category_id}');
+        ('${work.title}', '${work.resume}', ${work.category_id});
         `;
         });
 
@@ -53,9 +53,9 @@ async function generateSQL() {
         db.author.forEach((author) => {
                 transaction += `
         INSERT INTO "author"
-        ("id", "lastname", "firstname")
+        ("lastname", "firstname")
         VALUES
-        ('${author.id}', '${author.lastname}', '${author.firstname}');
+        ('${author.lastname}', '${author.firstname}');
         `;
         });
 
@@ -66,7 +66,7 @@ async function generateSQL() {
         INSERT INTO "book"
         ("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
         VALUES
-        ('${book.isbn_13}', '${book.cover_page}', '${book.editor}', '${book.publication_date}', '${book.language}', '${book.pages_number}', '${book.height}', '${book.width}', '${book.thickness}', '${book.work_id}');
+        ('${book.isbn_13}', '${book.cover_page}', '${book.editor}', '${book.publication_date}', '${book.language}', '${book.pages_number}', '${book.height}', '${book.width}', '${book.thickness}', ${book.work_id});
         `;
         });
 
@@ -76,7 +76,7 @@ async function generateSQL() {
         INSERT INTO "author_has_work"
         ("work_id", "author_id")
         VALUES
-        ('${authorHasWork.id}', '${authorHasWork.work_id}', '${authorHasWork.author_id}');
+        (${authorHasWork.work_id}, ${authorHasWork.author_id});
         `;
         });
 
@@ -87,7 +87,7 @@ async function generateSQL() {
         INSERT INTO "user_has_book"
         ("book_id", "user_id","disponibility", "status")
         VALUES
-        ('${userHasBook.id}', '${userHasBook.book_id}', '${userHasBook.user_id}', '${userHasBook.disponibility}', '${userHasBook.status}');
+        (${userHasBook.book_id}, ${userHasBook.user_id}, '${userHasBook.disponibility}', '${userHasBook.status}');
         `;
         });
 
