@@ -18,8 +18,8 @@ router.post('/logout', sessionController.logout)
 
 router.post('/signup', userController.signup);
 router.get('/user/:userId', validateToken, userController.userDetails);
-router.patch('/user/:userId', userController.update);
-router.delete('/user/:userId', userController.delete);
+router.patch('/user/:userId', validateToken, userController.update);
+router.delete('/user/:userId', validateToken, userController.delete);
 
 router.post('/login', sessionController.login);
 router.post('/logout', sessionController.logout)

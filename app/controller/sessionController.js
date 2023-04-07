@@ -36,11 +36,8 @@ const sessionController = {
         console.log("mdp incorrect");
         return res.status(500).json({ error: "Email ou mot de passe incorrect" });
       }
-
-      // On crée un token et on le renvoie au client 
-      // const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
-      // res.json({ token });
-
+      // On crée un token qui va créer une propriété dans user et on le renvoie au client 
+      user.token = jwt.sign({ userId: user.id }, process.env.TOKEN_SECRET, { expiresIn: "1h" });
 
       res.status(201).json(user)
 
@@ -52,12 +49,12 @@ const sessionController = {
   },
   // Logout Method
 
-  // logout: async (req, res) => {
-  //   // On supprime le token du local storage
-  //   localStorage.removeItem('token');
-  //   res.status(200).json({ message: "Vous êtes bien déconnecté" })
+  logout: async (req, res) => {
+    // On supprime le token du local storage
+    localStorage.removeItem('token');
+    res.status(200).json({ message: "Vous êtes bien déconnecté" })
 
-  // }
+  }
 
 }
 
