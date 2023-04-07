@@ -67,62 +67,39 @@ const userController = {
 
 	// Methode pour afficher les détails d'un user 
 	userDetails: async(req,res) => {
-		// on vérifie dans la requête du front que l'id est bien un nombre
-		if (req.params.userId.match(/^\d+$/) == null){
-			res.status(400).json({error: `${req.params.userId} n'est pas un nombre`});
-			return;
-		} 
-	
-		// on convertit le userId en INT
-		const userId = parseInt(req.params.userId);
-
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 			//
 		try {
-			checkUser =  await dataMapper.getOneUser(userId);
+			checkUser =  await dataMapper.getOneUser(req.userId);
 		} catch(err) {
 			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
 			return;
 		}
 
 		if (!checkUser) {
-			res.status(404).json({error: `Pas de user avec l'id ${userId}`});
+			res.status(404).json({error: `Pas de user avec l'id ${req.userId}`});
 			return;
 		}
 
-		// on va chercher le détail d'un user dans la BDD
-		const userData = await dataMapper.getOneUser(userId);
-		res.status(201).json(userData);
+		res.status(201).json(checkUser);
 		return;
 
 	},
 
 	// Méthode pour MAJ le user
 	update: async(req, res) => {
-		// pour savoir s'il y a eu une modif sur le user : 0 = pas de modif ; 1 = modif
-		let userHasChanged = 0;
-	
-		// on vérifie dans la requête du front que l'id est bien un nombre
-		if (req.params.userId.match(/^\d+$/) == null){
-			res.status(400).json({error: `${req.params.userId} n'est pas un nombre`});
-			return;
-		} 
-	
-		// on convertit le userId en INT
-		const userId = parseInt(req.params.userId);
-
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
-			checkUser =  await dataMapper.getOneUser(userId);
+			checkUser =  await dataMapper.getOneUser(req.userId);
 		} catch(err) {
 			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
 			return;
 		}
 
 		if (!checkUser) {
-			res.status(404).json({error: `Pas de user avec l'id ${userId}`});
+			res.status(404).json({error: `Pas de user avec l'id ${req.userId}`});
 			return;
 		}
 		
@@ -158,10 +135,10 @@ const userController = {
 		// on vérifie s'il y a eu du changement sur l'email du user
 		if (email && email !== checkUser.email) {
 			// on vérifie si c'est un mail 	
-			if (!emailValidator.validate(email)) {
-				res.status(400).json({error:"email invalide"});
-				return;
-			};
+			// if (!emailValidator.validate(email)) {
+			// 	res.status(400).json({error:"email invalide"});
+			// 	return;
+			// };
 
 			let checkUserEmail;
 
@@ -193,16 +170,6 @@ const userController = {
 
 		// on vérifie s'il y a eu du changement sur le password du user
 		if (password){
-			if(!passwordConfirm){
-				res.status(400).json({error: "pas de confirmation du password dans la requête"});
-				return;
-			}
-
-			if (password !== passwordConfirm){
-				res.status(400).json({error: "les 2 passwords sont différents"});
-				return;
-			}
-
 			const hashPassword = await bcrypt.hash(password, 10);
 
 			if (hashPassword == checkUser.password) {
@@ -234,39 +201,30 @@ const userController = {
 
 	// Méthode pour supprimer le user
 	delete: async(req, res) => {
-		// on vérifie dans la requête du front que l'id est bien un nombre
-		if (req.params.userId.match(/^\d+$/) == null){
-			res.status(400).json({error: `${req.params.userId} n'est pas un nombre`});
-			return;
-		} 
-
-		// on convertit le userId en INT
-		const userId = parseInt(req.params.userId);
-
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
-			checkUser =  await dataMapper.getOneUser(userId);
+			checkUser =  await dataMapper.getOneUser(req.userId);
 		} catch(err) {
+			console.log(req.userId);
 			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
 			return;
 		}
 
 		if (!checkUser) {
-			res.status(404).json({error: `Pas de user avec l'id ${userId}`});
+			res.status(404).json({error: `Pas de user avec l'id ${req.userId}`});
 			return;
 		}
 
 		// on supprime de la BDD
 		try {
-			await dataMapper.deleteUser(userId);
+			await dataMapper.deleteUser(req.userId);
 			res.status(200).json({info: "User correctement supprimé"});
 			return;
 		} catch (err) {
 			res.status(500).json({error:"Problème de requête lors de la suppression du user dans la BDD"});
 			return;
 		}
-		
 	}
 
 

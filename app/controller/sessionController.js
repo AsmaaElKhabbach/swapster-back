@@ -11,15 +11,7 @@ const sessionController = {
         try {
             // On récupère l'email et le password dans le body
             const { email, password } = req.body;
-
-            if (!email) {
-                return res.status(400).json({ error: "Email manquant" });
-            }
-
-            if (!password) {
-                return res.status(400).json({ error: "Password manquant" });
-            }
-            
+           
             // On stock le resultat de la requête
             const user = await dataMapper.getOneUserByEmail(email);
             console.log(user);
@@ -43,17 +35,17 @@ const sessionController = {
 
         } catch (error) {
             console.error(error)
-            res.status(500).json({error: "Erreur serveur"});
+            res.status(500).json({error: ""});
 
         }
     },
         // Logout Method
-    // logout: async (req, res) => {
-    //       // On supprime le token du local storage
-    //       localStorage.removeItem('token');
-    //       res.status(200).json({ message: "Vous êtes bien déconnecté" })
+    logout: async (req, res) => {
+          // On supprime le token du local storage
+          localStorage.removeItem('token');
+          res.status(200).json({ message: "Vous êtes bien déconnecté" })
 
-    //     }
+        }
 
 }
 
