@@ -184,20 +184,20 @@ const userController = {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
-			checkUser = await dataMapper.getOneUser(userId);
+			checkUser = await dataMapper.getOneUser(req.userId);
 		} catch (err) {
 			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
 			return;
 		}
 
 		if (!checkUser) {
-			res.status(404).json({ error: `Pas de user avec l'id ${userId}` });
+			res.status(404).json({ error: `Pas de user avec l'id ${req.userId}` });
 			return;
 		}
 
 		// on supprime de la BDD
 		try {
-			await dataMapper.deleteUser(userId);
+			await dataMapper.deleteUser(req.userId);
 			res.status(200).json({ info: "User correctement supprimé" });
 			return;
 		} catch (err) {

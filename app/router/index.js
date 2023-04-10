@@ -17,6 +17,6 @@ router.patch('/user/me', validateToken, validation.userId, validation.updateUser
 router.delete('/user/me', validateToken, validation.userId, userController.delete);
 
 router.post('/login', validation.login, sessionController.login);
-router.post('/logout', sessionController.logout);
+router.post('/logout', validateToken, sessionController.logout);
 
 module.exports = router;
