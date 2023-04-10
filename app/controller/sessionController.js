@@ -39,13 +39,27 @@ const sessionController = {
 
         }
     },
-        // Logout Method
-    logout: async (req, res) => {
-          // On supprime le token du local storage
-          localStorage.removeItem('token');
-          res.status(200).json({ message: "Vous êtes bien déconnecté" })
+    //     // Logout Method
+    // logout: async (req, res) => {
+    //       // On supprime le token du local storage
+    //       localStorage.removeItem('token');
+    //       res.status(200).json({ message: "Vous êtes bien déconnecté" })
 
-        }
+    //     }
+
+
+    // Logout Method
+
+  logout: async (req, res) => {
+    try {
+      // Retirer le token de Authorization header
+      req.headers.authorization = null;
+
+      res.status(200).json({ message: "Vous êtes bien déconnecté" });
+    } catch (error) {
+      res.status(500).json({ error: "Erreur serveur" });
+    }
+  }
 
 }
 
