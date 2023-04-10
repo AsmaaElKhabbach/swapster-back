@@ -6,26 +6,12 @@ const bcrypt = require('bcrypt');
 const userController = {
 
 	// Méthode pour un nouvel user
-
 	signup: async (req, res) => {
 		try {
 			const { name, email, city, password, passwordConfirm } = req.body;
 			console.log(req.body);
-			if (!name) {
-				res.status(500).json({error:"manque name"});
-				return;
-			};
-
-			if (!city) {
-				res.status(500).json({error:"manque city"});
-				return;
-			};
-
-			if (!emailValidator.validate(email)) {
-				res.status(500).json({error:"email invalide"});
-				return;
-			};
-
+			
+			// on verifie s'il n'y a pas de doublon dans la BDD
 			const checkUserName = await dataMapper.getOneUserByName(name);
 
 			if (checkUserName) {
@@ -38,13 +24,9 @@ const userController = {
 			if (checkUserEmail) {
 				res.status(500).json({error:"email déjà utilisé"});
 				return;
-			};    
+			};   
 
-			if (password !== passwordConfirm) {
-				res.status(500).json({error:"Le mot de passe ne correspond pas."});
-				return;
-			};
-
+			// on crée un objet user
 			const user = {
 				name: name,
 				email: email,
@@ -52,6 +34,7 @@ const userController = {
 				password: await bcrypt.hash(password, 10)
 			};
 
+			// on insert l'objet dans la BDD
 			const userData = await dataMapper.insertUser(user);
 
 			console.log(userData);
@@ -66,7 +49,7 @@ const userController = {
 	},
 
 	// Methode pour afficher les détails d'un user 
-	userDetails: async(req,res) => {
+	userDetails: async (req,res) => {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 			//
@@ -88,7 +71,7 @@ const userController = {
 	},
 
 	// Méthode pour MAJ le user
-	update: async(req, res) => {
+	update: async (req, res) => {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
@@ -134,12 +117,7 @@ const userController = {
 	
 		// on vérifie s'il y a eu du changement sur l'email du user
 		if (email && email !== checkUser.email) {
-			// on vérifie si c'est un mail 	
-			// if (!emailValidator.validate(email)) {
-			// 	res.status(400).json({error:"email invalide"});
-			// 	return;
-			// };
-
+	
 			let checkUserEmail;
 
 			try {
@@ -166,7 +144,6 @@ const userController = {
 			checkUser.city = city;
 			userHasChanged = 1;
 		}
-
 
 		// on vérifie s'il y a eu du changement sur le password du user
 		if (password){
@@ -200,7 +177,7 @@ const userController = {
 	},
 
 	// Méthode pour supprimer le user
-	delete: async(req, res) => {
+	delete: async (req, res) => {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
@@ -216,7 +193,7 @@ const userController = {
 			return;
 		}
 
-		// on supprime de la BDD
+		// on le supprime de la BDD
 		try {
 			await dataMapper.deleteUser(req.userId);
 			res.status(200).json({info: "User correctement supprimé"});
@@ -226,8 +203,6 @@ const userController = {
 			return;
 		}
 	}
-
-
 }
 
 
