@@ -46,9 +46,21 @@ const bookController = {
 			res.status(500).json({error:"Problème de requête lors de la vérification des books dans la BDD"});
 			return;
 		}
-	}
+	},
+
+
+	searchBook: async (req, res) => {
+
+		try {
+			const { search } = req.body
+			const checkBook = await dataMapper.searchBook(search)
+			return res.status(200).json(checkBook)
+
+		} catch (error) {
+			res.status(500).json({ error: "Problème lors de la requête en BDD" });
+			return;
+		}
+
+	},
 }
-
-
-
 module.exports = bookController;

@@ -24,6 +24,8 @@ router.post('/logout', validateToken, sessionController.logout);
 // route livre(s)
 router.get('/book/latestadded', bookController.latestbooks);
 
+router.post('/book/search', validation.searchBook, bookController.searchBook);
+
 
 
 

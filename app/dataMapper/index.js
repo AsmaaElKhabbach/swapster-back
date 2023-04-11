@@ -64,12 +64,30 @@ const dataMapper = {
 		JOIN "category" ON "category"."id" = "work"."category_id"
 		JOIN "user_has_book" ON "user_has_book"."book_id" = "book"."id"
 				
-		ORDER BY "user_has_book"."created_at" desc limit 10;`;
+		ORDER BY "user_has_book"."created_at" desc limit 5;`;
 		
 		const result = await client.query(query);
 		console.log("laaaaaaaaa dt mapper result: ", result);
 		return result.rows;
+	},
+
+	// Methode pour rechercher un livre
+	searchBook: async (search) => {
+		const query = `SELECT work.*, book.*, author.name AS "Auteur",  category.name AS "Catégorie"
+		FROM "book" 
+		JOIN "work" ON book.work_id = work.id
+		JOIN "author_has_work" ON work.id = author_has_work.work_id
+		JOIN "author" ON author_has_work.author_id = author.id
+		JOIN "category" ON work.category_id = category.id
+		WHERE work.title ILIKE $1 
+		OR author.name ILIKE $1 
+		OR book.isbn_13 ILIKE $1
+		OR category.name ILIKE $1`
+
+		const result = await client.query(query, [`%${search}%`])
+		return result.rows
 	}
+
 };
 
 module.exports = dataMapper;

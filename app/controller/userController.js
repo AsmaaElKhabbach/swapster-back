@@ -1,5 +1,4 @@
 const dataMapper = require('../dataMapper');
-const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 // const jwt = require
 
