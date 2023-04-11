@@ -53,9 +53,9 @@ async function generateSQL() {
 	db.author.forEach((author) => {
 			transaction += `
 	INSERT INTO "author"
-	("lastname", "firstname")
+	("name")
 	VALUES
-	('${author.lastname}', '${author.firstname}');
+	('${author.name}');
 	`;
 	});
 

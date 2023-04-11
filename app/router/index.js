@@ -2,6 +2,7 @@
 const express = require('express');
 const userController = require('../controller/userController');
 const sessionController = require('../controller/sessionController');
+const bookController = require('../controller/bookController');
 const validation = require('../services/validation');
 const {validateToken} = require('../middelware/authentication');
 const router = express.Router();
@@ -19,6 +20,9 @@ router.delete('/user/me', validateToken, validation.userId, userController.delet
 // route login et logout
 router.post('/login', validation.login, sessionController.login);
 router.post('/logout', validateToken, sessionController.logout);
+
+// route livre(s)
+router.get('/book/latestadded', bookController.latestbooks);
 
 
 

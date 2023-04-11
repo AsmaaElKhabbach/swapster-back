@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- Verify swapster:init on pg
 
 BEGIN;
@@ -18,8 +19,7 @@ SELECT
 
 SELECT
 	"id",
-	"lastname",
-	"firstname"
+	"name"
 
 	FROM 
 		"author"
@@ -87,5 +87,9 @@ SELECT
 		"author_has_work"
 	WHERE
 	false;
+
+
+
+
 
 ROLLBACK;

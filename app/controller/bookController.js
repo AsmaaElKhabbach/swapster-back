@@ -26,13 +26,25 @@ const bookController = {
 
 
 	//book/:bookId
-	oneBook: async (req, res) => {
-		const bookId = Number(req.params.id);
+	// oneBook: async (req, res) => {
+	// 	try {
+	// 		const bookData = await dataMapper.findByPk(bookId);
+	// 		res.status(201).json(bookData);
+	// 	} catch(err) {
+	// 		res.status(500);
+	// 	}
+	// }
+
+
+	latestbooks: async (req, res) => {
 		try {
-			const bookData = await dataMapper.findByPk(bookId);
-			res.status(201).json(bookData);
+			const latestBooks = await dataMapper.getLatestBooks();
+			console.log("latestBooks :", latestBooks);
+			res.status(201).json(latestBooks);
+			return;
 		} catch(err) {
-			res.status(500);
+			res.status(500).json({error:"Problème de requête lors de la vérification des books dans la BDD"});
+			return;
 		}
 	}
 }

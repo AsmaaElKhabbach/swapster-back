@@ -60,33 +60,27 @@
 	"author" : [
 		{
 			"id" : 1,
-			"lastname" : "Carroll",
-			"firstname" : "Lewis"
+			"name" : "Lewis Carroll"
 		},
 		{
 			"id" : 2,
-			"lastname" : "Rowling",
-			"firstname" : "JK"
+			"name" : "JK Rowling"
 		},
 		{
 			"id" : 3,
-			"lastname" : "Hugo",
-			"firstname" : "Victor"
+			"name" : "Victor Hugo"
 		},
 		{
 			"id" : 4,
-			"lastname" : "Orwell",
-			"firstname" : "George"
+			"name" : "George Orwell"
 		},
 		{
 			"id" : 5,
-			"lastname" : "de Maupassant",
-			"firstname" : "Guy"
+			"name" : " Guy de Maupassant"
 		},
 		{
 			"id" : 6,
-			"lastname" : "de Saint-exupéry",
-			"firstname" : "Antoine"
+			"name" : "Antoine de Saint-exupéry"
 		}
 	],
 
