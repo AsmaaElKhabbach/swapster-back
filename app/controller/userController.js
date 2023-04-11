@@ -51,7 +51,6 @@ const userController = {
 	userDetails: async (req,res) => {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
-			//
 		try {
 			checkUser =  await dataMapper.getOneUser(req.userId);
 		} catch(err) {

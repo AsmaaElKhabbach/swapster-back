@@ -23,6 +23,7 @@ router.post('/logout', validateToken, sessionController.logout);
 
 // route livre(s)
 router.get('/book/latestadded', bookController.latestbooks);
+router.get('/book/:bookId', validation.bookId, bookController.bookDetails);
 
 router.post('/book/search', validation.searchBook, bookController.searchBook);
 

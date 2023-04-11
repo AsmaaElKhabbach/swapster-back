@@ -27,11 +27,15 @@ const updateUser = Joi.object({
 	passwordConfirm: Joi.ref("password")
 });
 
-
-
+// on crée un schéma qui va valider les recherches
 const searchBook = Joi.object({
 	search: Joi.string().min(1).required()
-})
+});
+
+// on crée un schéma qui va valider l'id du book
+const bookId = Joi.number().required();
 
 
-module.exports = { signup, login, userId, updateUser, searchBook };
+
+
+module.exports = { signup, login, userId, updateUser, searchBook,  bookId };

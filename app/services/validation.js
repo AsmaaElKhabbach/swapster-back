@@ -39,7 +39,17 @@ const validation = {
 			return res.status(400).json({ error: error.details });
 		}
 		next();
+	},
+
+	bookId (req, res, next) {
+		const { error } = schema.bookId.validate(req.params.bookId, { abortEarly: false });
+		if (error) {
+			return res.status(400).json({ error: error.details });
 		}
+		next();
+	},
+
+
 };
 
 module.exports = validation;

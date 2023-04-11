@@ -62,5 +62,26 @@ const bookController = {
 		}
 
 	},
+
+	// Methode pour afficher les détails d'un livre
+	bookDetails: async (req,res) => {
+		// on vérifie que l'id du livre est bien dans la BDD
+		let checkBook;
+		try {
+			checkBook =  await dataMapper.getOneBook(req.params.bookId);
+		} catch(err) {
+			res.status(500).json({error:"Problème de requête lors de la vérification du livre dans la BDD"});
+			return;
+		}
+
+		if (!checkBook) {
+			res.status(404).json({error: `Pas de livre avec l'id ${req.params.bookId}`});
+			return;
+		}
+
+		res.status(201).json(checkBook);
+		return;
+
+	},
 }
 module.exports = bookController;
