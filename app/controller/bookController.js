@@ -35,7 +35,7 @@ const bookController = {
 	// 	}
 	// }
 
-
+	// Méthode pour afficher les 10 derniers livres
 	latestbooks: async (req, res) => {
 		try {
 			const latestBooks = await dataMapper.getLatestBooks();
@@ -48,7 +48,7 @@ const bookController = {
 		}
 	},
 
-
+	// Methode pour afficher les recherches d'un livre
 	searchBook: async (req, res) => {
 
 		try {
@@ -68,7 +68,7 @@ const bookController = {
 		// on vérifie que l'id du livre est bien dans la BDD
 		let checkBook;
 		try {
-			checkBook =  await dataMapper.getOneBook(req.params.bookId);
+			checkBook =  await dataMapper.getOneBookById(req.params.bookId);
 		} catch(err) {
 			res.status(500).json({error:"Problème de requête lors de la vérification du livre dans la BDD"});
 			return;
@@ -83,5 +83,31 @@ const bookController = {
 		return;
 
 	},
+
+		// Methode pour afficher tous les users pour un livre
+	allUsersByBookId: async (req,res) => {
+		let checkBook;
+		try {
+			checkBook =  await dataMapper.getOneBookById(req.params.bookId);
+		} catch(err) {
+			res.status(500).json({error:"Problème de requête lors de la vérification du livre dans la BDD"});
+			return;
+		}
+
+		if (!checkBook) {
+			res.status(404).json({error: `Pas de livre avec l'id ${req.params.bookId}`});
+			return;
+		}
+
+		try {
+			const availableBooks = await dataMapper.getAllBooksAvailable(req.params.bookId);
+			console.log("availableBooks :", availableBooks);
+			res.status(201).json(availableBooks);
+			return;
+		} catch(err) {
+			res.status(500).json({error:"Problème de requête lors de la vérification des books dans la BDD"});
+			return;
+		}
+	}
 }
 module.exports = bookController;

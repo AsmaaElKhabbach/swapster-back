@@ -8,6 +8,6 @@ book (id, isbn_13, cover_page, editor, publication_date, language, pages_number,
 
 user (id, email, name, city, password, picture)
 
-user_has_book (id, #book_id, #user_id, disponibility, status)
+user_has_book (id, #book_id, #user_id, availability, status)
 
 author_has_work (id, #work_id, #author_id)

@@ -52,7 +52,7 @@ const userController = {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
-			checkUser =  await dataMapper.getOneUser(req.userId);
+			checkUser =  await dataMapper.getOneUserById(req.userId);
 		} catch(err) {
 			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
 			return;
@@ -73,7 +73,7 @@ const userController = {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
-			checkUser =  await dataMapper.getOneUser(req.userId);
+			checkUser =  await dataMapper.getOneUserById(req.userId);
 		} catch(err) {
 			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
 			return;
@@ -179,7 +179,7 @@ const userController = {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
-			checkUser =  await dataMapper.getOneUser(req.userId);
+			checkUser =  await dataMapper.getOneUserById(req.userId);
 		} catch(err) {
 			console.log(req.userId);
 			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});

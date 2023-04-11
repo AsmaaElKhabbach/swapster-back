@@ -9,8 +9,15 @@ const dataMapper = {
 		return result.rows[0];
 	},
 
+	// // Méthode pour récupérer tous les users
+	// getAllUsers: async () => {
+	// 	const query = 'SELECT * FROM "user";';
+	// 	const result = await client.query(query);
+	// 	return result.rows;
+	// },
+
 	// Methode pour récupérer le user via l'id
-	getOneUser: async (userId) => {
+	getOneUserById: async (userId) => {
 		const query = 'SELECT * FROM "user" WHERE "id"=$1';
 		const result = await client.query(query, [userId]);
 		return result.rows[0];
@@ -55,7 +62,7 @@ const dataMapper = {
 			"book"."cover_page",
 			"book"."language",
 			"category"."name" AS category_name,
-			"user_has_book"."disponibility"
+			"user_has_book"."availability"
 		FROM "book" 
 	
 		JOIN "work" ON "work"."id" = "book"."work_id" 
@@ -64,7 +71,7 @@ const dataMapper = {
 		JOIN "category" ON "category"."id" = "work"."category_id"
 		JOIN "user_has_book" ON "user_has_book"."book_id" = "book"."id"
 				
-		ORDER BY "user_has_book"."created_at" desc limit 5;`;
+		ORDER BY "user_has_book"."created_at" desc limit 5`;
 		
 		const result = await client.query(query);
 		console.log("laaaaaaaaa dt mapper result: ", result);
@@ -88,8 +95,15 @@ const dataMapper = {
 		return result.rows
 	},
 
+		// // Méthode pour récupérer tous les livres
+	// getAllBooks: async () => {
+	// 	const query = `SELECT * FROM book;`;
+	// 	const result = await client.query(query);
+	// 	return result.rows;
+	// },
+
 	// Methode pour récupérer un livre via l'id
-	getOneBook: async (bookId) => {
+	getOneBookById: async (bookId) => {
 		const query = `SELECT book.*, "author"."name", "category"."name" AS category_name
 		FROM "book"
 
@@ -98,15 +112,27 @@ const dataMapper = {
 		JOIN "author" ON "author"."id" = "author_has_work"."author_id"
 		JOIN "category" ON "category"."id" = "work"."category_id"
 
-		WHERE "book"."id" = $1;`;
+		WHERE "book"."id" = $1`;
 
 		const result = await client.query(query, [bookId]);
 		// console.log("laaaaaaaaa dt mapper result de bookId: ", result);
 		return result.rows[0];
+	},
+
+	// Méthode pour récupérer tous les exemplaires disponibles d'un livre
+	getAllBooksAvailable: async(bookId) => {
+		const query = `SELECT "user"."name", "user"."city",	"user"."email", "user_has_book"."status", "book"."height" || ' cm x ' || "book"."width" || ' cm x ' || "book"."thickness" || ' cm' AS "format"
+		FROM "book"
+
+		JOIN "user_has_book" ON "user_has_book"."book_id" = "book"."id"
+		JOIN "user" ON "user"."id" = "user_has_book"."user_id"
+
+		WHERE "book"."id" = $1 AND "user_has_book"."availability" = 'disponible'`
+
+		const result = await client.query(query, [bookId]);
+		console.log("laaaaaaaaa dt mapper result de getAllBooksAvailable: ", result);
+		return result.rows;
 	}
-
-	
-
 };
 
 module.exports = dataMapper;
