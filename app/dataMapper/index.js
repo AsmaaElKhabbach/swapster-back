@@ -10,7 +10,7 @@ const dataMapper = {
 	},
 
 	// Methode pour récupérer le user via l'id
-	getOneUser: async (userId) => {
+	getOneUserById: async (userId) => {
 		const query = 'SELECT * FROM "user" WHERE "id"=$1';
 		const result = await client.query(query, [userId]);
 		return result.rows[0];
@@ -46,7 +46,7 @@ const dataMapper = {
 		await client.query(query, [userId]);
 	},
 
-	// Methode pour rechercher un livre
+	// Methode pour rechercher un livre dans searchbar
 	searchBook: async (search) => {
 		const query = `SELECT work.*, book.*, author.name AS "Auteur",  category.name AS "Catégorie"
 		FROM "book" 
@@ -61,7 +61,36 @@ const dataMapper = {
 
 		const result = await client.query(query, [`%${search}%`])
 		return result.rows
+	},
+
+	// Methode pour récupérer un livre via l'id
+	getOneBookById: async (bookId) => {
+		const query = `SELECT book.*, "author"."name", "category"."name" AS category_name
+		FROM "book"
+		JOIN "work" ON "work"."id" = "book"."work_id" 
+		JOIN "author_has_work" ON "author_has_work"."id" = "work"."id"
+		JOIN "author" ON "author"."id" = "author_has_work"."author_id"
+		JOIN "category" ON "category"."id" = "work"."category_id"
+		WHERE "book"."id" = $1;`;
+
+		const result = await client.query(query, [bookId]);
+		return result.rows[0];
+	},
+
+	// Methode pour ajouter livre à la liste user
+	addBookToUser: async (userHasBook) => {
+		const query = `INSERT INTO "user_has_book" (book_id, user_id, disponibily, status) VALUES ($1, $2, $3, $4) RETURNING *`
+		const result = await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.disponibility, userHasBook.status])
+		return result.rows[0]
+	},
+
+	// Methode pour modifier la dispo ou status
+	updatedUserBook: async (disponibility, status) => {
+		const query = `UPDATE "user_has_book" SET "disponibilty" = $1,"status = $2 "updated_at" = NOW() WHERE "id" =  $3 `
+		await client.query(query, [disponibility, status])
 	}
+
+
 
 };
 
