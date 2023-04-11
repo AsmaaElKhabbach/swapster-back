@@ -20,7 +20,7 @@ const userId = Joi.number().required();
 const updateUser = Joi.object({
 	name: Joi.string().alphanum().min(4),
 	email: Joi.string().email(),
-	city: Joi.string().pattern(/^[a-zA-Z]{4,50}$/),
+	city: Joi.string().pattern(/^[-a-zA-Z ]{4,50}$/),
 	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"()[]{}]{4,}$/),
 	passwordConfirm: Joi.ref("password")
 })
