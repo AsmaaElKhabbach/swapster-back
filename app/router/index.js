@@ -4,6 +4,7 @@ const userController = require('../controller/userController');
 const sessionController = require('../controller/sessionController');
 const validation = require('../services/validation');
 const { validateToken } = require('../middelware/authentication');
+const bookController = require('../controller/bookController');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -18,5 +19,7 @@ router.delete('/user/me', validateToken, validation.userId, userController.delet
 
 router.post('/login', validation.login, sessionController.login);
 router.post('/logout', validateToken, sessionController.logout);
+
+router.post('/book/search', validation.searchBook, bookController.searchBook)
 
 module.exports = router;

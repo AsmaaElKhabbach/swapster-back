@@ -1,7 +1,6 @@
 const dataMapper = require('../dataMapper');
-const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
-const schema = require('../services/validation')
+
 
 
 const userController = {

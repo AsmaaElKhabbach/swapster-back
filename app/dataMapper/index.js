@@ -44,6 +44,23 @@ const dataMapper = {
 	deleteUser: async (userId) => {
 		const query = 'DELETE FROM "user" WHERE "id" = $1';
 		await client.query(query, [userId]);
+	},
+
+	// Methode pour rechercher un livre
+	searchBook: async (search) => {
+		const query = `SELECT work.*, book.*, author.name AS "Auteur",  category.name AS "Catégorie"
+		FROM "book" 
+		JOIN "work" ON book.work_id = work.id
+		JOIN "author_has_work" ON work.id = author_has_work.work_id
+		JOIN "author" ON author_has_work.author_id = author.id
+		JOIN "category" ON work.category_id = category.id
+		WHERE work.title ILIKE $1 
+		OR author.name ILIKE $1 
+		OR book.isbn_13 ILIKE $1
+		OR category.name ILIKE $1`
+
+		const result = await client.query(query, [`%${search}%`])
+		return result.rows
 	}
 
 };
