@@ -151,7 +151,7 @@ const dataMapper = {
 		return result.rows;
 	},
 
-	//* Methode pour vérifier si le livre est dejà rattaché au user
+	// Methode pour vérifier si le livre est dejà rattaché au user
 	getUserHasBookByBookIdAndUserId: async (bookId, userId) => {
 		// Vérifier si le user à un livre 
 		const query = `SELECT * FROM "user_has_book" WHERE book_id = $1 AND user_id =$2`
@@ -161,8 +161,8 @@ const dataMapper = {
 
 	// Methode pour modifier la dispo ou status
 	updatedUserBook: async (userHasBook) => {
-		const query = `UPDATE "user_has_book" SET "availibility" = $3,"status" = $4, "updated_at" = NOW() WHERE "book_id" = $1 AND "user_id" =$2`;
-		await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.availibility, userHasBook.status])
+		const query = `UPDATE "user_has_book" SET "availability" = $3,"status" = $4, "updated_at" = NOW() WHERE "book_id" = $1 AND "user_id" =$2`;
+		await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.availability, userHasBook.status])
 	},
 };
 

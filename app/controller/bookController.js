@@ -175,7 +175,6 @@ const bookController = {
 		}
 
 		if (!checkUserHasBook) {
-			console.log(checkUserHasBook);
 			res.status(404).json({error: `Pas de livre pour cet user.`});
 			return;
 		}
@@ -213,7 +212,7 @@ const bookController = {
 			res.status(201).json(checkUserHasBook);
 			return;
 		} catch(err) {
-			console.log("checkUserHasBook : ", checkUserHasBook);
+			console.log("error : ", err);
 			res.status(500).json({error:"Problème de requête lors de la mise à jour de user_has_book dans la BDD"});
 			return;
 		}
