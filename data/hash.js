@@ -18,11 +18,7 @@ bcrypt.compare('john', '$2b$10$ESX1yElqpccjlrTyXZ0sqe3wvzpXEA1qEz1qGuPuSXG115ZwJ
 });
 
 bcrypt.compare('Donneur', '$2b$10$nol..oNKvA4TsQICrBrAte/XAhbceVBadwuREuGqu7mEqj62ci//G', (err, result) => {
-<<<<<<< HEAD
 	console.log('3 : ', result);
-=======
-	onsole.log('3 : ', result);
->>>>>>> 17cb94663d733d4570414deb54c8d49045fe54f3
 });
 
 bcrypt.compare('Donneur', '$2b$10$avK9EKJYpOFR1Ajaq20x2Orp4YG2GBwnGAHM1OmMismTbw2iR6.ai', (err, result) => {

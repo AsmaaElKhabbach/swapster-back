@@ -32,11 +32,4 @@ router.get('/book/:bookId/allusers', validation.bookId, bookController.allUsersB
 router.get('/book/:bookId', validation.bookId, bookController.bookDetails);
 router.post('/book/search', validation.searchBook, bookController.searchBook);
 
-
-router.post('/signup', validation.signup, userController.signup);
-router.get('/user/me', validateToken, validation.userId, userController.userDetails);
-router.patch('/user/me', validateToken, validation.userId, validation.updateUser, userController.update);
-router.delete('/user/me', validateToken, validation.userId, userController.delete);
-
-
 module.exports = router;
