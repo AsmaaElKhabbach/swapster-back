@@ -163,7 +163,7 @@ const userController = {
 			return;
 		}
 
-		// mise à jour de user en BDD
+		// mise à jour  en BDD
 		try {
 			await dataMapper.updateUser(checkUser);
 			res.status(201).json(checkUser);

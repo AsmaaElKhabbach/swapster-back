@@ -104,7 +104,7 @@ const dataMapper = {
 
 	// Methode pour récupérer un livre via l'id
 	getOneBookById: async (bookId) => {
-		const query = `SELECT book.*, "author"."name", "category"."name" AS category_name
+		const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name
 		FROM "book"
 
 		JOIN "work" ON "work"."id" = "book"."work_id" 
@@ -128,6 +128,23 @@ const dataMapper = {
 		JOIN "user" ON "user"."id" = "user_has_book"."user_id"
 
 		WHERE "book"."id" = $1 AND "user_has_book"."availability" = 'disponible'`
+
+		const result = await client.query(query, [bookId]);
+		console.log("laaaaaaaaa dt mapper result de getAllBooksAvailable: ", result);
+		return result.rows;
+	},
+
+	getAllUserBooks: async(bookId) => {
+		const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name, "user_has_book"."status", "book"."height" || ' cm x ' || "book"."width" || ' cm x ' || "book"."thickness" || ' cm' AS "format"
+		FROM "book"
+
+		JOIN "work" ON "work"."id" = "book"."work_id" 
+		JOIN "author_has_work" ON "author_has_work"."id" = "work"."id"
+		JOIN "author" ON "author"."id" = "author_has_work"."author_id"
+		JOIN "category" ON "category"."id" = "work"."category_id"
+		JOIN "user_has_book" ON "user_has_book"."book_id" = "book"."id"
+
+		WHERE "user_has_book"."user_id" = $1 AND "user_has_book"."availability" = 'disponible'`
 
 		const result = await client.query(query, [bookId]);
 		console.log("laaaaaaaaa dt mapper result de getAllBooksAvailable: ", result);

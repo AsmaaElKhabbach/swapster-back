@@ -60,7 +60,6 @@ const bookController = {
 			res.status(500).json({ error: "Problème lors de la requête en BDD" });
 			return;
 		}
-
 	},
 
 	// Methode pour afficher les détails d'un livre
@@ -81,7 +80,6 @@ const bookController = {
 
 		res.status(201).json(checkBook);
 		return;
-
 	},
 
 	// Methode pour afficher tous les users pour un livre
@@ -108,6 +106,34 @@ const bookController = {
 			res.status(500).json({error:"Problème de requête lors de la vérification des books dans la BDD"});
 			return;
 		}
+	},
+
+	userBooks: async(req,res) => {
+		// on vérifie que l'id du user est bien dans la BDD
+		let checkUser;
+		try {
+			checkUser =  await dataMapper.getOneUserById(req.userId);
+		} catch(err) {
+			console.log(req.userId);
+			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
+			return;
+		}
+
+		if (!checkUser) {
+			res.status(404).json({error: `Pas de user avec l'id ${req.userId}`});
+			return;
+		}
+
+		try {
+			const userbooks = await dataMapper.getAllUserBooks(req.userId);
+			console.log("userbooks :", userbooks);
+			res.status(201).json(userbooks);
+			return;
+		} catch(err) {
+			res.status(500).json({error:"Problème de requête lors de la vérification des books dans la BDD"});
+			return;
+		}
+
 	}
 }
 module.exports = bookController;
