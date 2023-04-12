@@ -84,7 +84,7 @@ const bookController = {
 
 	},
 
-		// Methode pour afficher tous les users pour un livre
+	// Methode pour afficher tous les users pour un livre
 	allUsersByBookId: async (req,res) => {
 		let checkBook;
 		try {
