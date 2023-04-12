@@ -8,7 +8,7 @@ const {validateToken} = require('../middelware/authentication');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send('Youpi');
+	res.send('Youpi');
 });
 
 // route inscription du user, modification et suppression
