@@ -112,19 +112,51 @@ const bookController = {
 		}
 	},
 
-	// DELETE /book/:bookId/my
-	// Methode pour DELETE book dans user_has_book
-
-	// if (checkUserHasBook) {
-	// 		// Ou supprimer le livre de la userlist
-	// 		await dataMapper.deleteUserBook(id)
-	// 		res.status(201).json({ message: "Le livre est supprimé de la liste des livres à donner" })
-	// 	}
-
-
 	// Methode pour Ajouter un book à la liste d'un user
 	// POST /book/:bookId/my
-	// Si le livre est présent en bdd on l'ajoute à la table user_has_book
+
+
+	addUserBook: async (req, res) => {
+		const { bookId } = req.params;
+
+		// On vérifie que l'id du livre est bien dans la BDD
+		try {
+			checkBook = await dataMapper.getOneBookById(bookId);
+
+			// On renvoie un message d'erreur si le livre n'est pas dans la bdd
+			if (!checkBook) {
+				return res.status(400).json({ error: `Pas de livre avec l'id ${bookId}` });
+
+			}
+			// On vérifie que le user est bien dans la BDD
+
+			checkUser = await dataMapper.getOneUserById(req.userId);
+
+			// On renvoie un message d'erreur si l'user n'est pas dans la bdd
+			if (!checkUser) {
+				return res.status(400).json({ error: `Pas de user avec l'id ${req.userId}` });
+			}
+
+			// Si le user a déjà le livre dans sa liste on envoie un message d'erreur (pas de possibilité de doublon cas rare)
+
+			checkUserHasBook = await dataMapper.getUserHasBookByBookIdAndUserId(bookId, req.userId);
+			if (checkUserHasBook) {
+				return res.status(400).json({ message: `Ce livre est déjà présent dans la liste des livres à donner` })
+			}
+
+			// On ajoute le livre à liste des livre à donner de l'user
+
+			const { availability, status } = req.body;
+
+			await dataMapper.addBookToUser(bookId, req.userId, availability, status)
+			return res.status(201).json(`Le livre ${bookId} est ajouté à votre liste`)
+		} catch (error) {
+			return res.status(500).json({ error: error })
+
+		}
+
+	}
+
 
 	// const userHasBook = {
 	// 	book_id: bookId,
@@ -135,6 +167,20 @@ const bookController = {
 	// await dataMapper.addBookToUser(userHasBook)
 
 	// res.status(201).json({ message: "Le livre est ajouté à la liste de livre à donner" })
+
+
+
+	// DELETE /book/:bookId/my
+	// Methode pour DELETE book dans user_has_book
+
+	// if (checkUserHasBook) {
+	// 		// Ou supprimer le livre de la userlist
+	// 		await dataMapper.deleteUserBook(id)
+	// 		res.status(201).json({ message: "Le livre est supprimé de la liste des livres à donner" })
+	// 	}
+
+
+
 
 
 }

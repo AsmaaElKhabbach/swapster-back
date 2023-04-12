@@ -56,8 +56,14 @@ const validation = {
 			return res.status(400).json({ error: error.details });
 		}
 		next();
+	},
+	addUserBook(req, res, next) {
+		const { error } = schema.addUserBook.validate(req.body, { abortEarly: false });
+		if (error) {
+			return res.status(400).json({ error: error.details });
+		}
+		next();
 	}
-
 
 
 };

@@ -23,5 +23,6 @@ router.post('/logout', validateToken, sessionController.logout);
 router.post('/book/search', validation.searchBook, bookController.searchBook)
 
 router.patch('/book/:bookId/my', validateToken, validation.updateUserBook, validation.bookId, validation.userId, bookController.updatedUserBook)
+router.post('/book/:bookId/my', validateToken, validation.bookId, validation.userId, validation.addUserBook, bookController.addUserBook)
 
 module.exports = router;

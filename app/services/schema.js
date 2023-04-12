@@ -38,9 +38,14 @@ const updateUserBook = Joi.object({
 	status: Joi.string()
 })
 
+const addUserBook = Joi.object({
+	availability: Joi.string().required(),
+	status: Joi.string().required()
+})
 
 
 
 
 
-module.exports = { signup, login, userId, updateUser, searchBook, bookId, updateUserBook };
+
+module.exports = { signup, login, userId, updateUser, searchBook, bookId, updateUserBook, addUserBook };
