@@ -48,7 +48,7 @@ const dataMapper = {
 
 	// Methode pour rechercher un livre dans searchbar
 	searchBook: async (search) => {
-		const query = `SELECT work.*, book.*, author.name AS "Auteur",  category.name AS "Catégorie"
+		const query = `SELECT work.*, book.*, author.name AS "Author",  category.name AS "Category"
 		FROM "book" 
 		JOIN "work" ON book.work_id = work.id
 		JOIN "author_has_work" ON work.id = author_has_work.work_id
@@ -77,20 +77,33 @@ const dataMapper = {
 		return result.rows[0];
 	},
 
+	//Methode pour vérifier si le livre est dejà rattaché au user
+
+	getUserHasBookByBookIdAndUserId: async (bookId, userId) => {
+		// Vérifier si le user à un livre 
+		const query = `SELECT * FROM "user_has_book" WHERE "book_id" = $1 AND "user_id" =$2`;
+		const result = await client.query(query, [bookId, userId])
+		return result.rows[0]
+	},
+
 	// Methode pour ajouter livre à la liste user
-	addBookToUser: async (userHasBook) => {
-		const query = `INSERT INTO "user_has_book" (book_id, user_id, disponibily, status) VALUES ($1, $2, $3, $4) RETURNING *`
-		const result = await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.disponibility, userHasBook.status])
+	addBookToUser: async (book_id, user_id, availability, status) => {
+		const query = `INSERT INTO "user_has_book" (book_id, user_id, availability, status) VALUES ($1, $2, $3, $4) RETURNING *`
+		const result = await client.query(query, [book_id, user_id, availability, status])
 		return result.rows[0]
 	},
 
 	// Methode pour modifier la dispo ou status
-	updatedUserBook: async (disponibility, status) => {
-		const query = `UPDATE "user_has_book" SET "disponibilty" = $1,"status = $2 "updated_at" = NOW() WHERE "id" =  $3 `
-		await client.query(query, [disponibility, status])
+	updatedUserBook: async (userHasBook) => {
+		const query = `UPDATE "user_has_book" SET "availability" = $3,"status" = $4, "updated_at" = NOW() WHERE "book_id" = $1 AND "user_id" =$2`;
+		await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.availability, userHasBook.status])
+	},
+
+	// Methode pour supprimer un livre de la user liste
+	deleteUserBook: async (id) => {
+		const query = `DELETE FROM "user_has_book" WHERE "id"=$1`;
+		await client.query(query, [id]);
 	}
-
-
 
 };
 

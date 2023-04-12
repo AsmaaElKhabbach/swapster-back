@@ -59,7 +59,7 @@ CREATE TABLE "user_has_book" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "book_id" INT NOT NULL REFERENCES "book"("id") ON DELETE CASCADE,
   "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
-  "disponibility" VARCHAR(24) NOT NULL DEFAULT 'available',
+  "availability" VARCHAR(24) NOT NULL DEFAULT 'disponible',
   "status" VARCHAR(24) NOT NULL,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
   "updated_at" TIMESTAMPTZ, 

@@ -180,27 +180,27 @@ BEGIN;
 	( '6', '6');
 	
 	INSERT INTO "user_has_book"
-	("book_id", "user_id","disponibility", "status")
+	("book_id", "user_id","availability", "status")
 	VALUES
 	( '1', '2', 'disponible', 'bon état');
 	
 	INSERT INTO "user_has_book"
-	("book_id", "user_id","disponibility", "status")
+	("book_id", "user_id","availability", "status")
 	VALUES
 	( '2', '2', 'donné', 'mauvais');
 	
 	INSERT INTO "user_has_book"
-	("book_id", "user_id","disponibility", "status")
+	("book_id", "user_id","availability", "status")
 	VALUES
 	( '4', '1', 'disponible', 'correct');
 	
 	INSERT INTO "user_has_book"
-	("book_id", "user_id","disponibility", "status")
+	("book_id", "user_id","availability", "status")
 	VALUES
 	( '6', '1', 'disponible', 'mauvais');
 	
 	INSERT INTO "user_has_book"
-	("book_id", "user_id","disponibility", "status")
+	("book_id", "user_id","availability", "status")
 	VALUES
 	( '8', '2', 'disponible', 'correct');
 	COMMIT;

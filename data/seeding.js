@@ -85,9 +85,9 @@ async function generateSQL() {
 	db.user_has_book.forEach((userHasBook) => {
 		transaction += `
 	INSERT INTO "user_has_book"
-	("book_id", "user_id","disponibility", "status")
+	("book_id", "user_id","availability", "status")
 	VALUES
-	( '${userHasBook.book_id}', '${userHasBook.user_id}', '${userHasBook.disponibility}', '${userHasBook.status}');
+	( '${userHasBook.book_id}', '${userHasBook.user_id}', '${userHasBook.availability}', '${userHasBook.status}');
 	`;
 	});
 

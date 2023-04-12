@@ -69,7 +69,7 @@ SELECT
     "id",
    "book_id",
    "user_id",
-   "disponibility",
+   "availability",
     "status"
 
    FROM 
