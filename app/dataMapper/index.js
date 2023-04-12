@@ -135,7 +135,7 @@ const dataMapper = {
 	},
 
 	getAllUserBooks: async(bookId) => {
-		const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name, "user_has_book"."status", "book"."height" || ' cm x ' || "book"."width" || ' cm x ' || "book"."thickness" || ' cm' AS "format"
+		const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name, "user_has_book".*, "book"."height" || ' cm x ' || "book"."width" || ' cm x ' || "book"."thickness" || ' cm' AS "format"
 		FROM "book"
 
 		JOIN "work" ON "work"."id" = "book"."work_id" 
@@ -149,7 +149,21 @@ const dataMapper = {
 		const result = await client.query(query, [bookId]);
 		console.log("laaaaaaaaa dt mapper result de getAllBooksAvailable: ", result);
 		return result.rows;
-	}
+	},
+
+	//* Methode pour vérifier si le livre est dejà rattaché au user
+	getUserHasBookByBookIdAndUserId: async (bookId, userId) => {
+		// Vérifier si le user à un livre 
+		const query = `SELECT * FROM "user_has_book" WHERE book_id = $1 AND user_id =$2`
+		const result = await client.query(query, [bookId, userId]);
+		return result.rows[0];
+	},
+
+	// Methode pour modifier la dispo ou status
+	updatedUserBook: async (userHasBook) => {
+		const query = `UPDATE "user_has_book" SET "availibility" = $3,"status" = $4, "updated_at" = NOW() WHERE "book_id" = $1 AND "user_id" =$2`;
+		await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.availibility, userHasBook.status])
+	},
 };
 
 module.exports = dataMapper;

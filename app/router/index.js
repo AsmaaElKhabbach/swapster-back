@@ -24,12 +24,12 @@ router.post('/logout', validateToken, sessionController.logout);
 
 // route des livres du user
 router.get('/book/my', validateToken, validation.userId, bookController.userBooks);
-
+router.patch('/book/:bookId/my', validateToken, validation.bookId, bookController.updatedUserBook)
 
 // route livre(s)
 router.get('/book/latestadded', bookController.latestbooks);
-router.get('/book/:bookId', validation.bookId, bookController.bookDetails);
 router.get('/book/:bookId/allusers', validation.bookId, bookController.allUsersByBookId);
+router.get('/book/:bookId', validation.bookId, bookController.bookDetails);
 router.post('/book/search', validation.searchBook, bookController.searchBook);
 
 

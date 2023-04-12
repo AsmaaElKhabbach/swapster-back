@@ -35,6 +35,8 @@ const bookController = {
 	// 	}
 	// }
 
+
+
 	// Méthode pour afficher les 10 derniers livres
 	latestbooks: async (req, res) => {
 		try {
@@ -133,7 +135,129 @@ const bookController = {
 			res.status(500).json({error:"Problème de requête lors de la vérification des books dans la BDD"});
 			return;
 		}
+	},
 
-	}
+	// // PATCH /book/:bookId/my
+	// updatedUserBook: async (req, res) => {
+
+	// 	try {
+	// 		// On récupère le bookId dans req.params
+	// 		const { bookId } = req.params;
+	// 		const { userId, availibility, status } = req.body
+
+	// 		// On vérifie si le livre est en bdd
+	// 		const checkBook = await dataMapper.getOneBookById(bookId)
+
+	// 		// Si on ne trouve pas le livre on renvoie un message d'erreur
+	// 		if (!checkBook) {
+	// 			return res.status(404).json({ error: `Le livre avec l'id ${bookId} n'existe pas` })
+	// 		}
+
+	// 		// On verifie si le user a déjà ce livre dans sa liste
+	// 		const checkUserHasBook = await dataMapper.getUserHasBookByBookIdAndUserId(bookId, userId)
+
+	// 		if (checkUserHasBook) {
+	// 			// Si oui il peut modifier le status ou la dispo
+	// 			await dataMapper.updatedUserBook(bookId, userId, availibility, status)
+
+	// 			return res.status(201).json({ message: "Le status du livre est modifié" })
+
+	// 		}
+
+	// 	} catch (error) {
+	// 		res.status(500).json({ error: "Le livre n'a pas pu être ajouté à la liste" })
+
+	// 	}
+	// },
+
+	updatedUserBook: async (req, res) => {
+		const { bookId } = req.params;
+		// on vérifie que l'id du livre est bien dans la BDD
+		let checkBook;
+		try {
+			checkBook =  await dataMapper.getOneBookById(bookId);
+		} catch(err) {
+			res.status(500).json({error:"Problème de requête lors de la vérification du livre dans la BDD"});
+			return;
+		}
+
+		if (!checkBook) {
+			res.status(404).json({error: `Pas de livre avec l'id ${bookId}`});
+			return;
+		}
+		
+		// on vérifie que l'id du user est bien dans la BDD
+		let checkUser;
+		try {
+			checkUser =  await dataMapper.getOneUserById(req.userId);
+		} catch(err) {
+			res.status(500).json({error:"Problème de requête lors de la vérification du user dans la BDD"});
+			return;
+		}
+
+		if (!checkUser) {
+			res.status(404).json({error: `Pas de user avec l'id ${req.userId}`});
+			return;
+		}
+
+		// on vérifie que le user a bien le livre
+		let checkUserHasBook;
+		try {
+			checkUserHasBook =  await dataMapper.getUserHasBookByBookIdAndUserId(bookId, req.userId);
+		} catch(err) {
+			res.status(500).json({error:"Problème de requête lors de la vérification du user et du livre dans la BDD"});
+			return;
+		}
+
+		if (!checkUserHasBook) {
+			console.log(checkUserHasBook);
+			res.status(404).json({error: `Pas de livre pour cet user.`});
+			return;
+		}
+
+
+		// on récupère les données du front
+		const { availibility, status } = req.body
+
+		// on vérifie s'il y a eu du changement sur la disponibilité du livre
+		if (availibility && availibility !== checkUserHasBook.availibility) {
+	
+			// mise à jour dans la variable checkUser
+			checkUserHasBook.availibility = availibility;
+			userHasBookChanged = 1;
+		}
+	
+		// on vérifie s'il y a eu du changement sur l'état du livre
+		if (status && status !== checkUserHasBook.status) {
+
+
+			// mise à jour dans la variable checkUser
+			checkUserHasBook.status = status;
+			userHasBookChanged = 1;
+		}
+
+		// est-ce qu'il y a eu du changement ?
+		if (userHasBookChanged == 0) {
+			res.status(200).json({warn: "Pas de changement"});
+			return;
+		}
+
+		// mise à jour  en BDD
+		try {
+			await dataMapper.updatedUserBook(checkUserHasBook);
+			res.status(201).json(checkUserHasBook);
+			return;
+		} catch(err) {
+			console.log("checkUserHasBook : ", checkUserHasBook);
+			res.status(500).json({error:"Problème de requête lors de la mise à jour de user_has_book dans la BDD"});
+			return;
+		}
+	},
+
+
+
+
+
+
 }
 module.exports = bookController;
