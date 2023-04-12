@@ -136,6 +136,8 @@ const bookController = {
 	// },
 
 	updatedUserBook: async (req, res) => {
+		// pour savoir s'il y a eu une modif sur le user_has_book : 0 = pas de modif ; 1 = modif
+		let userHasBookChanged = 0;
 		const { bookId } = req.params;
 		// on vérifie que l'id du livre est bien dans la BDD
 		let checkBook;
@@ -181,19 +183,18 @@ const bookController = {
 
 
 		// on récupère les données du front
-		const { availibility, status } = req.body
+		const { availability, status } = req.body
 
 		// on vérifie s'il y a eu du changement sur la disponibilité du livre
-		if (availibility && availibility !== checkUserHasBook.availibility) {
+		if (availability && availability !== checkUserHasBook.availability) {
 	
 			// mise à jour dans la variable checkUser
-			checkUserHasBook.availibility = availibility;
+			checkUserHasBook.availability = availability;
 			userHasBookChanged = 1;
 		}
 	
 		// on vérifie s'il y a eu du changement sur l'état du livre
 		if (status && status !== checkUserHasBook.status) {
-
 
 			// mise à jour dans la variable checkUser
 			checkUserHasBook.status = status;
