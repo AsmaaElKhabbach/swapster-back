@@ -39,7 +39,6 @@ const updateUserBook = Joi.object({
 })
 
 const addUserBook = Joi.object({
-	availability: Joi.string().required(),
 	status: Joi.string().required()
 })
 

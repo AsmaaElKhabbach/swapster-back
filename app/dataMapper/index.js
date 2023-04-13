@@ -87,9 +87,9 @@ const dataMapper = {
 	},
 
 	// Methode pour ajouter livre à la liste user
-	addBookToUser: async (book_id, user_id, availability, status) => {
-		const query = `INSERT INTO "user_has_book" (book_id, user_id, availability, status) VALUES ($1, $2, $3, $4) RETURNING *`
-		const result = await client.query(query, [book_id, user_id, availability, status])
+	addBookToUser: async (book_id, user_id, status) => {
+		const query = `INSERT INTO "user_has_book" (book_id, user_id, status) VALUES ($1, $2, $3) RETURNING *`
+		const result = await client.query(query, [book_id, user_id, status])
 		return result.rows[0]
 	},
 

@@ -146,9 +146,9 @@ const bookController = {
 
 			// On ajoute le livre à liste des livre à donner de l'user
 
-			const { availability, status } = req.body;
+			const { status } = req.body;
 
-			await dataMapper.addBookToUser(bookId, req.userId, availability, status)
+			await dataMapper.addBookToUser(bookId, req.userId, status)
 			return res.status(201).json(`Le livre ${bookId} est ajouté à votre liste`)
 		} catch (error) {
 			return res.status(500).json({ error: error })
