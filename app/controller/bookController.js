@@ -101,8 +101,8 @@ const bookController = {
 			console.log("userbooks :", userbooks);
 			res.status(201).json(userbooks);
 			return;
-		} catch(err) {
-			res.status(500).json({ error:"Problème de requête lors de la vérification des books dans la BDD" });
+		} catch (err) {
+			res.status(500).json({ error: "Problème de requête lors de la vérification des books dans la BDD" });
 			return;
 		}
 	},
@@ -236,18 +236,48 @@ const bookController = {
 			return res.status(500).json({ error: error })
 
 		}
+	},
+
+	// DELETE /book/:bookId/my
+	// Methode pour DELETE book dans user_has_book
+	deleteUserBook: async (req, res) => {
+		const { bookId } = req.params;
+
+		try {
+			// On vérifie que l'id du livre est bien dans la BDD
+			checkBook = await dataMapper.getOneBookById(bookId);
+
+			// On renvoie un message d'erreur si le livre n'est pas dans la bdd
+			if (!checkBook) {
+				return res.status(400).json({ error: `Pas de livre avec l'id ${bookId}` });
+
+			}
+			// On vérifie que le user est bien dans la BDD
+
+			checkUser = await dataMapper.getOneUserById(req.userId);
+
+			// On renvoie un message d'erreur si l'user n'est pas dans la bdd
+			if (!checkUser) {
+				return res.status(400).json({ error: `Pas de user avec l'id ${req.userId}` });
+			}
+			// On vérifie si le user a bien le livre dans sa liste
+
+			checkUserHasBook = await dataMapper.getUserHasBookByBookIdAndUserId(bookId, req.userId);
+
+			// Si le livre n'est pas dans la liste à donner on renvoie une erreur
+			if (!checkUserHasBook) {
+				return res.status(400).json({ error: `Pas de livre avec l'id ${bookId} dans votre liste à donner` });
+
+			} else {
+				// Sinon supprime le livre de la userlist
+				await dataMapper.deleteUserBook(bookId, req.userId)
+				return res.status(201).json({ message: `Le livre avec l'id ${bookId} est supprimé de la liste des livres à donner` })
+			}
+		} catch (error) {
+			return res.status(500).json({ error: error })
+		}
+
 	}
 }
-
-// DELETE /book/:bookId/my
-// Methode pour DELETE book dans user_has_book
-
-// if (checkUserHasBook) {
-// 		// Ou supprimer le livre de la userlist
-// 		await dataMapper.deleteUserBook(id)
-// 		res.status(201).json({ message: "Le livre est supprimé de la liste des livres à donner" })
-// 	}
-
-
 
 module.exports = bookController;
