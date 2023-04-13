@@ -276,6 +276,35 @@ const bookController = {
 		} catch (error) {
 			return res.status(500).json({ error })
 		}
+	},
+
+	givenUserBook: async (req, res) => {
+		// on vérifie que l'id du user est bien dans la BDD
+		let checkUser;
+
+		try {
+			checkUser = await dataMapper.getOneUserById(req.userId);
+		} catch (error) {
+			return res.status(500).json({ error });
+		}
+		// Si l'user est inconnu on renvoie une erreur
+		if (!checkUser) {
+			return res.status(404).json({ error: `Pas de user avec l'id ${req.userId}` });
+		}
+
+		try {
+			// On recherche la liste des livres donnés par l'user
+			const userGivenBook = await dataMapper.getGivenBookUser(req.userId)
+			// Si c'est vide on renvoie un message
+			if (userGivenBook.length === 0) {
+				return res.status(200).json({ message: "Aucun livre donné" })
+				// Sinon on retourne la liste des livres
+			} else {
+				return res.status(201).json(userGivenBook)
+			}
+		} catch (error) {
+			return res.status(500).json({ error });
+		}
 
 	}
 }

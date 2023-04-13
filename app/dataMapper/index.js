@@ -158,7 +158,7 @@ const dataMapper = {
 		return result.rows;
 	},
 
-
+	// Méthode pour récupérer tous les livres disponibles d'un user
 	getAllUserBooks: async (userId) => {
 		const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name, "user_has_book".*, "book"."height" || ' cm x ' || "book"."width" || ' cm x ' || "book"."thickness" || ' cm' AS "format"
 		FROM "book"
@@ -174,8 +174,23 @@ const dataMapper = {
 		const result = await client.query(query, [userId]);
 		console.log("laaaaaaaaa dt mapper result de getAllBooksAvailable: ", result);
 		return result.rows;
-	}
+	},
 
+	// Méthode pour récupérer tous les livres donnés d'un user
+
+	getGivenBookUser: async (userId) => {
+		const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name, "user_has_book".*, "book"."height" || ' cm x ' || "book"."width" || ' cm x ' || "book"."thickness" || ' cm' AS "format"
+		FROM "book"
+		JOIN "work" ON "work"."id" = "book"."work_id" 
+		JOIN "author_has_work" ON "author_has_work"."id" = "work"."id"
+		JOIN "author" ON "author"."id" = "author_has_work"."author_id"
+		JOIN "category" ON "category"."id" = "work"."category_id"
+		JOIN "user_has_book" ON "user_has_book"."book_id" = "book"."id"
+		WHERE "user_has_book"."user_id" = $1 AND "user_has_book"."availability" = 'donné'`
+		const result = await client.query(query, [userId])
+		return result.rows
+
+	}
 }
 
 module.exports = dataMapper;

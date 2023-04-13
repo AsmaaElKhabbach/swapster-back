@@ -25,6 +25,7 @@ router.get('/book/my', validateToken, validation.userId, bookController.userBook
 router.post('/book/:bookId/my', validateToken, validation.bookId, validation.userId, validation.addUserBook, bookController.addUserBook);
 router.patch('/book/:bookId/my', validateToken, validation.updateUserBook, validation.bookId, validation.userId, bookController.updatedUserBook);
 router.delete('/book/:bookId/my', validateToken, validation.userId, validation.bookId, bookController.deleteUserBook);
+router.get('/book/givenbook/my', validateToken, validation.userId, bookController.givenUserBook);
 
 // route livre(s)
 router.get('/book/latestadded', bookController.latestbooks);
