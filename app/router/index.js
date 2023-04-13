@@ -31,10 +31,6 @@ router.get('/book/latestadded', bookController.latestbooks);
 router.post('/book/search', validation.searchBook, bookController.searchBook)
 router.get('/book/:bookId/allusers', validation.bookId, bookController.allUsersByBookId);
 router.get('/book/:bookId', validation.bookId, bookController.bookDetails);
-router.post('/book/search', validation.searchBook, bookController.searchBook);
-
-
-
 
 
 module.exports = router;
