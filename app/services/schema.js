@@ -31,7 +31,7 @@ const updateUser = Joi.object({
 })
 
 const searchBook = Joi.object({
-	search: Joi.string().min(1).required()
+	query: Joi.string().min(1).required()
 });
 
 // on crée un schéma qui va valider l'id du book
