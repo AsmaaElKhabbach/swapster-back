@@ -29,7 +29,7 @@ const sessionController = {
 			// On crée un token qui va créer une propriété dans user et on le renvoie au client 
 			user.token = jwt.sign({ userId: user.id }, process.env.TOKEN_SECRET, { expiresIn: "1h" });
 
-			res.status(201).json(user)
+			return res.status(201).json(user)
 
 		} catch (error) {
 			res.status(500).json({ error });
