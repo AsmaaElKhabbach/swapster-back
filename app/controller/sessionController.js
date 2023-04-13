@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const sessionController = {
 
 	// Methode pour se logger
-
 	login: async (req, res) => {
 
 		try {
@@ -26,6 +25,7 @@ const sessionController = {
 			if (!passwordIsGood) {
 				return res.status(500).json({ error: "Email ou mot de passe incorrect" });
 			}
+
 			// On crée un token qui va créer une propriété dans user et on le renvoie au client 
 			user.token = jwt.sign({ userId: user.id }, process.env.TOKEN_SECRET, { expiresIn: "1h" });
 
@@ -33,11 +33,10 @@ const sessionController = {
 
 		} catch (error) {
 			res.status(500).json({ error: "Erreur serveur" });
-
 		}
 	},
-	// Logout Method
 
+	// Logout Method
 	logout: async (req, res) => {
 		try {
 			// Retirer le token de Authorization header
@@ -48,7 +47,6 @@ const sessionController = {
 			res.status(500).json({ error: "Erreur serveur" });
 		}
 	}
-
-}
+};
 
 module.exports = sessionController;

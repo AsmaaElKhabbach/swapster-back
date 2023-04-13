@@ -1,3 +1,4 @@
+-- SQLBook: Code
 BEGIN;
 	INSERT INTO "user"
 	("name", "email", "password", "city", "picture")

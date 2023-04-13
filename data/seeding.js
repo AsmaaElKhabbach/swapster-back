@@ -9,7 +9,7 @@ const db = require('./db.json');
 //           newRow[prop] = value;
 //           return;
 //       }
-//       newRow[prop] = value.replaceAll("'", "''");
+//       newRow[prop] = value.replaceAll("'", "’");
 //   });
 //   return newRow;
 // }
@@ -76,12 +76,11 @@ async function generateSQL() {
 	INSERT INTO "author_has_work"
 	("work_id", "author_id")
 	VALUES
-	( '${authorHasWork.work_id}', '${authorHasWork.author_id}');
+	(${authorHasWork.work_id}, ${authorHasWork.author_id});
 	`;
 	});
 
 	// Table user_has_book
-
 	db.user_has_book.forEach((userHasBook) => {
 		transaction += `
 	INSERT INTO "user_has_book"

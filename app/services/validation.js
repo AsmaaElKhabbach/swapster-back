@@ -19,7 +19,6 @@ const validation = {
 
 	userId(req, res, next) {
 		const { error } = schema.userId.validate(req.userId, { abortEarly: false });
-
 		if (error) {
 			return res.status(400).json({ error: error.details });
 		}
@@ -67,6 +66,5 @@ const validation = {
 
 
 };
-
 
 module.exports = validation;

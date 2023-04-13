@@ -7,6 +7,7 @@ const client = new Client({
 	database: process.env.PGDATABASE,
 	port: process.env.PGPORT
 });
+
 client.connect();
 
 module.exports = client;
