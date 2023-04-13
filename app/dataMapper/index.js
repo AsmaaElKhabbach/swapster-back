@@ -138,9 +138,9 @@ const dataMapper = {
 	},
 
 	// Methode pour supprimer un livre de la user liste
-	deleteUserBook: async (id) => {
-		const query = `DELETE FROM "user_has_book" WHERE "id"=$1`;
-		await client.query(query, [id]);
+	deleteUserBook: async (book_id, user_id) => {
+		const query = `DELETE FROM "user_has_book" WHERE "book_id" = $1 AND "user_id" =$2`;
+		await client.query(query, [book_id, user_id,]);
 	},
 
 	// Méthode pour récupérer tous les exemplaires disponibles d'un livre

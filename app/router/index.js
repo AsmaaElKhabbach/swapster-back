@@ -24,10 +24,11 @@ router.post('/book/search', validation.searchBook, bookController.searchBook)
 
 router.patch('/book/:bookId/my', validateToken, validation.updateUserBook, validation.bookId, validation.userId, bookController.updatedUserBook)
 router.post('/book/:bookId/my', validateToken, validation.bookId, validation.userId, validation.addUserBook, bookController.addUserBook)
-
+router.delete('/book/:bookId/my', validateToken, validation.userId, validation.bookId, bookController.deleteUserBook);
 
 // route des livres du user
 router.get('/book/my', validateToken, validation.userId, bookController.userBooks);
+
 
 // route livre(s)
 router.get('/book/latestadded', bookController.latestbooks);
