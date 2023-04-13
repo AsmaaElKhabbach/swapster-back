@@ -15,13 +15,12 @@ CREATE TABLE
         "updated_at" TIMESTAMPTZ
     );
 
-CREATE TABLE
-    "author" (
-        "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        "name" VARCHAR(128) NOT NULL,
-        "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        "updated_at" TIMESTAMPTZ
-    );
+CREATE TABLE "author" (
+   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+   "name" VARCHAR(128) NOT NULL,
+   "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   "updated_at" TIMESTAMPTZ
+);
 
 CREATE TABLE
     "category" (
@@ -58,17 +57,17 @@ CREATE TABLE
         "updated_at" TIMESTAMPTZ
     );
 
-CREATE TABLE
-    "user_has_book" (
-        "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        "book_id" INT NOT NULL REFERENCES "book"("id") ON DELETE CASCADE,
-        "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
-        "availability" VARCHAR(24) NOT NULL DEFAULT 'disponible',
-        "status" VARCHAR(24) NOT NULL,
-        "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        "updated_at" TIMESTAMPTZ,
-        UNIQUE ("book_id", "user_id")
-    );
+
+CREATE TABLE "user_has_book" (
+  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "book_id" INT NOT NULL REFERENCES "book"("id") ON DELETE CASCADE,
+  "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
+  "availability" VARCHAR(24) NOT NULL DEFAULT 'disponible',
+  "status" VARCHAR(24) NOT NULL,
+  "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMPTZ, 
+  UNIQUE ("book_id", "user_id")
+);
 
 CREATE TABLE
     "author_has_work" (

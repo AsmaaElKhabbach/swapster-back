@@ -43,9 +43,9 @@ WHERE false;
 
 SELECT
     "id",
-    "book_id",
-    "user_id",
-    "availability",
+   "book_id",
+   "user_id",
+   "availability",
     "status"
 FROM "user_has_book"
 WHERE false;

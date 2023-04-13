@@ -6,6 +6,7 @@ const signup = Joi.object({
 	email: Joi.string().email().required(),
 	city: Joi.string().pattern(/^[-a-zA-Z ]{4,50}$/).required(),
 	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"]{4,}$/).required(),
+	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"]{4,}$/).required(),
 	passwordConfirm: Joi.ref("password")
 });
 
@@ -24,10 +25,11 @@ const updateUser = Joi.object({
 	email: Joi.string().email(),
 	city: Joi.string().pattern(/^[-a-zA-Z ]{4,50}$/),
 	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"]{4,}$/),
+	city: Joi.string().pattern(/^[-a-zA-Z ]{4,50}$/),
+	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"]{4,}$/),
 	passwordConfirm: Joi.ref("password")
-});
+})
 
-// on crée un schéma qui va valider les recherches
 const searchBook = Joi.object({
 	search: Joi.string().min(1).required()
 });
@@ -35,7 +37,21 @@ const searchBook = Joi.object({
 // on crée un schéma qui va valider l'id du book
 const bookId = Joi.number().required();
 
+const updateUserBook = Joi.object({
+	availability: Joi.string(),
+	status: Joi.string()
+})
+
+const addUserBook = Joi.object({
+	status: Joi.string().required()
+})
 
 
 
-module.exports = { signup, login, userId, updateUser, searchBook,  bookId };
+
+
+
+
+
+
+module.exports = { signup, login, userId, updateUser, searchBook, bookId, updateUserBook, addUserBook };

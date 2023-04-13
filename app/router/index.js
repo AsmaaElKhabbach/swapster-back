@@ -3,7 +3,7 @@ const userController = require('../controller/userController');
 const sessionController = require('../controller/sessionController');
 const bookController = require('../controller/bookController');
 const validation = require('../services/validation');
-const {validateToken} = require('../middelware/authentication');
+const { validateToken } = require('../middelware/authentication');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -20,10 +20,14 @@ router.delete('/user/me', validateToken, validation.userId, userController.delet
 router.post('/login', validation.login, sessionController.login);
 router.post('/logout', validateToken, sessionController.logout);
 
+router.post('/book/search', validation.searchBook, bookController.searchBook)
+
+router.patch('/book/:bookId/my', validateToken, validation.updateUserBook, validation.bookId, validation.userId, bookController.updatedUserBook)
+router.post('/book/:bookId/my', validateToken, validation.bookId, validation.userId, validation.addUserBook, bookController.addUserBook)
+
 
 // route des livres du user
 router.get('/book/my', validateToken, validation.userId, bookController.userBooks);
-router.patch('/book/:bookId/my', validateToken, validation.bookId, bookController.updatedUserBook)
 
 // route livre(s)
 router.get('/book/latestadded', bookController.latestbooks);

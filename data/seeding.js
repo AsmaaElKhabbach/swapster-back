@@ -21,7 +21,7 @@ let transaction = 'BEGIN;';
 async function generateSQL() {
 	// Table user
 	db.user.forEach((user) => {
-			transaction += `
+		transaction += `
 	INSERT INTO "user"
 	("name", "email", "password", "city", "picture")
 	VALUES
@@ -31,7 +31,7 @@ async function generateSQL() {
 
 	// Table category
 	db.category.forEach((category) => {
-			transaction += `
+		transaction += `
 	INSERT INTO "category"
 	("name")
 	VALUES
@@ -41,7 +41,7 @@ async function generateSQL() {
 
 	// Table work
 	db.work.forEach((work) => {
-			transaction += `
+		transaction += `
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
@@ -51,7 +51,7 @@ async function generateSQL() {
 
 	// Table author
 	db.author.forEach((author) => {
-			transaction += `
+		transaction += `
 	INSERT INTO "author"
 	("name")
 	VALUES
@@ -62,7 +62,7 @@ async function generateSQL() {
 
 	// Table book
 	db.book.forEach((book) => {
-			transaction += `
+		transaction += `
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
@@ -72,7 +72,7 @@ async function generateSQL() {
 
 	// Table author_has_work
 	db.author_has_work.forEach((authorHasWork) => {
-			transaction += `
+		transaction += `
 	INSERT INTO "author_has_work"
 	("work_id", "author_id")
 	VALUES
@@ -82,11 +82,11 @@ async function generateSQL() {
 
 	// Table user_has_book
 	db.user_has_book.forEach((userHasBook) => {
-			transaction += `
+		transaction += `
 	INSERT INTO "user_has_book"
 	("book_id", "user_id","availability", "status")
 	VALUES
-	(${userHasBook.book_id}, ${userHasBook.user_id}, '${userHasBook.availability}', '${userHasBook.status}');
+	( '${userHasBook.book_id}', '${userHasBook.user_id}', '${userHasBook.availability}', '${userHasBook.status}');
 	`;
 	});
 

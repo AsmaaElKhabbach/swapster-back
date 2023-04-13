@@ -57,59 +57,67 @@
 		}
 	],
 
-	"author" : [
-		{
-			"id" : 1,
-			"name" : "Lewis Carroll"
-		},
-		{
-			"id" : 2,
-			"name" : "JK Rowling"
-		},
-		{
-			"id" : 3,
-			"name" : "Victor Hugo"
-		},
-		{
-			"id" : 4,
-			"name" : "George Orwell"
-		},
-		{
-			"id" : 5,
-			"name" : " Guy de Maupassant"
-		},
-		{
-			"id" : 6,
-			"name" : "Antoine de Saint-exupéry"
-		}
-	],
+    "author" : [
+        {
+        "id" : 1,
+        "name" : "Lewis Carroll"
+        
+        },
+        {
+        "id" : 2,
+        "name" : "JK Rowling"
+    
+        },
+        {
+        "id" : 3,
+        "name" : "Victor Hugo"
+        
+        },
+        {
+        "id" : 4,
+        "name" : "George Orwell"
+       
+        },
+        {
+        "id" : 5,
+        "name" : "Guy de Maupassant"
+       
+        },
+        {
+        "id" : 6,
+        "name" : "Antoine de Saint-exupéry"
+        
+        }
 
-	"category" : [
-		{
-			"id" : 1,
-			"name" : "Fantastique"
-		}, 
-		{
-			"id" : 2,
-			"name" : "Fiction absurde"
-		},
-		{
-			"id" : 3,
-			"name" : "Fantasy littéraire"
-		},
-		{
-			"id" : 4,
-			"name" : "Littérature pour enfants"
-		},
-		{
-			"id" : 5,
-			"name" : "Roman"
-		}, 
-		{
-			"id" : 6,
-			"name" : "Fiction"
-		}
-	],
+    ],
+    
+    "category" : [
+        {
+        "id" : 1,
+        "name" : "Fantastique"
+        }, 
+        {
+        "id" : 2,
+        "name" : "Fiction absurde"
+        },
+        {
+        "id" : 3,
+        "name" : "Fantasy littéraire"
+        },
+        {
+        "id" : 4,
+        "name" : "Littérature pour enfants"
+        },
+        {
+        "id" : 5,
+        "name" : "Roman"
+        }, 
+        {
+        "id" : 6,
+        "name" : "Fiction"
+        }
+
+    ],
 
 	"book" : [
 		{
@@ -277,42 +285,45 @@
 		}
 	],
 
-	"user_has_book" : [ 
-		{
-			"id": 1,
-			"book_id" : 1,
-			"user_id" : 2,
-			"availability" : "disponible",
-			"status" : "bon état"
-		},
-		{
-			"id": 2,
-			"book_id" : 2,
-			"user_id" : 2,
-			"availability" : "donné",
-			"status" : "mauvais"
-		},
-		{
-			"id": 3,
-			"book_id" : 4,
-			"user_id" : 1,
-			"availability" : "disponible",
-			"status" : "correct"
-		},
-		{
-			"id": 4,
-			"book_id" : 6,
-			"user_id" : 1,
-			"availability" : "disponible",
-			"status" : "mauvais"
-		},
-		{
-			"id": 5,
-			"book_id" : 8,
-			"user_id" : 2,
-			"availability" : "disponible",
-			"status" : "correct"
-		}
-	]    
+    "user_has_book" : [ 
+        {
+        "id": 1,
+        "book_id" : 1,
+        "user_id" : 2,
+        "availability" : "disponible",
+        "status" : "bon état"
+        },
+        {
+        "id": 2,
+        "book_id" : 2,
+        "user_id" : 2,
+        "availability" : "donné",
+        "status" : "mauvais"
+        },
+        {
+        "id": 3,
+        "book_id" : 4,
+        "user_id" : 1,
+        "availability" : "disponible",
+        "status" : "correct"
+        },
+        {
+        "id": 4,
+        "book_id" : 6,
+        "user_id" : 1,
+        "availability" : "disponible",
+        "status" : "mauvais"
+        },
+        {
+        "id": 5,
+        "book_id" : 8,
+        "user_id" : 2,
+        "availability" : "disponible",
+        "status" : "correct"
+        }
+
+
+
+    ]    
 
 }

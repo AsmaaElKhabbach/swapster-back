@@ -93,7 +93,7 @@ BEGIN;
 	INSERT INTO "author"
 	("name")
 	VALUES
-	(' Guy de Maupassant');
+	('Guy de Maupassant');
 	
 	INSERT INTO "author"
 	("name")
@@ -153,55 +153,55 @@ BEGIN;
 	INSERT INTO "author_has_work"
 	("work_id", "author_id")
 	VALUES
-	(1, 1);
+	( '1', '1');
 	
 	INSERT INTO "author_has_work"
 	("work_id", "author_id")
 	VALUES
-	(2, 2);
+	( '2', '2');
 	
 	INSERT INTO "author_has_work"
 	("work_id", "author_id")
 	VALUES
-	(3, 3);
+	( '3', '3');
 	
 	INSERT INTO "author_has_work"
 	("work_id", "author_id")
 	VALUES
-	(4, 4);
+	( '4', '4');
 	
 	INSERT INTO "author_has_work"
 	("work_id", "author_id")
 	VALUES
-	(5, 5);
+	( '5', '5');
 	
 	INSERT INTO "author_has_work"
 	("work_id", "author_id")
 	VALUES
-	(6, 6);
+	( '6', '6');
 	
 	INSERT INTO "user_has_book"
 	("book_id", "user_id","availability", "status")
 	VALUES
-	(1, 2, 'disponible', 'bon état');
+	( '1', '2', 'disponible', 'bon état');
 	
 	INSERT INTO "user_has_book"
 	("book_id", "user_id","availability", "status")
 	VALUES
-	(2, 2, 'donné', 'mauvais');
+	( '2', '2', 'donné', 'mauvais');
 	
 	INSERT INTO "user_has_book"
 	("book_id", "user_id","availability", "status")
 	VALUES
-	(4, 1, 'disponible', 'correct');
+	( '4', '1', 'disponible', 'correct');
 	
 	INSERT INTO "user_has_book"
 	("book_id", "user_id","availability", "status")
 	VALUES
-	(6, 1, 'disponible', 'mauvais');
+	( '6', '1', 'disponible', 'mauvais');
 	
 	INSERT INTO "user_has_book"
 	("book_id", "user_id","availability", "status")
 	VALUES
-	(8, 2, 'disponible', 'correct');
+	( '8', '2', 'disponible', 'correct');
 	COMMIT;
