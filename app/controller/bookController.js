@@ -9,8 +9,8 @@ const bookController = {
 			console.log("latestBooks :", latestBooks);
 			res.status(201).json(latestBooks);
 			return;
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification des books dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 	},
@@ -29,7 +29,7 @@ const bookController = {
 				return res.status(200).json(checkBook)
 			}
 		} catch (error) {
-			res.status(500).json({ error: "Problème lors de la requête en BDD" })
+			res.status(500).json({ error })
 		}
 
 	},
@@ -40,13 +40,13 @@ const bookController = {
 		let checkBook;
 		try {
 			checkBook = await dataMapper.getOneBookById(req.params.bookId);
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification du livre dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 
 		if (!checkBook) {
-			res.status(404).json({ error: `Pas de livre avec l'id ${req.params.bookId}` });
+			res.status(404).json({ error });
 			return;
 		}
 
@@ -59,8 +59,8 @@ const bookController = {
 		let checkBook;
 		try {
 			checkBook = await dataMapper.getOneBookById(req.params.bookId);
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification du livre dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 
@@ -74,8 +74,8 @@ const bookController = {
 			console.log("availableBooks :", availableBooks);
 			res.status(201).json(availableBooks);
 			return;
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification des books dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 	},
@@ -85,9 +85,9 @@ const bookController = {
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
-		} catch (err) {
+		} catch (error) {
 			console.log(req.userId);
-			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
+			res.status(500).json({ error });
 			return;
 		}
 
@@ -101,8 +101,8 @@ const bookController = {
 			console.log("userbooks :", userbooks);
 			res.status(201).json(userbooks);
 			return;
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification des books dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 	},
@@ -118,8 +118,8 @@ const bookController = {
 
 		try {
 			checkBook = await dataMapper.getOneBookById(bookId);
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification du livre dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 
@@ -132,8 +132,8 @@ const bookController = {
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 
@@ -146,8 +146,8 @@ const bookController = {
 		let checkUserHasBook;
 		try {
 			checkUserHasBook = await dataMapper.getUserHasBookByBookIdAndUserId(bookId, req.userId);
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification du user et du livre dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 
@@ -190,9 +190,9 @@ const bookController = {
 			await dataMapper.updatedUserBook(checkUserHasBook);
 			res.status(201).json(checkUserHasBook);
 			return;
-		} catch (err) {
+		} catch (error) {
 			console.log("error : ", err);
-			res.status(500).json({ error: "Problème de requête lors de la mise à jour de user_has_book dans la BDD" });
+			res.status(500).json({ error });
 			return;
 		}
 	},
@@ -236,7 +236,7 @@ const bookController = {
 			await dataMapper.addBookToUser(bookId, req.userId, status)
 			return res.status(201).json(`Le livre ${bookId} est ajouté à votre liste`)
 		} catch (error) {
-			return res.status(500).json({ error: error })
+			return res.status(500).json({ error })
 
 		}
 	},
@@ -277,7 +277,7 @@ const bookController = {
 				return res.status(201).json({ message: `Le livre avec l'id ${bookId} est supprimé de la liste des livres à donner` })
 			}
 		} catch (error) {
-			return res.status(500).json({ error: error })
+			return res.status(500).json({ error })
 		}
 
 	}

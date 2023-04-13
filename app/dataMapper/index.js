@@ -158,7 +158,7 @@ const dataMapper = {
 		return result.rows;
 	},
 
-	getAllUserBooks: async (bookId) => {
+	getAllUserBooks: async (userId) => {
 		const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name, "user_has_book".*, "book"."height" || ' cm x ' || "book"."width" || ' cm x ' || "book"."thickness" || ' cm' AS "format"
 		FROM "book"
 
@@ -170,7 +170,7 @@ const dataMapper = {
 
 		WHERE "user_has_book"."user_id" = $1 AND "user_has_book"."availability" = 'disponible'`
 
-		const result = await client.query(query, [bookId]);
+		const result = await client.query(query, [userId]);
 		console.log("laaaaaaaaa dt mapper result de getAllBooksAvailable: ", result);
 		return result.rows;
 	}

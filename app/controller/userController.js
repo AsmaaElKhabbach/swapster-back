@@ -9,7 +9,7 @@ const userController = {
 	signup: async (req, res) => {
 		try {
 			const { name, email, city, password, passwordConfirm } = req.body;
-			
+
 			// on verifie s'il n'y a pas de doublon dans la BDD
 			const checkUserName = await dataMapper.getOneUserByName(name);
 
@@ -41,9 +41,9 @@ const userController = {
 			res.status(201).json(userData);
 			return;
 
-		} catch (err) {
-			console.log(err);
-			res.status(500).json({ error: "Erreur lors de l'insertion de l'utilisateur dans la base de données" });
+		} catch (error) {
+			console.log(error);
+			res.status(500).json({ error });
 			return;
 		}
 	},
@@ -53,9 +53,9 @@ const userController = {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
-			checkUser =  await dataMapper.getOneUserById(req.userId);
-		} catch(err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
+			checkUser = await dataMapper.getOneUserById(req.userId);
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 
@@ -78,8 +78,8 @@ const userController = {
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 
@@ -97,8 +97,8 @@ const userController = {
 
 			try {
 				checkUserName = await dataMapper.getOneUserByName(name);
-			} catch (err) {
-				res.status(500).json({ error: "Problème de requête lors de la vérification du userName dans la BDD" });
+			} catch (error) {
+				res.status(500).json({ error });
 				return;
 			}
 
@@ -118,8 +118,8 @@ const userController = {
 
 			try {
 				checkUserEmail = await dataMapper.getOneUserByEmail(email);
-			} catch (err) {
-				res.status(500).json({ error: "Problème de requête lors de la vérification du userEmail dans la BDD" });
+			} catch (error) {
+				res.status(500).json({ error });
 				return;
 			}
 
@@ -167,8 +167,8 @@ const userController = {
 			await dataMapper.updateUser(checkUser);
 			res.status(201).json(checkUser);
 			return;
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la mise à jour du user dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 	},
@@ -180,8 +180,8 @@ const userController = {
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 
@@ -195,8 +195,8 @@ const userController = {
 			await dataMapper.deleteUser(req.userId);
 			res.status(200).json({ info: "User correctement supprimé" });
 			return;
-		} catch (err) {
-			res.status(500).json({ error: "Problème de requête lors de la suppression du user dans la BDD" });
+		} catch (error) {
+			res.status(500).json({ error });
 			return;
 		}
 	}

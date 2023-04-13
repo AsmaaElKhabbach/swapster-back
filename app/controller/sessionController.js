@@ -32,7 +32,7 @@ const sessionController = {
 			res.status(201).json(user)
 
 		} catch (error) {
-			res.status(500).json({ error: "Erreur serveur" });
+			res.status(500).json({ error });
 		}
 	},
 
@@ -44,7 +44,7 @@ const sessionController = {
 
 			res.status(200).json({ message: "Vous êtes bien déconnecté" });
 		} catch (error) {
-			res.status(500).json({ error: "Erreur serveur" });
+			res.status(500).json({ error });
 		}
 	}
 };
