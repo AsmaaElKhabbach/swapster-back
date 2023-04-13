@@ -20,19 +20,20 @@ router.delete('/user/me', validateToken, validation.userId, userController.delet
 router.post('/login', validation.login, sessionController.login);
 router.post('/logout', validateToken, sessionController.logout);
 
-router.post('/book/search', validation.searchBook, bookController.searchBook)
-
-router.patch('/book/:bookId/my', validateToken, validation.updateUserBook, validation.bookId, validation.userId, bookController.updatedUserBook)
-router.post('/book/:bookId/my', validateToken, validation.bookId, validation.userId, validation.addUserBook, bookController.addUserBook)
-
-
 // route des livres du user
 router.get('/book/my', validateToken, validation.userId, bookController.userBooks);
+router.post('/book/:bookId/my', validateToken, validation.bookId, validation.userId, validation.addUserBook, bookController.addUserBook);
+router.patch('/book/:bookId/my', validateToken, validation.updateUserBook, validation.bookId, validation.userId, bookController.updatedUserBook);
 
 // route livre(s)
 router.get('/book/latestadded', bookController.latestbooks);
+router.post('/book/search', validation.searchBook, bookController.searchBook)
 router.get('/book/:bookId/allusers', validation.bookId, bookController.allUsersByBookId);
 router.get('/book/:bookId', validation.bookId, bookController.bookDetails);
 router.post('/book/search', validation.searchBook, bookController.searchBook);
+
+
+
+
 
 module.exports = router;
