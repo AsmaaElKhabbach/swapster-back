@@ -9,13 +9,8 @@ const bookController = {
 			console.log("latestBooks :", latestBooks);
 			res.status(201).json(latestBooks);
 			return;
-<<<<<<< HEAD
-		} catch(err) {
-			res.status(500).json({ error:"Problème de requête lors de la vérification des books dans la BDD" });
-=======
 		} catch (err) {
 			res.status(500).json({ error: "Problème de requête lors de la vérification des books dans la BDD" });
->>>>>>> origin/main
 			return;
 		}
 	},
@@ -44,15 +39,9 @@ const bookController = {
 		// on vérifie que l'id du livre est bien dans la BDD
 		let checkBook;
 		try {
-<<<<<<< HEAD
-			checkBook =  await dataMapper.getOneBookById(req.params.bookId);
-		} catch(err) {
-			res.status(500).json({ error:"Problème de requête lors de la vérification du livre dans la BDD" });
-=======
 			checkBook = await dataMapper.getOneBookById(req.params.bookId);
 		} catch (err) {
 			res.status(500).json({ error: "Problème de requête lors de la vérification du livre dans la BDD" });
->>>>>>> origin/main
 			return;
 		}
 
@@ -69,15 +58,9 @@ const bookController = {
 	allUsersByBookId: async (req, res) => {
 		let checkBook;
 		try {
-<<<<<<< HEAD
-			checkBook =  await dataMapper.getOneBookById(req.params.bookId);
-		} catch(err) {
-			res.status(500).json({ error:"Problème de requête lors de la vérification du livre dans la BDD" });
-=======
 			checkBook = await dataMapper.getOneBookById(req.params.bookId);
 		} catch (err) {
 			res.status(500).json({ error: "Problème de requête lors de la vérification du livre dans la BDD" });
->>>>>>> origin/main
 			return;
 		}
 
@@ -91,39 +74,25 @@ const bookController = {
 			console.log("availableBooks :", availableBooks);
 			res.status(201).json(availableBooks);
 			return;
-<<<<<<< HEAD
-		} catch(err) {
-			res.status(500).json({ error:"Problème de requête lors de la vérification des books dans la BDD" });
-=======
 		} catch (err) {
 			res.status(500).json({ error: "Problème de requête lors de la vérification des books dans la BDD" });
->>>>>>> origin/main
 			return;
 		}
 	},
 
-<<<<<<< HEAD
-	userBooks: async (req,res) => {
-=======
 	userBooks: async (req, res) => {
->>>>>>> origin/main
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (err) {
 			console.log(req.userId);
-<<<<<<< HEAD
-			res.status(500).json({ error:"Problème de requête lors de la vérification du user dans la BDD" });
-=======
 			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
->>>>>>> origin/main
 			return;
 		}
 
 		if (!checkUser) {
 			res.status(404).json({ error: `Pas de user avec l'id ${req.userId}` });
-<<<<<<< HEAD
 			return;
 		}
 
@@ -134,8 +103,6 @@ const bookController = {
 			return;
 		} catch(err) {
 			res.status(500).json({ error:"Problème de requête lors de la vérification des books dans la BDD" });
-=======
->>>>>>> origin/main
 			return;
 		}
 	},
@@ -143,10 +110,7 @@ const bookController = {
 	// PATCH /book/:bookId/my
 
 	updatedUserBook: async (req, res) => {
-<<<<<<< HEAD
 		// pour savoir s'il y a eu une modif sur le user_has_book : 0 = pas de modif ; 1 = modif
-=======
->>>>>>> origin/main
 		let userHasBookChanged = 0;
 		const { bookId } = req.params;
 
@@ -154,15 +118,9 @@ const bookController = {
 		let checkBook;
 
 		try {
-<<<<<<< HEAD
-			checkBook =  await dataMapper.getOneBookById(bookId);
-		} catch(err) {
-			res.status(500).json({ error:"Problème de requête lors de la vérification du livre dans la BDD" });
-=======
 			checkBook = await dataMapper.getOneBookById(bookId);
 		} catch (err) {
 			res.status(500).json({ error: "Problème de requête lors de la vérification du livre dans la BDD" });
->>>>>>> origin/main
 			return;
 		}
 
@@ -174,15 +132,9 @@ const bookController = {
 		// on vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
-<<<<<<< HEAD
-			checkUser =  await dataMapper.getOneUserById(req.userId);
-		} catch(err) {
-			res.status(500).json({ error:"Problème de requête lors de la vérification du user dans la BDD" });
-=======
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (err) {
 			res.status(500).json({ error: "Problème de requête lors de la vérification du user dans la BDD" });
->>>>>>> origin/main
 			return;
 		}
 
@@ -194,15 +146,9 @@ const bookController = {
 		// on vérifie que le user a bien le livre
 		let checkUserHasBook;
 		try {
-<<<<<<< HEAD
-			checkUserHasBook =  await dataMapper.getUserHasBookByBookIdAndUserId(bookId, req.userId);
-		} catch(err) {
-			res.status(500).json({ error:"Problème de requête lors de la vérification du user et du livre dans la BDD" });
-=======
 			checkUserHasBook = await dataMapper.getUserHasBookByBookIdAndUserId(bookId, req.userId);
 		} catch (err) {
 			res.status(500).json({ error: "Problème de requête lors de la vérification du user et du livre dans la BDD" });
->>>>>>> origin/main
 			return;
 		}
 
@@ -212,23 +158,11 @@ const bookController = {
 		}
 
 		// on récupère les données du front
-<<<<<<< HEAD
 		const { availability, status } = req.body
 
 		// on vérifie s'il y a eu du changement sur la disponibilité du livre
 		if (availability && availability !== checkUserHasBook.availability) {
 	
-=======
-		console.log("body", req.body);
-
-		const { availability, status } = req.body;
-		console.log("availability", availability);
-		console.log("status", status);
-
-		// on vérifie s'il y a eu du changement sur la disponibilité du livre
-		if (availability && availability !== checkUserHasBook.availability) {
-
->>>>>>> origin/main
 			// mise à jour dans la variable checkUser
 			checkUserHasBook.availability = availability;
 			userHasBookChanged = 1;
@@ -255,11 +189,7 @@ const bookController = {
 			return;
 		} catch (err) {
 			console.log("error : ", err);
-<<<<<<< HEAD
-			res.status(500).json({ error:"Problème de requête lors de la mise à jour de user_has_book dans la BDD" });
-=======
 			res.status(500).json({ error: "Problème de requête lors de la mise à jour de user_has_book dans la BDD" });
->>>>>>> origin/main
 			return;
 		}
 	},
