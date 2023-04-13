@@ -28,7 +28,7 @@ router.delete('/book/:bookId/my', validateToken, validation.userId, validation.b
 
 // route livre(s)
 router.get('/book/latestadded', bookController.latestbooks);
-router.post('/book/search', validation.searchBook, bookController.searchBook)
+router.get('/book/search', validation.searchBook, bookController.searchBook)
 router.get('/book/:bookId/allusers', validation.bookId, bookController.allUsersByBookId);
 router.get('/book/:bookId', validation.bookId, bookController.bookDetails);
 

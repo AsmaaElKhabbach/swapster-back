@@ -19,8 +19,8 @@ const bookController = {
 	searchBook: async (req, res) => {
 
 		try {
-			const { search } = req.body
-			const checkBook = await dataMapper.searchBook(search)
+			const { query } = req.query
+			const checkBook = await dataMapper.searchBook(query)
 
 			if (checkBook.length === 0) {
 				return res.status(200).json({ message: "Aucun résultat pour cette recherche" })
@@ -162,7 +162,7 @@ const bookController = {
 
 		// on vérifie s'il y a eu du changement sur la disponibilité du livre
 		if (availability && availability !== checkUserHasBook.availability) {
-	
+
 			// mise à jour dans la variable checkUser
 			checkUserHasBook.availability = availability;
 			userHasBookChanged = 1;
