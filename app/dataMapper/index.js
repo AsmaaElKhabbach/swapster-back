@@ -70,48 +70,6 @@ const dataMapper = {
 		return result.rows
 	},
 
-	// Methode pour récupérer un livre via l'id
-	getOneBookById: async (bookId) => {
-		const query = `SELECT book.*, "author"."name", "category"."name" AS category_name
-		FROM "book"
-		JOIN "work" ON "work"."id" = "book"."work_id" 
-		JOIN "author_has_work" ON "author_has_work"."id" = "work"."id"
-		JOIN "author" ON "author"."id" = "author_has_work"."author_id"
-		JOIN "category" ON "category"."id" = "work"."category_id"
-		WHERE "book"."id" = $1;`;
-
-		const result = await client.query(query, [bookId]);
-		return result.rows[0];
-	},
-
-	//Methode pour vérifier si le livre est dejà rattaché au user
-
-	getUserHasBookByBookIdAndUserId: async (bookId, userId) => {
-		// Vérifier si le user à un livre 
-		const query = `SELECT * FROM "user_has_book" WHERE "book_id" = $1 AND "user_id" =$2`;
-		const result = await client.query(query, [bookId, userId])
-		return result.rows[0]
-	},
-
-	// Methode pour ajouter livre à la liste user
-	addBookToUser: async (book_id, user_id, status) => {
-		const query = `INSERT INTO "user_has_book" (book_id, user_id, status) VALUES ($1, $2, $3) RETURNING *`
-		const result = await client.query(query, [book_id, user_id, status])
-		return result.rows[0]
-	},
-
-	// Methode pour modifier la dispo ou status
-	updatedUserBook: async (userHasBook) => {
-		const query = `UPDATE "user_has_book" SET "availability" = $3,"status" = $4, "updated_at" = NOW() WHERE "book_id" = $1 AND "user_id" =$2`;
-		await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.availability, userHasBook.status])
-	},
-
-	// Methode pour supprimer un livre de la user liste
-	deleteUserBook: async (id) => {
-		const query = `DELETE FROM "user_has_book" WHERE "id"=$1`;
-		await client.query(query, [id]);
-	},
-
 	// Méthode pour récupérer les 10 derniers livres ajoutés
 	getLatestBooks: async () => {
 		const query = `SELECT "user_has_book"."created_at",
@@ -137,23 +95,6 @@ const dataMapper = {
 		return result.rows;
 	},
 
-	// Methode pour rechercher un livre
-	searchBook: async (search) => {
-		const query = `SELECT work.*, book.*, author.name AS "Auteur",  category.name AS "Catégorie"
-		FROM "book" 
-		JOIN "work" ON book.work_id = work.id
-		JOIN "author_has_work" ON work.id = author_has_work.work_id
-		JOIN "author" ON author_has_work.author_id = author.id
-		JOIN "category" ON work.category_id = category.id
-		WHERE work.title ILIKE $1 
-		OR author.name ILIKE $1 
-		OR book.isbn_13 ILIKE $1
-		OR category.name ILIKE $1`
-
-		const result = await client.query(query, [`%${search}%`])
-		return result.rows
-	},
-
 	// // Méthode pour récupérer tous les livres
 	// getAllBooks: async () => {
 	// 	const query = `SELECT * FROM book;`;
@@ -163,19 +104,43 @@ const dataMapper = {
 
 	// Methode pour récupérer un livre via l'id
 	getOneBookById: async (bookId) => {
-		const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name
+		const query = `SELECT book.*, "author"."name", "category"."name" AS category_name
 		FROM "book"
-
 		JOIN "work" ON "work"."id" = "book"."work_id" 
 		JOIN "author_has_work" ON "author_has_work"."id" = "work"."id"
 		JOIN "author" ON "author"."id" = "author_has_work"."author_id"
 		JOIN "category" ON "category"."id" = "work"."category_id"
-
-		WHERE "book"."id" = $1`;
+		WHERE "book"."id" = $1;`;
 
 		const result = await client.query(query, [bookId]);
-		// console.log("laaaaaaaaa dt mapper result de bookId: ", result);
 		return result.rows[0];
+	},
+
+	//Methode pour vérifier si le livre est dejà rattaché au user
+	getUserHasBookByBookIdAndUserId: async (bookId, userId) => {
+		// Vérifier si le user à un livre 
+		const query = `SELECT * FROM "user_has_book" WHERE "book_id" = $1 AND "user_id" =$2`;
+		const result = await client.query(query, [bookId, userId])
+		return result.rows[0]
+	},
+
+	// Methode pour ajouter livre à la liste user
+	addBookToUser: async (book_id, user_id, status) => {
+		const query = `INSERT INTO "user_has_book" (book_id, user_id, status) VALUES ($1, $2, $3) RETURNING *`
+		const result = await client.query(query, [book_id, user_id, status])
+		return result.rows[0]
+	},
+
+	// Methode pour modifier la dispo ou status
+	updatedUserBook: async (userHasBook) => {
+		const query = `UPDATE "user_has_book" SET "availability" = $3,"status" = $4, "updated_at" = NOW() WHERE "book_id" = $1 AND "user_id" =$2`;
+		await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.availability, userHasBook.status])
+	},
+
+	// Methode pour supprimer un livre de la user liste
+	deleteUserBook: async (id) => {
+		const query = `DELETE FROM "user_has_book" WHERE "id"=$1`;
+		await client.query(query, [id]);
 	},
 
 	// Méthode pour récupérer tous les exemplaires disponibles d'un livre
@@ -208,21 +173,8 @@ const dataMapper = {
 		const result = await client.query(query, [bookId]);
 		console.log("laaaaaaaaa dt mapper result de getAllBooksAvailable: ", result);
 		return result.rows;
-	},
+	}
 
-	// Methode pour vérifier si le livre est dejà rattaché au user
-	getUserHasBookByBookIdAndUserId: async (bookId, userId) => {
-		// Vérifier si le user à un livre 
-		const query = `SELECT * FROM "user_has_book" WHERE book_id = $1 AND user_id =$2`
-		const result = await client.query(query, [bookId, userId]);
-		return result.rows[0];
-	},
-
-	// Methode pour modifier la dispo ou status
-	updatedUserBook: async (userHasBook) => {
-		const query = `UPDATE "user_has_book" SET "availability" = $3,"status" = $4, "updated_at" = NOW() WHERE "book_id" = $1 AND "user_id" =$2`;
-		await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.availability, userHasBook.status])
-	},
 };
 
 module.exports = dataMapper;

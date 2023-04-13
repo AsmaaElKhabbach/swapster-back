@@ -32,9 +32,9 @@ const updateUser = Joi.object({
 
 const searchBook = Joi.object({
 	search: Joi.string().min(1).required()
-})
+});
 
-
+// on crée un schéma qui va valider l'id du book
 const bookId = Joi.number().required();
 
 const updateUserBook = Joi.object({
@@ -46,8 +46,8 @@ const addUserBook = Joi.object({
 	status: Joi.string().required()
 })
 
-// on crée un schéma qui va valider l'id du book
-const bookId = Joi.number().required();
+
+
 
 
 
