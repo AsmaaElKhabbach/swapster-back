@@ -32,6 +32,7 @@ const sessionController = {
 			return res.status(201).json(user)
 
 		} catch (error) {
+			console.debug(error)
 			res.status(500).json({ error });
 		}
 	},
