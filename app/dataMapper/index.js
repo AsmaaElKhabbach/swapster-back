@@ -120,6 +120,7 @@ const dataMapper = {
 	getUserHasBookByBookIdAndUserId: async (bookId, userId) => {
 		// Vérifier si le user à un livre 
 		const query = `SELECT * FROM "user_has_book" WHERE "book_id" = $1 AND "user_id" =$2`;
+		const result = await client.query(query, [bookId, userId])
 		return result.rows[0];
 	},
 
