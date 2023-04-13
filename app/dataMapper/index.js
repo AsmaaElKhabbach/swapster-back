@@ -121,7 +121,7 @@ const dataMapper = {
 		// Vérifier si le user à un livre 
 		const query = `SELECT * FROM "user_has_book" WHERE "book_id" = $1 AND "user_id" =$2`;
 		const result = await client.query(query, [bookId, userId])
-		return result.rows[0]
+		return result.rows[0];
 	},
 
 	// Methode pour ajouter livre à la liste user
@@ -159,7 +159,8 @@ const dataMapper = {
 	},
 
 	getAllUserBooks: async (userId) => {
-		const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name, "user_has_book".*, "book"."height" || ' cm x ' || "book"."width" || ' cm x ' || "book"."thickness" || ' cm' AS "format"
+		getAllUserBooks: async (userId) => {
+			const query = `SELECT book.*, "work"."title", "work"."resume", "author"."name", "category"."name" AS category_name, "user_has_book".*, "book"."height" || ' cm x ' || "book"."width" || ' cm x ' || "book"."thickness" || ' cm' AS "format"
 		FROM "book"
 
 		JOIN "work" ON "work"."id" = "book"."work_id" 
@@ -170,11 +171,11 @@ const dataMapper = {
 
 		WHERE "user_has_book"."user_id" = $1 AND "user_has_book"."availability" = 'disponible'`
 
-		const result = await client.query(query, [userId]);
-		console.log("laaaaaaaaa dt mapper result de getAllBooksAvailable: ", result);
-		return result.rows;
-	}
+			const result = await client.query(query, [userId]);
+			console.log("laaaaaaaaa dt mapper result de getAllBooksAvailable: ", result);
+			return result.rows;
+		}
 
-};
+	};
 
-module.exports = dataMapper;
+	module.exports = dataMapper;

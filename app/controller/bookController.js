@@ -110,6 +110,7 @@ const bookController = {
 	// PATCH /book/:bookId/my
 
 	updatedUserBook: async (req, res) => {
+		// pour savoir s'il y a eu une modif sur le user_has_book : 0 = pas de modif ; 1 = modif
 		let userHasBookChanged = 0;
 		const { bookId } = req.params;
 
@@ -157,15 +158,11 @@ const bookController = {
 		}
 
 		// on récupère les données du front
-		console.log("body", req.body);
-
-		const { availability, status } = req.body;
-		console.log("availability", availability);
-		console.log("status", status);
+		const { availability, status } = req.body
 
 		// on vérifie s'il y a eu du changement sur la disponibilité du livre
 		if (availability && availability !== checkUserHasBook.availability) {
-
+	
 			// mise à jour dans la variable checkUser
 			checkUserHasBook.availability = availability;
 			userHasBookChanged = 1;
