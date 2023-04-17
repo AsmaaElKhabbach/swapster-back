@@ -1,5 +1,6 @@
 const schema = require('./schema');
 
+// Validation des données récupéré dans le req.body ou req.query
 const validation = {
 	signup(req, res, next) {
 		const { error } = schema.signup.validate(req.body, { abortEarly: false })

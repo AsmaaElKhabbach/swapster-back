@@ -8,10 +8,10 @@ router.get('/', (req, res) => {
 });
 
 
-// route inscription, login, logout, modification et suppression du user
+// route inscription, login, logout, modification et suppression de l'utilisateur
 router.use('/user', userRouter);
 
-// route livre(s) et des livres du user
+// route livre(s) et des livres de l'utilisateur
 router.use('/book', bookRouter);
 
 

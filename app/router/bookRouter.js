@@ -6,7 +6,7 @@ const { validateToken } = require('../middelware/authentication');
 const bookRouter = express.Router();
 
 
-// route des livres du user
+// route des livres de l'utilisateur
 bookRouter.get('/book/my', validateToken, validation.userId, userHasBookController.userBooks);
 bookRouter.post('/book/:bookId/my', validateToken, validation.bookId, validation.userId, validation.addUserBook, userHasBookController.addUserBook);
 bookRouter.patch('/book/:bookId/my', validateToken, validation.updateUserBook, validation.bookId, validation.userId, userHasBookController.updatedUserBook);

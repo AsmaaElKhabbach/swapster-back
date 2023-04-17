@@ -2,19 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const db = require('./db.json');
 
-// function pgQuoteEscape(row) {
-//   const newRow = {};
-//   Object.entries(row).forEach(([prop, value]) => {
-//       if (typeof value !== 'string') {
-//           newRow[prop] = value;
-//           return;
-//       }
-//       newRow[prop] = value.replaceAll("'", "’");
-//   });
-//   return newRow;
-// }
-
-
 let transaction = 'BEGIN;';
 
 // Insertion des données dans les tables en parcourant le fichier db.json avec des "fausses données"
