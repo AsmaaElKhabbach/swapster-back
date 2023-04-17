@@ -1,37 +1,18 @@
 const express = require('express');
-const userController = require('../controller/userController');
-const sessionController = require('../controller/sessionController');
-const bookController = require('../controller/bookController');
-const validation = require('../services/validation');
-const { validateToken } = require('../middelware/authentication');
+const userRouter = require('./userRouter');
+const bookRouter = require('./bookRouter');
 const router = express.Router();
 
 router.get('/', (req, res) => {
 	res.send('Youpi');
 });
 
-// route inscription du user, modification et suppression
-router.post('/signup', validation.signup, userController.signup);
-router.get('/user/me', validateToken, validation.userId, userController.userDetails);
-router.patch('/user/me', validateToken, validation.userId, validation.updateUser, userController.update);
-router.delete('/user/me', validateToken, validation.userId, userController.delete);
 
-// route login et logout
-router.post('/login', validation.login, sessionController.login);
-router.post('/logout', validateToken, sessionController.logout);
+// route inscription, login, logout, modification et suppression du user
+router.use('/user', userRouter);
 
-// route des livres du user
-router.get('/book/my', validateToken, validation.userId, bookController.userBooks);
-router.post('/book/:bookId/my', validateToken, validation.bookId, validation.userId, validation.addUserBook, bookController.addUserBook);
-router.patch('/book/:bookId/my', validateToken, validation.updateUserBook, validation.bookId, validation.userId, bookController.updatedUserBook);
-router.delete('/book/:bookId/my', validateToken, validation.userId, validation.bookId, bookController.deleteUserBook);
-router.get('/book/givenbook/my', validateToken, validation.userId, bookController.givenUserBook);
-
-// route livre(s)
-router.get('/book/latestadded', bookController.latestbooks);
-router.get('/book/search', validation.searchBook, bookController.searchBook)
-router.get('/book/:bookId/allusers', validation.bookId, bookController.allUsersByBookId);
-router.get('/book/:bookId', validation.bookId, bookController.bookDetails);
+// route livre(s) et des livres du user
+router.use('/book', bookRouter);
 
 
 module.exports = router;

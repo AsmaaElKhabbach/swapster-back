@@ -1,16 +1,14 @@
 const dataMapper = require('../dataMapper');
 const bcrypt = require('bcrypt');
 
-
-
 const userController = {
 
-	// Méthode pour un nouvel user
+	// Méthode pour créer un compte utilisateur
 	signup: async (req, res) => {
 		try {
-			const { name, email, city, password, passwordConfirm } = req.body;
+			const { name, email, city, password } = req.body;
 
-			// on verifie s'il n'y a pas de doublon dans la BDD
+			// On verifie s'il n'y a pas de doublon dans la BDD
 			const checkUserName = await dataMapper.getOneUserByName(name);
 
 			if (checkUserName) {
@@ -26,7 +24,7 @@ const userController = {
 				return;
 			};
 
-			// on crée un objet user
+			// On crée un objet user
 			const user = {
 				name: name,
 				email: email,
@@ -34,10 +32,8 @@ const userController = {
 				password: await bcrypt.hash(password, 10)
 			};
 
-			// on insert l'objet dans la BDD
+			// On insert l'objet dans la BDD
 			const userData = await dataMapper.insertUser(user);
-
-
 			res.status(201).json(userData);
 			return;
 
@@ -48,9 +44,9 @@ const userController = {
 		}
 	},
 
-	// Methode pour afficher les détails d'un user 
+	// Methode pour afficher les détails d'un utilisateur 
 	userDetails: async (req, res) => {
-		// on vérifie que l'id du user est bien dans la BDD
+		// On vérifie que l'id de l'utilisateur est bien dans la BDD
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
@@ -69,12 +65,12 @@ const userController = {
 
 	},
 
-	// Méthode pour MAJ le user
+	// Méthode pour mise à jour de l'utilisateur
 	update: async (req, res) => {
-		// pour savoir s'il y a eu une modif sur le user : 0 = pas de modif ; 1 = modif
+		// Pour savoir s'il y a eu une modif sur l'utilisateur : 0 = pas de modif ; 1 = modif
 		let userHasChanged = 0;
 
-		// on vérifie que l'id du user est bien dans la BDD
+		// On vérifie que l'id du user est bien dans la BDD
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
@@ -88,10 +84,10 @@ const userController = {
 			return;
 		}
 
-		// on récupère les données du front
-		const { name, email, city, password, passwordConfirm } = req.body;
+		// On récupère les données du front
+		const { name, email, city, password } = req.body;
 
-		// on vérifie s'il y a eu du changement sur le name du user
+		// On vérifie s'il y a eu du changement sur le nom du l'utilisateur
 		if (name && name !== checkUser.name) {
 			let checkUserName;
 
@@ -107,12 +103,12 @@ const userController = {
 				return;
 			}
 
-			// mise à jour dans la variable checkUser
+			// Mise à jour dans la variable checkUser
 			checkUser.name = name;
 			userHasChanged = 1;
 		}
 
-		// on vérifie s'il y a eu du changement sur l'email du user
+		// On vérifie s'il y a eu du changement sur l'email de l'utilisateur
 		if (email && email !== checkUser.email) {
 			let checkUserEmail;
 
@@ -128,20 +124,20 @@ const userController = {
 				return;
 			};
 
-			// mise à jour dans la variable checkUser
+			// Mise à jour dans la variable checkUser
 			checkUser.email = email;
 			userHasChanged = 1;
 		}
 
-		// on vérifie s'il y a eu du changement sur le city du user
+		// On vérifie s'il y a eu du changement sur la ville de l'utilisateur
 		if (city && city !== checkUser.city) {
 
-			// mise à jour dans la variable checkUser
+			// Mise à jour dans la variable checkUser
 			checkUser.city = city;
 			userHasChanged = 1;
 		}
 
-		// on vérifie s'il y a eu du changement sur le password du user
+		// On vérifie s'il y a eu du changement sur le password du user
 		if (password) {
 
 			const hashPassword = await bcrypt.hash(password, 10);
@@ -151,18 +147,18 @@ const userController = {
 				return;
 			}
 
-			// mise à jour dans la variable checkUser
+			// Mise à jour dans la variable checkUser
 			checkUser.password = hashPassword;
 			userHasChanged = 1;
 		}
 
-		// est-ce qu'il y a eu du changement ?
+		// Est-ce qu'il y a eu du changement ?
 		if (userHasChanged == 0) {
 			res.status(200).json({ warn: "Pas de changement" });
 			return;
 		}
 
-		// mise à jour  en BDD
+		// Mise à jour en bdd
 		try {
 			await dataMapper.updateUser(checkUser);
 			res.status(201).json(checkUser);
@@ -176,7 +172,7 @@ const userController = {
 	// Méthode pour supprimer le user
 	delete: async (req, res) => {
 
-		// on vérifie que l'id du user est bien dans la BDD
+		// On vérifie que l'id de l'utilisateur est bien dans la bdd
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
@@ -190,7 +186,7 @@ const userController = {
 			return;
 		}
 
-		// on le supprime de la BDD
+		// On le supprime de la BDD
 		try {
 			await dataMapper.deleteUser(req.userId);
 			res.status(200).json({ info: "User correctement supprimé" });
