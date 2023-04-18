@@ -134,16 +134,16 @@ const userHasBookController = {
       // Si l'utilisateur a déjà le livre dans sa liste on envoie un message d'erreur 
       checkUserHasBook = await dataMapper.getUserHasBookByBookIdAndUserId(bookId, req.userId);
       if (checkUserHasBook) {
-        return res.status(400).json({ message: `Ce livre est déjà présent dans la liste des livres à donner` })
+        return res.status(400).json({ message: `Ce livre est déjà présent dans la liste des livres à donner` });
       }
 
       // On ajoute le livre à liste des livres à donner de l'utilisateur
       const { status } = req.body;
 
-      await dataMapper.addBookToUser(bookId, req.userId, status)
-      return res.status(201).json(`Le livre ${bookId} est ajouté à votre liste`)
+      await dataMapper.addBookToUser(bookId, req.userId, status);
+      return res.status(201).json({ message: `Le livre ${bookId} est ajouté à votre liste` });
     } catch (error) {
-      return res.status(500).json({ error })
+      return res.status(500).json({ error });
 
     }
   },
@@ -179,7 +179,7 @@ const userHasBookController = {
       } else {
         // Sinon on supprime le livre de la liste à donner
         await dataMapper.deleteUserBook(bookId, req.userId)
-        return res.status(201).json({ message: `Le livre avec l'id ${bookId} est supprimé de la liste des livres à donner` })
+        return res.status(201).json({ message: `Le livre avec l'id ${bookId} est supprimé de la liste des livres à donner` });
       }
     } catch (error) {
       return res.status(500).json({ error })
@@ -202,13 +202,13 @@ const userHasBookController = {
 
     try {
       // On recherche la liste des livres donnés par l'utilisateur
-      const userGivenBook = await dataMapper.getGivenBookUser(req.userId)
+      const userGivenBook = await dataMapper.getGivenBookUser(req.userId);
       // Si elle est vide on renvoie un message
       if (userGivenBook.length === 0) {
-        return res.status(200).json({ message: "Aucun livre donné" })
+        return res.status(200).json({ message: "Aucun livre donné" });
         // Sinon on retourne la liste des livres donnés
       } else {
-        return res.status(201).json(userGivenBook)
+        return res.status(201).json(userGivenBook);
       }
     } catch (error) {
       return res.status(500).json({ error });
