@@ -57,7 +57,7 @@ const dataMapper = {
 	// Methode pour rechercher un livre dans searchbar
 	searchBook: async (search) => {
 		// La requête : on interroge la bdd
-		const query = `SELECT work.*, book.*, author.name AS "Author",  category.name AS "Category"
+		const query = `SELECT work.*, book.*, author.name AS "Author",  category.name AS "category"
 		FROM "book" 
 		JOIN "work" ON book.work_id = work.id
 		JOIN "author_has_work" ON work.id = author_has_work.work_id
@@ -77,11 +77,9 @@ const dataMapper = {
 		// La requête : on interroge la bdd
 		const query = `SELECT "user_has_book"."created_at",
 			"work"."title",
-			"author"."name",
-			"book"."editor",
-			"book"."cover_page",
-			"book"."language",
-			"category"."name" AS category_name,
+			"author"."name" AS "author",
+			"book".*,
+			"category"."name" AS "category",
 			"user_has_book"."availability"
 		FROM "book" 
 
@@ -101,7 +99,7 @@ const dataMapper = {
 	// Methode pour récupérer un livre via l'id
 	getOneBookById: async (bookId) => {
 		// La requête : on interroge la bdd
-		const query = `SELECT book.*, "author"."name", "category"."name" AS category_name
+		const query = `SELECT book.*, "author"."name", "category"."name" AS category
 		FROM "book"
 		JOIN "work" ON "work"."id" = "book"."work_id" 
 		JOIN "author_has_work" ON "author_has_work"."id" = "work"."id"

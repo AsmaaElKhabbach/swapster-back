@@ -55,10 +55,10 @@ const userRouter = express.Router();
  *                   type: string
  *                 picture:
  *                   type: string
- *                 createdAt:
+ *                 created_at:
  *                   type: string
  *                   format: date-time
- *                 updatedAt:
+ *                 updated_at:
  *                   type: string
  *                   format: date-time
  */
@@ -127,7 +127,7 @@ userRouter.post('/login', validation.login, sessionController.login);
  *                 message:
  *                   type: string
  *                   description: Logout message
- *                   example: "You are now logged out"
+ *                   : "You are now logged out"
  */
 
 userRouter.post('/logout', validateToken, sessionController.logout);
@@ -171,10 +171,10 @@ userRouter.post('/logout', validateToken, sessionController.logout);
  *                   type: string
  *                 picture:
  *                   type: string
- *                 createdAt:
+ *                 created_at:
  *                   type: string
  *                   format: date-time
- *                 updatedAt:
+ *                 updated_at:
  *                   type: string
  *                   format: date-time
  */
@@ -237,10 +237,10 @@ userRouter.get('/me', validateToken, validation.userId, userController.userDetai
  *                   type: string
  *                 picture:
  *                   type: string
- *                 createdAt:
+ *                 created_at:
  *                   type: string
  *                   format: date-time
- *                 updatedAt:
+ *                 updated_at:
  *                   type: string
  *                   format: date-time
  */
