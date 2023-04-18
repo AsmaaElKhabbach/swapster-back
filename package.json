@@ -30,7 +30,7 @@
     "joi": "^17.9.1",
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.10.0",
-    "swagger-editor": "^2.10.5",
+    "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.2"
   },
   "devDependencies": {
