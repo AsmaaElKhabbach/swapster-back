@@ -5,11 +5,6 @@ const validation = require('../services/validation');
 const { validateToken } = require('../middelware/authentication');
 const userRouter = express.Router();
 
-/** */
-
-
-
-
 
 // route inscription, login, logout
 
@@ -63,6 +58,7 @@ const userRouter = express.Router();
  *                   format: date-time
  */
 userRouter.post('/signup', validation.signup, userController.signup);
+
 /**
  * @swagger
  * /user/login:
@@ -107,6 +103,7 @@ userRouter.post('/signup', validation.signup, userController.signup);
  *                   format: date-time
  */
 userRouter.post('/login', validation.login, sessionController.login);
+
 /**
  * @swagger
  * /user/logout:
@@ -129,20 +126,7 @@ userRouter.post('/login', validation.login, sessionController.login);
  *                   description: Logout message
  *                   : "You are now logged out"
  */
-
 userRouter.post('/logout', validateToken, sessionController.logout);
-
-/**
- * @swagger
- * components:
- *   securitySchemes:
- *     bearerAuth:
- *       type: http
- *       scheme: bearer
- *       bearerFormat: JWT
- */
-
-
 
 /**
  * @swagger
@@ -179,11 +163,6 @@ userRouter.post('/logout', validateToken, sessionController.logout);
  *                   format: date-time
  */
 userRouter.get('/me', validateToken, validation.userId, userController.userDetails);
-
-
-
-
-
 
 /**
  * @swagger
@@ -244,9 +223,9 @@ userRouter.get('/me', validateToken, validation.userId, userController.userDetai
  *                   type: string
  *                   format: date-time
  */
-
 userRouter.patch('/me', validateToken, validation.userId, validation.updateUser, userController.update);
 
+// route modification et suppression du user
 /**
  * @swagger
  * /user/me:
@@ -268,10 +247,6 @@ userRouter.patch('/me', validateToken, validation.userId, validation.updateUser,
  *                   type: string
  *                   example: Your account is now deleted
  */
-// route modification et suppression du user
-
-
 userRouter.delete('/me', validateToken, validation.userId, userController.delete);
-
 
 module.exports = userRouter;

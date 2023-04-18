@@ -66,10 +66,10 @@ const dataMapper = {
 		WHERE work.title ILIKE $1 
 		OR author.name ILIKE $1 
 		OR book.isbn_13 ILIKE $1
-		OR category.name ILIKE $1`
+		OR category.name ILIKE $1`;
 		// On retourne le résultat
-		const result = await client.query(query, [`%${search}%`])
-		return result.rows
+		const result = await client.query(query, [`%${search}%`]);
+		return result.rows;
 	},
 
 	// Méthode pour récupérer les 10 derniers livres ajoutés
@@ -116,17 +116,17 @@ const dataMapper = {
 		// La requête : on interroge la bdd
 		const query = `SELECT * FROM "user_has_book" WHERE "book_id" = $1 AND "user_id" =$2`;
 		// On retourne le résultat
-		const result = await client.query(query, [bookId, userId])
+		const result = await client.query(query, [bookId, userId]);
 		return result.rows[0];
 	},
 
 	// Methode pour ajouter livre à la liste user
 	addBookToUser: async (book_id, user_id, status) => {
 		// La requête : on interroge la bdd
-		const query = `INSERT INTO "user_has_book" (book_id, user_id, status) VALUES ($1, $2, $3) RETURNING *`
+		const query = `INSERT INTO "user_has_book" (book_id, user_id, status) VALUES ($1, $2, $3) RETURNING *`;
 		// On retourne le résultat
-		const result = await client.query(query, [book_id, user_id, status])
-		return result.rows[0]
+		const result = await client.query(query, [book_id, user_id, status]);
+		return result.rows[0];
 	},
 
 	// Methode pour modifier la dispo ou status
@@ -134,7 +134,7 @@ const dataMapper = {
 		// La requête : on interroge la bdd
 		const query = `UPDATE "user_has_book" SET "availability" = $3,"status" = $4, "updated_at" = NOW() WHERE "book_id" = $1 AND "user_id" =$2`;
 		// On modifie les données en bdd
-		await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.availability, userHasBook.status])
+		await client.query(query, [userHasBook.book_id, userHasBook.user_id, userHasBook.availability, userHasBook.status]);
 	},
 
 	// Methode pour supprimer un livre de la user liste
@@ -152,7 +152,7 @@ const dataMapper = {
 		FROM "book"
 		JOIN "user_has_book" ON "user_has_book"."book_id" = "book"."id"
 		JOIN "user" ON "user"."id" = "user_has_book"."user_id"
-		WHERE "book"."id" = $1 AND "user_has_book"."availability" = 'disponible'`
+		WHERE "book"."id" = $1 AND "user_has_book"."availability" = 'disponible'`;
 		// On retourne le résultat
 		const result = await client.query(query, [bookId]);
 		return result.rows;
@@ -170,7 +170,7 @@ const dataMapper = {
 		JOIN "category" ON "category"."id" = "work"."category_id"
 		JOIN "user_has_book" ON "user_has_book"."book_id" = "book"."id"
 
-		WHERE "user_has_book"."user_id" = $1 AND "user_has_book"."availability" = 'disponible'`
+		WHERE "user_has_book"."user_id" = $1 AND "user_has_book"."availability" = 'disponible'`;
 		// On retourne le résultat
 		const result = await client.query(query, [userId]);
 		return result.rows;
@@ -187,11 +187,11 @@ const dataMapper = {
 		JOIN "author" ON "author"."id" = "author_has_work"."author_id"
 		JOIN "category" ON "category"."id" = "work"."category_id"
 		JOIN "user_has_book" ON "user_has_book"."book_id" = "book"."id"
-		WHERE "user_has_book"."user_id" = $1 AND "user_has_book"."availability" = 'donné'`
+		WHERE "user_has_book"."user_id" = $1 AND "user_has_book"."availability" = 'donné'`;
 		// On retourne le résultat
-		const result = await client.query(query, [userId])
-		return result.rows
+		const result = await client.query(query, [userId]);
+		return result.rows;
 	}
-}
+};
 
 module.exports = dataMapper;

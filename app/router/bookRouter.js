@@ -9,7 +9,7 @@ const bookRouter = express.Router();
 
 // route des livres de l'utilisateur
 /**
- * @openapi
+ * @swagger
  * /book/my:
  *   get:
  *     summary: List of available books of the user
@@ -74,7 +74,7 @@ const bookRouter = express.Router();
 bookRouter.get('/my', validateToken, validation.userId, userHasBookController.userBooks);
 
 /**
- * @openapi
+ * @swagger
  * /book/{bookId}/my:
  *   post:
  *     summary: Add a book to the user
@@ -112,7 +112,7 @@ bookRouter.get('/my', validateToken, validation.userId, userHasBookController.us
 bookRouter.post('/:bookId/my', validateToken, validation.bookId, validation.userId, validation.addUserBook, userHasBookController.addUserBook);
 
 /**
- * @openapi
+ * @swagger
  * /book/{bookId}/my:
  *   patch:
  *     summary: Update a book to the user
@@ -166,7 +166,7 @@ bookRouter.post('/:bookId/my', validateToken, validation.bookId, validation.user
 bookRouter.patch('/:bookId/my', validateToken, validation.updateUserBook, validation.bookId, validation.userId, userHasBookController.updatedUserBook);
 
 /**
- * @openapi
+ * @swagger
  * /book/{bookId}/my:
  *   delete:
  *     summary: Delete a book to the user
@@ -192,7 +192,7 @@ bookRouter.patch('/:bookId/my', validateToken, validation.updateUserBook, valida
 bookRouter.delete('/:bookId/my', validateToken, validation.userId, validation.bookId, userHasBookController.deleteUserBook);
 
 /**
- * @openapi
+ * @swagger
  * /book/givenbook/my:
  *   get:
  *     summary: List of books given by the user
@@ -256,8 +256,47 @@ bookRouter.delete('/:bookId/my', validateToken, validation.userId, validation.bo
  */
 bookRouter.get('/givenbook/my', validateToken, validation.userId, userHasBookController.givenUserBook);
 
+/**
+ * @swagger
+ * /book/{bookId}/allusers:
+ *   get:
+ *     summary: Get all users who give this book
+ *     tags:
+ *       - User_Has_Book
+ *     parameters:
+ *       - name: bookId
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int64
+ *         description: Id of the book
+ *     responses:
+ *       200:
+ *         description: List of users who give the book
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   name:
+ *                     type: string
+ *                   city:
+ *                     type: string
+ *                   email:
+ *                     type: string
+ *                   status:
+ *                     type: string
+ *                   format:
+ *                     type: string
+ */
+bookRouter.get('/:bookId/allusers', validation.bookId, bookController.allUsersByBookId);
+
+
+
 // route livre(s)
-bookRouter.get('/latestadded', bookController.latestbooks);
 /**
  * @swagger
  * /book/latestadded:
@@ -291,8 +330,7 @@ bookRouter.get('/latestadded', bookController.latestbooks);
  *                 availability:
  *                   type: string
  */
-
-bookRouter.get('/search', validation.searchBook, bookController.searchBook)
+bookRouter.get('/latestadded', bookController.latestbooks);
 
 /**
  * @swagger
@@ -356,48 +394,7 @@ bookRouter.get('/search', validation.searchBook, bookController.searchBook)
  *                  category:
  *                   type: string
  */
-
-bookRouter.get('/:bookId/allusers', validation.bookId, bookController.allUsersByBookId);
-
-
-/**
- * @swagger
- * /book/{bookId}/allusers:
- *   get:
- *     summary: Get all users who give this book
- *     tags:
- *       - Book
- *     parameters:
- *       - name: bookId
- *         in: path
- *         required: true
- *         schema:
- *           type: integer
- *           format: int64
- *         description: Id of the book
- *     responses:
- *       200:
- *         description: List of users who give the book
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   name:
- *                     type: string
- *                   city:
- *                     type: string
- *                   email:
- *                     type: string
- *                   status:
- *                     type: string
- *                   format:
- *                     type: string
- */
-
-bookRouter.get('/:bookId', validation.bookId, bookController.bookDetails);
+bookRouter.get('/search', validation.searchBook, bookController.searchBook);
 
 /**
  * @swagger
@@ -455,5 +452,6 @@ bookRouter.get('/:bookId', validation.bookId, bookController.bookDetails);
  *                 category_name:
  *                  type: string
  */
+bookRouter.get('/:bookId', validation.bookId, bookController.bookDetails);
 
 module.exports = bookRouter;

@@ -24,18 +24,18 @@ const options = {
 	apis: ["./app/router/*.js"]
 }
 
-const specs = swaggerJsDoc(options)
+const specs = swaggerJsDoc(options);
 
 
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs))
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
 app.use(router);
 
 
 app.listen(process.env.PORT, () => {
-	console.log(`Listening on ${process.env.BASE_URL}:${process.env.PORT}`)
+	console.log(`Listening on ${process.env.BASE_URL}:${process.env.PORT}`);
 });
 

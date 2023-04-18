@@ -17,18 +17,18 @@ const bookController = {
 	searchBook: async (req, res) => {
 
 		try {
-			const { query } = req.query
+			const { query } = req.query;
 			// On interroge notre bdd
-			const checkBook = await dataMapper.searchBook(query)
+			const checkBook = await dataMapper.searchBook(query);
 			// Si le resultat de la recherche est vide on renvoie un message
 			if (checkBook.length === 0) {
-				return res.status(200).json({ message: "Aucun résultat pour cette recherche" })
+				return res.status(200).json({ message: "Aucun résultat pour cette recherche" });
 			} else {
 				// Sinon on retourne le resultat de la recherche
-				return res.status(200).json(checkBook)
+				return res.status(200).json(checkBook);
 			}
 		} catch (error) {
-			res.status(500).json({ error })
+			res.status(500).json({ error });
 		}
 
 	},

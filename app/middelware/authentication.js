@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 const authentication = {
 	validateToken: (req, res, next) => {
 		// On récupère dans le headers le token
-		const authHeader = req.headers['authorization']
-		const token = authHeader && authHeader.split(' ')[1]
+		const authHeader = req.headers['authorization'];
+		const token = authHeader && authHeader.split(' ')[1];
 		// On retourne une erreur si le token est null
 		if (token == null) return res.status(401).json({ error: "token null" });
 		// On verifie que le token utilise le Token_Secret

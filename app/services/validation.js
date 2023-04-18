@@ -3,17 +3,17 @@ const schema = require('./schema');
 // Validation des données récupéré dans le req.body ou req.query
 const validation = {
 	signup(req, res, next) {
-		const { error } = schema.signup.validate(req.body, { abortEarly: false })
+		const { error } = schema.signup.validate(req.body, { abortEarly: false });
 		if (error) {
-			return res.status(400).json({ error: error.details })
+			return res.status(400).json({ error: error.details });
 		}
 		next();
 	},
 
 	login(req, res, next) {
-		const { error } = schema.login.validate(req.body, { abortEarly: false })
+		const { error } = schema.login.validate(req.body, { abortEarly: false });
 		if (error) {
-			return res.status(400).json({ error: error.details })
+			return res.status(400).json({ error: error.details });
 		}
 		next();
 	},
@@ -27,7 +27,7 @@ const validation = {
 	},
 
 	updateUser(req, res, next) {
-		const { error } = schema.updateUser.validate(req.body, { abortEarly: false })
+		const { error } = schema.updateUser.validate(req.body, { abortEarly: false });
 		if (error) {
 			return res.status(400).json({ error: error.details });
 		}
@@ -35,7 +35,7 @@ const validation = {
 	},
 
 	searchBook(req, res, next) {
-		const { error } = schema.searchBook.validate(req.query, { abortEarly: false })
+		const { error } = schema.searchBook.validate(req.query, { abortEarly: false });
 		if (error) {
 			return res.status(400).json({ error: error.details });
 		}

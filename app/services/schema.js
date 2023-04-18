@@ -28,7 +28,7 @@ const updateUser = Joi.object({
 	city: Joi.string().pattern(/^[-a-zA-Z ]{4,50}$/),
 	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"]{4,}$/),
 	passwordConfirm: Joi.ref("password")
-})
+});
 
 const searchBook = Joi.object({
 	query: Joi.string().min(1).required()
@@ -41,11 +41,11 @@ const bookId = Joi.number().required();
 const updateUserBook = Joi.object({
 	availability: Joi.string(),
 	status: Joi.string()
-})
+});
 // On crée un schéma pour valider le statut d'un livre
 const addUserBook = Joi.object({
 	status: Joi.string().required()
-})
+});
 
 
 module.exports = { signup, login, userId, updateUser, searchBook, bookId, updateUserBook, addUserBook };
