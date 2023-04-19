@@ -10,7 +10,7 @@ const bookController = {
 			res.status(201).json(latestBooks);
 			return;
 		} catch (error) {
-			return next(new APIError(500, error.message));
+			return next (new APIError(500, error.message));
 		}
 	},
 

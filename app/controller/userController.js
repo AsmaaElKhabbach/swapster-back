@@ -1,10 +1,11 @@
 const dataMapper = require('../dataMapper');
 const bcrypt = require('bcrypt');
+const APIError = require('../utils/error/APIError');
 
 const userController = {
 
 	// Méthode pour créer un compte utilisateur
-	signup: async (req, res) => {
+	signup: async (req, res, next) => {
 		try {
 			const { name, email, city, password } = req.body;
 
@@ -12,16 +13,14 @@ const userController = {
 			const checkUserName = await dataMapper.getOneUserByName(name);
 
 			if (checkUserName) {
-				res.status(409).json({ error: "pseudo (name) déjà utilisé" });
-				return;
+				return next (new APIError(409, "pseudo (name) déjà utilisé"));
 			};
 
 			const checkUserEmail = await dataMapper.getOneUserByEmail(email);
 
 
 			if (checkUserEmail) {
-				res.status(409).json({ error: "email déjà utilisé" });
-				return;
+				return next (new APIError(409, "email déjà utilisé"));
 			};
 
 			// On crée un objet user
@@ -38,26 +37,22 @@ const userController = {
 			return;
 
 		} catch (error) {
-			console.log(error);
-			res.status(500).json({ error });
-			return;
+			return next (new APIError(500, error.message));
 		}
 	},
 
 	// Methode pour afficher les détails d'un utilisateur 
-	userDetails: async (req, res) => {
+	userDetails: async (req, res, next) => {
 		// On vérifie que l'id de l'utilisateur est bien dans la BDD
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (error) {
-			res.status(500).json({ error });
-			return;
+			return next (new APIError(500, error.message));
 		}
 
 		if (!checkUser) {
-			res.status(404).json({ error: `Pas de user avec l'id ${req.userId}` });
-			return;
+			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
 		res.status(201).json(checkUser);
@@ -66,7 +61,7 @@ const userController = {
 	},
 
 	// Méthode pour mise à jour de l'utilisateur
-	update: async (req, res) => {
+	update: async (req, res, next) => {
 		// Pour savoir s'il y a eu une modif sur l'utilisateur : 0 = pas de modif ; 1 = modif
 		let userHasChanged = 0;
 
@@ -75,13 +70,11 @@ const userController = {
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (error) {
-			res.status(500).json({ error });
-			return;
+			return next (new APIError(500, error.message));
 		}
 
 		if (!checkUser) {
-			res.status(404).json({ error: `Pas de user avec l'id ${req.userId}` });
-			return;
+			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
 		// On récupère les données du front
@@ -94,13 +87,11 @@ const userController = {
 			try {
 				checkUserName = await dataMapper.getOneUserByName(name);
 			} catch (error) {
-				res.status(500).json({ error });
-				return;
+				return next (new APIError(500, error.message));
 			}
 
 			if (checkUserName) {
-				res.status(404).json({ error: `le name ${name} existe déjà` });
-				return;
+				return next (new APIError(409, `le name ${name} existe déjà`));
 			}
 
 			// Mise à jour dans la variable checkUser
@@ -115,13 +106,11 @@ const userController = {
 			try {
 				checkUserEmail = await dataMapper.getOneUserByEmail(email);
 			} catch (error) {
-				res.status(500).json({ error });
-				return;
+				return next (new APIError(500, error.message));
 			}
 
 			if (checkUserEmail) {
-				res.status(404).json({ error: `l'email ${email} existe déjà` });
-				return;
+				return next (new APIError(409, `l'email ${email} existe déjà`));
 			};
 
 			// Mise à jour dans la variable checkUser
@@ -143,8 +132,7 @@ const userController = {
 			const hashPassword = await bcrypt.hash(password, 10);
 
 			if (hashPassword == checkUser.password) {
-				res.status(400).json({ error: "le mot de passe est le même" });
-				return;
+				return next (new APIError(409, "le mot de passe est le même"));
 			}
 
 			// Mise à jour dans la variable checkUser
@@ -164,26 +152,23 @@ const userController = {
 			res.status(201).json(checkUser);
 			return;
 		} catch (error) {
-			res.status(500).json({ error });
-			return;
+			return next (new APIError(500, error.message));
 		}
 	},
 
 	// Méthode pour supprimer le user
-	delete: async (req, res) => {
+	delete: async (req, res, next) => {
 
 		// On vérifie que l'id de l'utilisateur est bien dans la bdd
 		let checkUser;
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (error) {
-			res.status(500).json({ error });
-			return;
+			return next (new APIError(500, error.message));
 		}
 
 		if (!checkUser) {
-			res.status(404).json({ error: `Pas de user avec l'id ${req.userId}` });
-			return;
+			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
 		// On le supprime de la BDD
@@ -192,8 +177,7 @@ const userController = {
 			res.status(200).json({ info: "User correctement supprimé" });
 			return;
 		} catch (error) {
-			res.status(500).json({ error });
-			return;
+			return next (new APIError(500, error.message));
 		}
 	}
 };

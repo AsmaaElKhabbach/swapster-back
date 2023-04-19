@@ -101,7 +101,7 @@ const dataMapper = {
 	// Methode pour récupérer un livre via l'id
 	getOneBookById: async (bookId) => {
 		// La requête : on interroge la bdd
-		const query = `SELECT book.*, "author"."name" AS author, "category"."name" AS category
+		const query = `SELECT "book".*, "work".*, "author"."name" AS author, "category"."name" AS category
 		FROM "book"
 		JOIN "work" ON "work"."id" = "book"."work_id" 
 		JOIN "author_has_work" ON "author_has_work"."id" = "work"."id"

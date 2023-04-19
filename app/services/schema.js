@@ -4,7 +4,7 @@ const Joi = require('joi')
 const signup = Joi.object({
 	name: Joi.string().alphanum().min(4).required(),
 	email: Joi.string().email().required(),
-	city: Joi.string().pattern(/^[-a-zA-Z ']{4,50}$/).required(),
+	city: Joi.string().pattern(/^[-a-zA-Z ']{1,50}$/).required(),
 	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"]{4,}$/).required(),
 	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"]{4,}$/).required(),
 	passwordConfirm: Joi.ref("password")
@@ -23,7 +23,7 @@ const userId = Joi.number().required();
 const updateUser = Joi.object({
 	name: Joi.string().alphanum().min(4),
 	email: Joi.string().email(),
-	city: Joi.string().pattern(/^[-a-zA-Z ']{4,50}$/),
+	city: Joi.string().pattern(/^[-a-zA-Z ']{1,50}$/),
 	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"]{4,}$/),
 	city: Joi.string().pattern(/^[-a-zA-Z ]{4,50}$/),
 	password: Joi.string().pattern(/^[-a-zA-Z0-9 #!*%?;:,.=+'"]{4,}$/),
