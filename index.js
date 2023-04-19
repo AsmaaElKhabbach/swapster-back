@@ -21,7 +21,7 @@ const options = {
 			}
 		],
 	},
-	apis: ["./app/router/*.js"]
+	apis: ["./app/utils/swagger.js"]
 }
 
 const specs = swaggerJsDoc(options);
@@ -38,4 +38,3 @@ app.use(router);
 app.listen(process.env.PORT, () => {
 	console.log(`Listening on ${process.env.BASE_URL}:${process.env.PORT}`);
 });
-

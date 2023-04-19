@@ -12,16 +12,6 @@ router.get('/', (req, res) => {
 	res.send('Youpi');
 });
 
-/**
- * @swagger
- * components:
- *   securitySchemes:
- *     bearerAuth:
- *       type: http
- *       scheme: bearer
- *       bearerFormat: JWT
- */
-
 // route inscription, login, logout, modification et suppression de l'utilisateur
 router.use('/user', userRouter);
 
