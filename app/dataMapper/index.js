@@ -89,6 +89,8 @@ const dataMapper = {
 		JOIN "category" ON "category"."id" = "work"."category_id"
 		JOIN "user_has_book" ON "user_has_book"."book_id" = "book"."id"
 				
+		WHERE "user_has_book"."availability" = 'disponible'
+		
 		ORDER BY "user_has_book"."created_at" desc limit 5`;
 		// On retourne le résultat
 		const result = await client.query(query);
