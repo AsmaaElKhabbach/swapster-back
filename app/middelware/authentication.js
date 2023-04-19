@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const tokenService = require('../services/token');
 
 const authentication = {
 	validateToken: (req, res, next) => {
@@ -8,13 +8,12 @@ const authentication = {
 		// On retourne une erreur si le token est null
 		if (token == null) return res.status(401).json({ error: "token null" });
 		// On verifie que le token utilise le Token_Secret
-		jwt.verify(token, process.env.TOKEN_SECRET, (err, payload) => {
-			// On retourne une erreur si le token est invalide
-			if (err) return res.status(403).json({ error: "token invalide" });
-			// On ajoute le userId dans l'objet req pour une utilisation futur
-			req.userId = payload.userId;
-			next();
-		});
+		const userId = tokenService.verifyToken(token);
+		// On retourne une erreur si le token est invalide
+		if (!userId) return res.status(403).json({ error: "token invalide" });
+		// On ajoute le userId dans l'objet req pour une utilisation futur
+		req.userId = userId;
+		next();
 	}
 };
 
