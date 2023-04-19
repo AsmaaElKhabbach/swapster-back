@@ -6,7 +6,6 @@ const sessionController = {
 
 	// Methode pour se connecter à un compte utilisateur
 	login: async (req, res) => {
-
 		try {
 			// On récupère l'email et le password dans le body
 			const { email, password } = req.body;

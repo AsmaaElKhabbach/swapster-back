@@ -4,7 +4,9 @@
   "description": "Projet d'Apothéose Swapster Back",
   "main": "index.js",
   "scripts": {
+    "debug":"DEBUG=tata node test.js",
     "dev": "node-dev index.js",
+    "start": "DEBUG=session node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

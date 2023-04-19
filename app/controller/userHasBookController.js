@@ -215,6 +215,33 @@ const userHasBookController = {
 		} catch (error) {
 			return res.status(500).json({ error });
 		}
+	},
+
+	// Methode pour afficher tous les utilisateur qui donne un livre
+	allUsersByBookId: async (req, res) => {
+		// On vérifie que l'id du livre est bien dans la bdd
+		let checkBook;
+		try {
+			checkBook = await dataMapper.getOneBookById(req.params.bookId);
+		} catch (error) {
+			res.status(500).json({ error });
+			return;
+		}
+		//  Si le livre n'est pas en bdd on renvoie une erreur
+		if (!checkBook) {
+			res.status(404).json({ error: `Pas de livre avec l'id ${req.params.bookId}` });
+			return;
+		}
+
+		try {
+			// On renvoie le resultat de la requête
+			const availableBooks = await dataMapper.getAllBooksAvailable(req.params.bookId);
+			res.status(201).json(availableBooks);
+			return;
+		} catch (error) {
+			res.status(500).json({ error });
+			return;
+		}
 	}
 };
 

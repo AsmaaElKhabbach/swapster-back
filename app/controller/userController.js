@@ -12,7 +12,7 @@ const userController = {
 			const checkUserName = await dataMapper.getOneUserByName(name);
 
 			if (checkUserName) {
-				res.status(500).json({ error: "pseudo (name) déjà utilisé" });
+				res.status(409).json({ error: "pseudo (name) déjà utilisé" });
 				return;
 			};
 
@@ -20,7 +20,7 @@ const userController = {
 
 
 			if (checkUserEmail) {
-				res.status(500).json({ error: "email déjà utilisé" });
+				res.status(409).json({ error: "email déjà utilisé" });
 				return;
 			};
 

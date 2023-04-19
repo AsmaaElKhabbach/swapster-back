@@ -292,7 +292,7 @@ bookRouter.get('/givenbook/my', validateToken, validation.userId, userHasBookCon
  *                   format:
  *                     type: string
  */
-bookRouter.get('/:bookId/allusers', validation.bookId, bookController.allUsersByBookId);
+bookRouter.get('/:bookId/allusers', validation.bookId, userHasBookController.allUsersByBookId);
 
 
 
