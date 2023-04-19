@@ -4,7 +4,7 @@
   "description": "Projet d'Apothéose Swapster Back",
   "main": "index.js",
   "scripts": {
-    "dev": "node-dev index.js",
+    "dev": "npx nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +25,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
+    "debug": "^4.3.4",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "joi": "^17.9.1",
