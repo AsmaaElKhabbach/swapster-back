@@ -3,7 +3,7 @@
 		{
 			"id" : 1,
 			"name": "John",
-			"email": "John@oclock.io",
+			"email": "john@oclock.io",
 			"password": "$2b$10$yZznjHJCENsDpS4SFDcLQuOiaNKHLPsJ9qURrKTFyWOqMdVVR46/.",
 			"city": "Paris",
 			"picture": "https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-image-sociale-utilisateur-m%C3%A9dias-social-182145777.jpg"
@@ -11,7 +11,7 @@
 		{
 			"id" : 2, 
 			"name": "Donneur",
-			"email": "Donneur@oclock.io",
+			"email": "donneur@oclock.io",
 			"password": "$2b$10$nol..oNKvA4TsQICrBrAte/XAhbceVBadwuREuGqu7mEqj62ci//G",
 			"city": "Creteil",
 			"picture": "https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-image-sociale-utilisateur-m%C3%A9dias-social-182145777.jpg"

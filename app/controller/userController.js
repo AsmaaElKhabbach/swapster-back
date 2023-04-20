@@ -16,7 +16,7 @@ const userController = {
 				return next(new APIError(409, "pseudo (name) déjà utilisé"));
 			};
 
-			const checkUserEmail = await dataMapper.getOneUserByEmail(email);
+			const checkUserEmail = await dataMapper.getOneUserByEmail(email.toLowerCase());
 
 
 			if (checkUserEmail) {
@@ -26,7 +26,7 @@ const userController = {
 			// On crée un objet user
 			const user = {
 				name: name,
-				email: email,
+				email: email.toLowerCase(),
 				city: city,
 				password: await bcrypt.hash(password, 10)
 			};
@@ -100,11 +100,11 @@ const userController = {
 		}
 
 		// On vérifie s'il y a eu du changement sur l'email de l'utilisateur
-		if (email && email !== checkUser.email) {
+		if (email && email.toLowerCase() !== checkUser.email) {
 			let checkUserEmail;
 
 			try {
-				checkUserEmail = await dataMapper.getOneUserByEmail(email);
+				checkUserEmail = await dataMapper.getOneUserByEmail(email.toLowerCase());
 			} catch (error) {
 				return next(new APIError(500, error.message));
 			}
@@ -114,7 +114,7 @@ const userController = {
 			};
 
 			// Mise à jour dans la variable checkUser
-			checkUser.email = email;
+			checkUser.email = email.toLowerCase();
 			userHasChanged = 1;
 		}
 

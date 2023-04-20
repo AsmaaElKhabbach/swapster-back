@@ -12,7 +12,7 @@ const sessionController = {
 			const { email, password } = req.body;
 
 			// On stock le resultat de la requête
-			const user = await dataMapper.getOneUserByEmail(email);
+			const user = await dataMapper.getOneUserByEmail(email.toLowerCase());
 
 			// On vérifie que l'email correspond 
 			if (!user) {
