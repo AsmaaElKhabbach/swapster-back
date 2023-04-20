@@ -30,7 +30,7 @@ const sessionController = {
 			return res.status(202).json(user);
 
 		} catch (error) {
-			return next(new APIError(500, error.message));S
+			return next(new APIError(500, error.message));
 		}
 	},
 
