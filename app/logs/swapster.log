@@ -1,13 +1,9 @@
 {"name":"swapster","hostname":"teleporter","pid":63144,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T12:12:37.714Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1247742,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T12:56:28.428Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1250425,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T12:56:57.876Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1346592,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T13:25:13.736Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1617436,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:42:17.997Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1622079,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:43:43.387Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1658581,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:54:01.936Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1680879,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T15:00:37.255Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1683141,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T15:01:18.357Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1699607,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T15:05:51.873Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1734081,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T15:15:58.899Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1734684,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T15:16:06.479Z","v":0}
-{"name":"swapster","hostname":"teleporter","pid":1755154,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T15:21:23.690Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":118689,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:02:34.333Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":118689,"level":50,"msg":"APIError: Email ou mot de passe incorrect","time":"2023-04-20T14:03:34.205Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":118689,"level":50,"msg":"APIError: Email ou mot de passe incorrect","time":"2023-04-20T14:03:49.008Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":119574,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:04:05.113Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":119574,"level":50,"msg":"APIError: token invalide","time":"2023-04-20T14:04:39.076Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":119574,"level":50,"msg":"APIError: Ce livre est déjà présent dans la liste des livres à donner","time":"2023-04-20T14:05:24.940Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":124188,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:12:21.920Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":125358,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:14:27.790Z","v":0}
