@@ -1,1 +1,9 @@
 {"name":"swapster","hostname":"teleporter","pid":63144,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T12:12:37.714Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":118689,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:02:34.333Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":118689,"level":50,"msg":"APIError: Email ou mot de passe incorrect","time":"2023-04-20T14:03:34.205Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":118689,"level":50,"msg":"APIError: Email ou mot de passe incorrect","time":"2023-04-20T14:03:49.008Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":119574,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:04:05.113Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":119574,"level":50,"msg":"APIError: token invalide","time":"2023-04-20T14:04:39.076Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":119574,"level":50,"msg":"APIError: Ce livre est déjà présent dans la liste des livres à donner","time":"2023-04-20T14:05:24.940Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":124188,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:12:21.920Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":125358,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T14:14:27.790Z","v":0}
