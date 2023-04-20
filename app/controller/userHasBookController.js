@@ -97,7 +97,8 @@ const userHasBookController = {
 
 		// Est-ce qu'il y a eu du changement ?
 		if (userHasBookChanged == 0) {
-			return next (new APIError(409, "Pas de changement"));
+			return next(new APIError(409, `Pas de changement`));
+
 		}
 
 		// Mise à jour en bdd

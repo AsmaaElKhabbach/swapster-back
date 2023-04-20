@@ -1,5 +1,6 @@
 const bunyan = require('bunyan');
-const path = require('path')
+const path = require('path');
+
 
 // On crée un logger avec Bunyan ou on stockera les infos
 const logger = bunyan.createLogger({
@@ -9,11 +10,13 @@ const logger = bunyan.createLogger({
       level: 'info',
       stream: process.stdout
     }, {
+      type: 'rotating-file',
       path: path.join(__dirname, '../logs/swapster.log'),
       level: 'info',
-      period: 'id',
+      period: '1d'
 
     }]
+
 });
 
 module.exports = logger;
