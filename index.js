@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const logger = require('./app/services/logger')
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -17,7 +17,13 @@ const options = {
 		},
 		servers: [
 			{
-				url: "https://swapster-back-production.up.railway.app"
+				description: "Serveur Railway",
+				url: "https://swapster-back-production.up.railway.app",
+
+			},
+			{
+				description: "Serveur local",
+				url: "http://localhost:5000/"
 			}
 		],
 	},
@@ -36,5 +42,5 @@ app.use(router);
 
 
 app.listen(process.env.PORT, () => {
-	console.log(`Listening on ${process.env.BASE_URL}:${process.env.PORT}`);
+	logger.info(`Listening on ${process.env.BASE_URL}:${process.env.PORT}`);
 });

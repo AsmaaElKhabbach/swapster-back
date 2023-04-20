@@ -10,25 +10,25 @@ const userHasBookController = {
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 		// Si l'utilisateur n'existe pas en bdd on renvoie une erreur
 		if (!checkUser) {
-			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
+			return next(new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
 		try {
 			// On interroge la bdd et on renvoie les livres de l'utilisateur
 			const userbooks = await dataMapper.getAllUserBooks(req.userId);
-			
+
 			// On vérifie si l'utilisateur a des livres
 			if (userbooks.length == 0) {
-				return next (new APIError(404, `Pas de livre pour cet utilisateur`));
+				return next(new APIError(404, `Pas de livre pour cet utilisateur`));
 			}
 			res.status(200).json(userbooks);
 			return;
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 	},
 
@@ -43,12 +43,12 @@ const userHasBookController = {
 		try {
 			checkBook = await dataMapper.getOneBookById(bookId);
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 
 		// Si le livre n'est pas en bdd on renvoie une erreur
 		if (!checkBook) {
-			return next (new APIError(404, `Pas de livre avec l'id ${bookId}`));
+			return next(new APIError(404, `Pas de livre avec l'id ${bookId}`));
 		}
 
 		// On vérifie que l'id de l'utilisateur existe bien en bdd
@@ -56,11 +56,11 @@ const userHasBookController = {
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 		// Si l'utilisateur n'existe pas on renvoie une erreur
 		if (!checkUser) {
-			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
+			return next(new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
 		// On vérifie que l'utilisateur a bien le livre
@@ -68,12 +68,12 @@ const userHasBookController = {
 		try {
 			checkUserHasBook = await dataMapper.getUserHasBookByBookIdAndUserId(bookId, req.userId);
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 
 		// Si le livre n'est pas rattaché à l'utilisateur on renvoie une erreur
 		if (!checkUserHasBook) {
-			return next (new APIError(404, `Pas de livre pour cet user.` ));
+			return next(new APIError(404, `Pas de livre pour cet user.`));
 		}
 
 		// On récupère les données du front
@@ -97,7 +97,7 @@ const userHasBookController = {
 
 		// Est-ce qu'il y a eu du changement ?
 		if (userHasBookChanged == 0) {
-			res.status(200).json({ warn: "Pas de changement" });
+			res.status(409).json({ warn: "Pas de changement" });
 			return;
 		}
 
@@ -107,7 +107,7 @@ const userHasBookController = {
 			res.status(201).json(checkUserHasBook);
 			return;
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 	},
 
@@ -121,7 +121,7 @@ const userHasBookController = {
 
 			// On renvoie un message d'erreur si le livre n'est pas dans la bdd
 			if (!checkBook) {
-				return next (new APIError(404, `Pas de livre avec l'id ${bookId}`));
+				return next(new APIError(404, `Pas de livre avec l'id ${bookId}`));
 			}
 
 			// On vérifie que l'utilisateur est bien dans la bdd
@@ -129,22 +129,22 @@ const userHasBookController = {
 
 			// On renvoie un message d'erreur si l'utilisateur n'est pas dans la bdd
 			if (!checkUser) {
-				return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
+				return next(new APIError(404, `Pas de user avec l'id ${req.userId}`));
 			}
 
 			// Si l'utilisateur a déjà le livre dans sa liste on envoie un message d'erreur 
 			checkUserHasBook = await dataMapper.getUserHasBookByBookIdAndUserId(bookId, req.userId);
 			if (checkUserHasBook) {
-				return next (new APIError(409, `Ce livre est déjà présent dans la liste des livres à donner`));
+				return next(new APIError(409, `Ce livre est déjà présent dans la liste des livres à donner`));
 			}
 
 			// On ajoute le livre à liste des livres à donner de l'utilisateur
 			const { status } = req.body;
 
 			await dataMapper.addBookToUser(bookId, req.userId, status);
-			return next (new APIError(409, `Le livre ${bookId} est ajouté à la liste`));
+			return res.status(201).json({ message: `Le livre ${bookId} est ajouté à la liste` });
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 	},
 
@@ -159,7 +159,7 @@ const userHasBookController = {
 
 			// On renvoie un message d'erreur si le livre n'est pas dans la bdd
 			if (!checkBook) {
-				return next (new APIError(404, `Pas de livre avec l'id ${bookId}`));
+				return next(new APIError(404, `Pas de livre avec l'id ${bookId}`));
 			}
 
 			// On vérifie que l'utilisateur est bien dans la bdd
@@ -167,7 +167,7 @@ const userHasBookController = {
 
 			// On renvoie un message d'erreur si l'utilisateur n'est pas dans la bdd
 			if (!checkUser) {
-				return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
+				return next(new APIError(404, `Pas de user avec l'id ${req.userId}`));
 			}
 
 			// On vérifie si l'utilisateur a bien le livre dans sa liste
@@ -175,14 +175,14 @@ const userHasBookController = {
 
 			// Si le livre n'est pas dans la liste à donner on renvoie une erreur
 			if (!checkUserHasBook) {
-				return next (new APIError(404, `Pas de livre avec l'id ${bookId} dans votre liste à donner`));
+				return next(new APIError(404, `Pas de livre avec l'id ${bookId} dans votre liste à donner`));
 			} else {
 				// Sinon on supprime le livre de la liste à donner
 				await dataMapper.deleteUserBook(bookId, req.userId)
 				return res.status(200).json({ message: `Le livre avec l'id ${bookId} est supprimé de la liste des livres à donner` });
 			}
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 	},
 
@@ -193,12 +193,12 @@ const userHasBookController = {
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 
 		// On renvoie un message d'erreur si l'utilisateur n'est pas dans la bdd
 		if (!checkUser) {
-			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
+			return next(new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
 		try {
@@ -207,13 +207,13 @@ const userHasBookController = {
 
 			// Si elle est vide on renvoie un message
 			if (userGivenBook.length === 0) {
-				return next (new APIError(404, "Aucun livre donné"));
-			// Sinon on retourne la liste des livres donnés
+				return next(new APIError(404, "Aucun livre donné"));
+				// Sinon on retourne la liste des livres donnés
 			} else {
 				return res.status(200).json(userGivenBook);
 			}
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 	},
 
@@ -224,11 +224,11 @@ const userHasBookController = {
 		try {
 			checkBook = await dataMapper.getOneBookById(req.params.bookId);
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 		//  Si le livre n'est pas en bdd on renvoie une erreur
 		if (!checkBook) {
-			return next (new APIError(404, `Pas de livre avec l'id ${req.params.bookId}`));
+			return next(new APIError(404, `Pas de livre avec l'id ${req.params.bookId}`));
 		}
 
 		try {
@@ -237,7 +237,7 @@ const userHasBookController = {
 			res.status(200).json(availableBooks);
 			return;
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 	},
 
@@ -248,13 +248,13 @@ const userHasBookController = {
 		try {
 			checkBook = await dataMapper.getOneBookById(req.params.bookId);
 		} catch (error) {
-			res.status(500).json({ error });
-			return;
+			return next(new APIError(500, error.message));
+
 		}
 		//  Si le livre n'est pas en bdd on renvoie une erreur
 		if (!checkBook) {
-			res.status(404).json({ error: `Pas de livre avec l'id ${req.params.bookId}` });
-			return;
+			return rnext(new APIError(404, `Pas de livre avec l'id ${req.params.bookId}`));
+
 		}
 
 		try {
@@ -263,8 +263,7 @@ const userHasBookController = {
 			res.status(201).json(availableBooks);
 			return;
 		} catch (error) {
-			res.status(500).json({ error });
-			return;
+			return next(new APIError(500, error.message));
 		}
 	}
 };
