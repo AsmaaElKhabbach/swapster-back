@@ -440,7 +440,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               type: object
+ *               type: array
  *               items:
  *                 $ref: '#/components/schemas/Book'
  */
