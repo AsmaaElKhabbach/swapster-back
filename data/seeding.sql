@@ -172,7 +172,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9782210740587', 'https://m.media-amazon.com/images/I/91dswfXsBaL._AC_UL400_.jpg', 'MAGNARD', '2 mai 2014', 'Français', '160', '18', '13 ', '0.9', 1);
+	('9782210740587', 'https://m.media-amazon.com/images/I/91dswfXsBaL._AC_UL400_.jpg', 'Magnard', '2 mai 2014', 'Français', '160', '18', '13 ', '0.9', 1);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
@@ -187,7 +187,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9782072878497', 'https://m.media-amazon.com/images/I/71UYvdDVyzL._AC_UL400_.jpg', 'FOLIO', '28 mai 2020', 'Français', '400', '17.9', '11', '1.5', 3);
+	('9782072878497', 'https://m.media-amazon.com/images/I/71UYvdDVyzL._AC_UL400_.jpg', 'Folio', '28 mai 2020', 'Français', '400', '17.9', '11', '1.5', 3);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
@@ -222,7 +222,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9782757893272', 'https://cdn.cultura.com/cdn-cgi/image/width=768/media/pim/TITELIVE/55_9782757893272_1_75.jpg', 'POINTS', '25 mars 2022', 'Français', '480', '17.8', '10.9', '2.5', 7);
+	('9782757893272', 'https://cdn.cultura.com/cdn-cgi/image/width=768/media/pim/TITELIVE/55_9782757893272_1_75.jpg', 'Points', '25 mars 2022', 'Français', '480', '17.8', '10.9', '2.5', 7);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
@@ -237,7 +237,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9788412201819', 'https://m.media-amazon.com/images/P/8412201817.01._SCLZZZZZZZ_SX500_.jpg', 'LIBELLIO ', '4 juin 2020', 'Français', '270', '22.86', '15.24', '1.55', 8);
+	('9788412201819', 'https://m.media-amazon.com/images/P/8412201817.01._SCLZZZZZZZ_SX500_.jpg', 'Libellio ', '4 juin 2020', 'Français', '270', '22.86', '15.24', '1.55', 8);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
@@ -252,7 +252,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9782210758810', 'https://m.media-amazon.com/images/I/61Hnm6vJH6L._AC_UY218_.jpg', 'MAGNARD', '24 avril 2018', 'Français', '160', '18', '13', '0.8', 10);
+	('9782210758810', 'https://m.media-amazon.com/images/I/61Hnm6vJH6L._AC_UY218_.jpg', 'Magnard', '24 avril 2018', 'Français', '160', '18', '13', '0.8', 10);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
