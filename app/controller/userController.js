@@ -55,7 +55,7 @@ const userController = {
 			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
-		res.status(201).json(checkUser);
+		res.status(200).json(checkUser);
 		return;
 
 	},
@@ -142,8 +142,7 @@ const userController = {
 
 		// Est-ce qu'il y a eu du changement ?
 		if (userHasChanged == 0) {
-			res.status(200).json({ warn: "Pas de changement" });
-			return;
+			return next (new APIError(409, "Pas de changement"));
 		}
 
 		// Mise à jour en bdd
@@ -174,7 +173,7 @@ const userController = {
 		// On le supprime de la BDD
 		try {
 			await dataMapper.deleteUser(req.userId);
-			res.status(200).json({ info: "User correctement supprimé" });
+			res.status(200).json({ message: "User correctement supprimé" });
 			return;
 		} catch (error) {
 			return next (new APIError(500, error.message));

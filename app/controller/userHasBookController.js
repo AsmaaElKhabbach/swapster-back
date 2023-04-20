@@ -97,8 +97,7 @@ const userHasBookController = {
 
 		// Est-ce qu'il y a eu du changement ?
 		if (userHasBookChanged == 0) {
-			res.status(200).json({ warn: "Pas de changement" });
-			return;
+			return next (new APIError(409, "Pas de changement"));
 		}
 
 		// Mise à jour en bdd
@@ -142,7 +141,7 @@ const userHasBookController = {
 			const { status } = req.body;
 
 			await dataMapper.addBookToUser(bookId, req.userId, status);
-			return next (new APIError(409, `Le livre ${bookId} est ajouté à la liste`));
+			res.status(201).json({ message : `Le livre ${bookId} est ajouté à la liste` });
 		} catch (error) {
 			return next (new APIError(500, error.message));
 		}
@@ -253,18 +252,16 @@ const userHasBookController = {
 		}
 		//  Si le livre n'est pas en bdd on renvoie une erreur
 		if (!checkBook) {
-			res.status(404).json({ error: `Pas de livre avec l'id ${req.params.bookId}` });
-			return;
+			return next (new APIError(404, `Pas de livre avec l'id ${req.params.bookId}`));
 		}
 
 		try {
 			// On renvoie le resultat de la requête
 			const availableBooks = await dataMapper.getAllBooksAvailable(req.params.bookId);
-			res.status(201).json(availableBooks);
+			res.status(200).json(availableBooks);
 			return;
 		} catch (error) {
-			res.status(500).json({ error });
-			return;
+			return next (new APIError(500, error.message));
 		}
 	}
 };

@@ -7,7 +7,7 @@ const bookController = {
 	latestbooks: async (req, res, next) => {
 		try {
 			const latestBooks = await dataMapper.getLatestBooks();
-			res.status(201).json(latestBooks);
+			res.status(200).json(latestBooks);
 			return;
 		} catch (error) {
 			return next (new APIError(500, error.message));
