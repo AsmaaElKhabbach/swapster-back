@@ -261,7 +261,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: "#/components/schemas/UserInfoResponse"
+ *               $ref: "#/components/responses/UserInfoResponse"
  */
 
 /*LOGIN */
