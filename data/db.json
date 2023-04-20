@@ -1,7 +1,7 @@
 {
-	"user" : [
+	"user": [
 		{
-			"id" : 1,
+			"id": 1,
 			"name": "John",
 			"email": "john@oclock.io",
 			"password": "$2b$10$yZznjHJCENsDpS4SFDcLQuOiaNKHLPsJ9qURrKTFyWOqMdVVR46/.",
@@ -9,7 +9,7 @@
 			"picture": "https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-image-sociale-utilisateur-m%C3%A9dias-social-182145777.jpg"
 		},
 		{
-			"id" : 2, 
+			"id": 2, 
 			"name": "Donneur",
 			"email": "donneur@oclock.io",
 			"password": "$2b$10$nol..oNKvA4TsQICrBrAte/XAhbceVBadwuREuGqu7mEqj62ci//G",
@@ -18,312 +18,541 @@
 		}
 	],
 
-	"work" : [
+	"work": [
 		{
-			"id" : 1,
+			"id": 1,
 			"title": "Alice aux pays des merveilles",
 			"resume": "loremdnkjndlqskdjqlsjdqklzope o ,dqod ,qd qzpd,zq,dzqpokdqlmkdzqmldqpzq",
 			"category_id": 4
 		},
 		{
-			"id" : 2,
+			"id": 2,
 			"title": "Harry Potter et l’école des sorciers",
 			"resume": "loremdnkjndlqskdjqlsjdqklzope o ,dqod ,qd qzpd,zq,dzqpokdqlmkdzqmldqpzq",
 			"category_id": 1
 		}, 
 		{
-			"id" : 3,
+			"id": 3,
 			"title": "Les misérables",
 			"resume": "Ce livre est un vrai chef d’ oeuvre de la littérature française. Ce roman historique écrit par le grand Victor Hugo est très fidèle au condition de l’ époque. Je remercie le ministère de l’ éducation de l’ avoir mit au programme",
 			"category_id": 5
 		},
 		{
-			"id" : 4,
+			"id": 4,
 			"title": "1984",
 			"resume": "dnsqmldjkmql,zlmq,qslk,ddqsdq",
 			"category_id": 1
 		},
 		{
-			"id" : 5,
+			"id": 5,
 			"title": "Pierre et Jean",
 			"resume": "Au cours d’une partie de pêche familiale en compagnie de Mme Rosémilly, les deux frères, pour séduire la jeune femme, se livrent à une compétition acharnée à la rame. Le lecteur découvre que sous une apparence d’union et d’affection, une vraie rivalité oppose les deux frères.",
-			"category_id": 6
+			"category_id": 3
 		},
 		{
-			"id" : 6,
+			"id": 6,
 			"title": "Le Petit Prince",
 			"resume": "loremdnkjndlqskdjqlsjdqklzope o ,dqod ,qd qzpd,zq,dzqpokdqlmkdzqmldqpzq skqldjqsdq",
 			"category_id": 4
+		},
+		{
+			"id": 7,
+			"title": "Cent ans de solitude",
+			"resume": "À Macondo, petit village isolé d’Amérique du Sud, l’illustre famille Buendia est condamnée à cent ans de solitude par la prophétie du gitan Melquiades… Dans un tourbillon de révolutions, de guerres civiles, de fléaux et de destructions, elle vit une épopée mythique, à la saveur inoubliable, qui traverse les trois âges de la vie : naissance, vie et décadence… Ce roman époustouflant est un chef-d’œuvre du XXe siècle.",
+			"category_id": 7
+		},
+		{
+			"id": 8,
+			"title": "Le meilleur des mondes",
+			"resume": "Voici près d’un siècle, dans d’étourdissantes visions, Aldous Huxley imagine une civilisation future jusque dans ses rouages les plus surprenants : un État Mondial, parfaitement hiérarchisé, a cantonné les derniers humains \" sauvages \" dans des réserves. La culture in vitro des fœtus a engendré le règne des \" Alphas \", génétiquement déterminés à être l’élite dirigeante. Les castes inférieures, elles, sont conditionnées pour se satisfaire pleinement de leur sort. Dans cette société où le bonheur est loi, famille, monogamie, sentiments sont bannis. Le meilleur des mondes est possible. Aujourd’hui, il nous paraît même familier...",
+			"category_id": 4
+		},
+		{
+			"id": 9,
+			"title": "Le Tour du monde en 80 jours",
+			"resume": "\"Le Tour du monde en 80 jours\" est un roman d’aventures de Jules Verne paru en 1872. Il relate l’histoire de Phileas Fogg, (un gentleman anglais), et de son fidèle serviteur Jean Passepartout. Lorsque Phileas Fogg apprend dans le journal local qu’il est possible de réaliser le tour du monde en moins de 80 jours grâce à l’ouverture d’une nouvelle voie de chemin de fer en Inde, il parie 20.000 livres avec ses confrères du Reform Club qu’il parviendra à réaliser ce voyage dans le temps imparti. Une aventure semée d’embûches et de péripéties à la découverte de contrées encore méconnues au XIXe siècle. Alternant récit de voyage et succession de données scientifiques, Jules Verne nous fait découvrir les avancées technologiques de l’époque au travers d’une épopée inoubliable.",
+			"category_id": 6
+		},
+		{
+			"id": 10,
+			"title": "Vingt-Mille Lieues sous les mers",
+			"resume": "Dans ce roman d’aventures, l’un des plus emblématiques du XIXe siècle, la foisonnante imagination de Jules Verne nous plonge au cœur des profondeurs, en compagnie du sombre capitaine Nemo.",
+			"category_id": 8
+		},
+		{
+			"id": 11,
+			"title": "Le Bourgeois gentilhomme",
+			"resume": "Monsieur Jourdain prétend sortir de sa condition bourgeoise en singeant les manières d’un noble. Mais, avec une naïveté qui n’a d’égale que sa prétention, il  se laisse duper par l’apparence d’un hôte qu’on lui présente comme le fils du Grand Turc et auquel il destine sa fille.",
+			"category_id": 9
+		},
+		{
+			"id": 12,
+			"title": "L’Avare",
+			"resume": "« La peste soit de l’avarice et des avaricieux ! »... Car tous ceux qui ont le malheur de fréquenter Harpagon ont à se plaindre de lui, tous ont à subir la tyrannie de ce vieillard irascible rongé par le désir de posséder toujours plus d’argent et d’en dépenser le moins possible. Harpagon refuse à ses enfants des mariages d’amour et impose à tous les pires supplices au nom de cet argent qu’il entasse dans sa « chère cassette ». Mais un jour, la cassette disparaît...",
+			"category_id": 10
 		}
 	],
 
-    "author" : [
+    "author": [
         {
-        "id" : 1,
-        "name" : "Lewis Carroll"
-        
+			"id": 1,
+			"name": "Lewis Carroll"
         },
         {
-        "id" : 2,
-        "name" : "JK Rowling"
-    
+			"id": 2,
+			"name": "JK Rowling"
         },
         {
-        "id" : 3,
-        "name" : "Victor Hugo"
-        
+			"id": 3,
+			"name": "Victor Hugo"
         },
         {
-        "id" : 4,
-        "name" : "George Orwell"
-       
+			"id": 4,
+			"name": "George Orwell"
         },
         {
-        "id" : 5,
-        "name" : "Guy de Maupassant"
-       
+			"id": 5,
+			"name": "Guy de Maupassant"
         },
         {
-        "id" : 6,
-        "name" : "Antoine de Saint-exupéry"
-        
-        }
-
+			"id": 6,
+			"name": "Antoine de Saint-exupéry"
+        },
+		{
+			"id": 7,
+			"name": "Gabriel García Márquez"
+		},
+		{
+			"id": 8,
+			"name": "Aldous Huxley"
+		},
+		{
+			"id": 9,
+			"name": "Jules Verne"
+		},
+		{
+			"id": 10,
+			"name": "Molière"
+		}
     ],
     
-    "category" : [
+    "category": [
         {
-        "id" : 1,
-        "name" : "Fantastique"
+			"id": 1,
+			"name" : "Fantastique"
         }, 
         {
-        "id" : 2,
-        "name" : "Fiction absurde"
+			"id": 2,
+			"name" : "Fiction absurde"
         },
         {
-        "id" : 3,
-        "name" : "Fantasy littéraire"
+			"id": 3,
+			"name" : "Fantasy littéraire"
         },
         {
-        "id" : 4,
-        "name" : "Littérature pour enfants"
+			"id": 4,
+			"name" : "Littérature pour enfants"
         },
         {
-        "id" : 5,
-        "name" : "Roman"
+			"id": 5,
+			"name" : "Roman"
         }, 
         {
-        "id" : 6,
-        "name" : "Fiction"
-        }
+			"id": 6,
+			"name" : "Fiction d’action"
+        },
+		{
+			"id": 7,
+			"name" : "Fiction épique"
+		},
+		{
+			"id": 8,
+			"name" : "Science fiction"
+		},
+		{
+			"id": 9,
+			"name" : "Comédie-ballet"
+		},
+		{
+			"id": 10,
+			"name" : "Comédie"
+		}
+	],
 
-    ],
-
-	"book" : [
+	"book": [
 		{
-			"id" : 1,
-			"isbn_13" : 9782215126423,
-			"cover_page" : "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61fNOqZlsRL._SX218_BO1,204,203,200_QL40_ML2_.jpg",
-			"editor" : "Fleurus",
-			"publication_date" : "24 octobre 2013",
-			"language" : "Français",
-			"pages_number" : 176,
-			"height" : "123",
-			"width" : "456",
-			"thickness" : "25",
-			"work_id" : 1
+			"id": 1,
+			"isbn_13": 9782215126423,
+			"cover_page": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61fNOqZlsRL._SX218_BO1,204,203,200_QL40_ML2_.jpg",
+			"editor": "Fleurus",
+			"publication_date": "24 octobre 2013",
+			"language": "Français",
+			"pages_number": 176,
+			"height": "123",
+			"width": "456",
+			"thickness": "25",
+			"work_id": 1
 		},
 		{
-			"id" : 2,
-			"isbn_13" : 9782215126548,
-			"cover_page" : "data:image/jpeg;base64,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",
-			"editor" : "Les sorcier",
-			"publication_date" : "10 octobre 2004",
-			"language" : "Français",
-			"pages_number" : 140,
-			"height" :"10",
-			"width" : "15",
+			"id": 2,
+			"isbn_13": 9782215126548,
+			"cover_page": "data:image/jpeg;base64,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",
+			"editor": "Les sorcier",
+			"publication_date": "10 octobre 2004",
+			"language": "Français",
+			"pages_number": 140,
+			"height":"10",
+			"width": "15",
 			"thickness": "8",
-			"work_id" : 2
+			"work_id": 2
 		},
 		{
-			"id" : 3,
-			"isbn_13" : 9782211238465,
-			"cover_page" : "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/511RqGjjD2L._SX322_BO1,204,203,200_.jpg",
-			"editor" : "J. Hetzel et A. Lacroix",
-			"publication_date" : "10 octobre 1866",
-			"language" : "Français",
-			"pages_number" : 799,
-			"height" :"10",
-			"width" : "15",
+			"id": 3,
+			"isbn_13": 9782211238465,
+			"cover_page": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/511RqGjjD2L._SX322_BO1,204,203,200_.jpg",
+			"editor": "J. Hetzel et A. Lacroix",
+			"publication_date": "10 octobre 1866",
+			"language": "Français",
+			"pages_number": 799,
+			"height":"10",
+			"width": "15",
 			"thickness": "8",
-			"work_id" : 3
+			"work_id": 3
 		},
 		{
-			"id" : 4,
-			"isbn_13" : 9782211238465,
-			"cover_page" : "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/511RqGjjD2L._SX322_BO1,204,203,200_.jpg",
-			"editor" : "Abridged",
-			"publication_date" : "9 janvier 2019",
-			"language" : "Français",
-			"pages_number" : 324,
-			"height" :"12.5",
-			"width" : "18.9",
+			"id": 4,
+			"isbn_13": 9782211238465,
+			"cover_page": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/511RqGjjD2L._SX322_BO1,204,203,200_.jpg",
+			"editor": "Abridged",
+			"publication_date": "9 janvier 2019",
+			"language": "Français",
+			"pages_number": 324,
+			"height":"12.5",
+			"width": "18.9",
 			"thickness": "2.5",
-			"work_id" : 3
+			"work_id": 3
 		},
 		{
-			"id" : 5,
-			"isbn_13" : 9780547249643,
-			"cover_page" : "https://books.google.fr/books/content?id=kotPYEqx7kMC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72TqNul0l5EyeKZn_DRiLR3Gt5LiRGcjn1UWQz0vZV3k-0t5JqM7wpJjJUFB90kto2WYIyFsKaSMt0ilNiEMkAQe29MB5iIQzJBc86FuDjphgTauJ8rXdCpcVcJ5RXFllWmMrTY",
-			"editor" : "HarperCollins",
-			"publication_date" : "9 janvier 2013",
-			"language" : "Français",
-			"pages_number" : 304,
-			"height" :"11",
-			"width" : "15",
+			"id": 5,
+			"isbn_13": 9780547249643,
+			"cover_page": "https://books.google.fr/books/content?id=kotPYEqx7kMC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72TqNul0l5EyeKZn_DRiLR3Gt5LiRGcjn1UWQz0vZV3k-0t5JqM7wpJjJUFB90kto2WYIyFsKaSMt0ilNiEMkAQe29MB5iIQzJBc86FuDjphgTauJ8rXdCpcVcJ5RXFllWmMrTY",
+			"editor": "HarperCollins",
+			"publication_date": "9 janvier 2013",
+			"language": "Français",
+			"pages_number": 304,
+			"height":"11",
+			"width": "15",
 			"thickness": "1.5",
-			"work_id" : 4
+			"work_id": 4
 		},
 		{
-			"id" : 6,
-			"isbn_13" : 9782290106075,
-			"cover_page" : "https://sp.yimg.com/ib/th?id=OPE.6yF7N2NrMv6c3g300C300&pid=21.1&w=174&h=174",
-			"editor" : "Librio",
-			"publication_date" : "6 juin 2018",
-			"language" : "Français",
-			"pages_number" : 192,
-			"height" :"17.7",
-			"width" : "12.5",
+			"id": 6,
+			"isbn_13": 9782290106075,
+			"cover_page": "https://sp.yimg.com/ib/th?id=OPE.6yF7N2NrMv6c3g300C300&pid=21.1&w=174&h=174",
+			"editor": "Librio",
+			"publication_date": "6 juin 2018",
+			"language": "Français",
+			"pages_number": 192,
+			"height":"17.7",
+			"width": "12.5",
 			"thickness": "1.2",
-			"work_id" : 5
+			"work_id": 5
 		},
 		{
-			"id" : 7,
-			"isbn_13" : 9782072878497,
-			"cover_page" : "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41Hdsa+X4jL._SX302_BO1,204,203,200_.jpg",
-			"editor" : "Folio",
-			"publication_date" : "28 mai 2020",
-			"language" : "Français",
-			"pages_number" : 400,
-			"height" :"11",
-			"width" : "17",
+			"id": 7,
+			"isbn_13": 9782072878497,
+			"cover_page": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41Hdsa+X4jL._SX302_BO1,204,203,200_.jpg",
+			"editor": "Folio",
+			"publication_date": "28 mai 2020",
+			"language": "Français",
+			"pages_number": 400,
+			"height":"11",
+			"width": "17",
 			"thickness": "1.5",
-			"work_id" : 4
+			"work_id": 4
 		},
 		{
-			"id" : 8,
-			"isbn_13" : 9782070410859,
-			"cover_page" : "https://sp.yimg.com/ib/th?id=OPE.6yF7N2NrMv6c3g300C300&pid=21.1&w=174&h=174",
-			"editor" : "Folio",
-			"publication_date" : "2 juillet 1999",
-			"language" : "Français",
-			"pages_number" : 282,
-			"height" :"18",
-			"width" : "11",
+			"id": 8,
+			"isbn_13": 9782070410859,
+			"cover_page": "https://sp.yimg.com/ib/th?id=OPE.6yF7N2NrMv6c3g300C300&pid=21.1&w=174&h=174",
+			"editor": "Folio",
+			"publication_date": "2 juillet 1999",
+			"language": "Français",
+			"pages_number": 282,
+			"height":"18",
+			"width": "11",
 			"thickness": "1.3",
-			"work_id" : 5
+			"work_id": 5
 		},
 		{
-			"id" : 9,
-			"isbn_13" : 9782070667222,
-			"cover_page" : "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41B-d58s3GL._SX353_BO1,204,203,200_.jpg",
-			"editor" : "Gallimard Jeunesse",
-			"publication_date" : "27 août 2015",
-			"language" : "Français",
-			"pages_number" : 64,
-			"height" :"18.3",
-			"width" : "25.7",
+			"id": 9,
+			"isbn_13": 9782070667222,
+			"cover_page": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41B-d58s3GL._SX353_BO1,204,203,200_.jpg",
+			"editor": "Gallimard Jeunesse",
+			"publication_date": "27 août 2015",
+			"language": "Français",
+			"pages_number": 64,
+			"height":"25.7",
+			"width": "18.3",
 			"thickness": "4.3",
-			"work_id" : 6
+			"work_id": 6
 		},
 		{
-			"id" : 10,
-			"isbn_13" : 9782072730849,
-			"cover_page" : "https://images2.medimops.eu/product/cd0774/M02072730848-large.jpg",
-			"editor" : "Gallimard",
-			"publication_date" : "15 juin 2015",
-			"language" : "Français",
-			"pages_number" : 179,
-			"height" :"11",
-			"width" : "28",
+			"id": 10,
+			"isbn_13": 9782072730849,
+			"cover_page": "https://images2.medimops.eu/product/cd0774/M02072730848-large.jpg",
+			"editor": "Gallimard",
+			"publication_date": "15 juin 2015",
+			"language": "Français",
+			"pages_number": 179,
+			"height":"28",
+			"width": "11",
 			"thickness": "8",
-			"work_id" : 6
+			"work_id": 6
+		},
+		{
+			"id": 11,
+			"isbn_13": 9782757893272, 
+			"cover_page": "https://cdn.cultura.com/cdn-cgi/image/width=768/media/pim/TITELIVE/55_9782757893272_1_75.jpg",
+			"editor": "POINTS",
+			"publication_date": "25 mars 2022",
+			"language": "Français",
+			"pages_number": 480,
+			"height":"17.8",
+			"width": "10.9",
+			"thickness": "2.5",
+			"work_id": 7
+		},
+		{
+			"id": 12,
+			"isbn_13": 9782266283038, 
+			"cover_page": "https://m.media-amazon.com/images/I/71iZzLwuZML._AC_UF1000,1000_QL80_.jpg",
+			"editor": "Pocket",
+			"publication_date": "17 août 2017",
+			"language": "Français",
+			"pages_number": 320,
+			"height":"17.8",
+			"width": "10.9",
+			"thickness": "1.5",
+			"work_id": 8
+		},
+		{
+			"id": 13,
+			"isbn_13": 9782266311410, 
+			"cover_page": "https://m.media-amazon.com/images/I/51l5UshozNL._SY291_BO1,204,203,200_QL40_ML2_.jpg",
+			"editor": "Pocket Jeunesse",
+			"publication_date": "26 août 2021",
+			"language": "Français",
+			"pages_number": 320,
+			"height":"17.8",
+			"width": "11",
+			"thickness": "1.5",
+			"work_id": 8
+		},
+		{
+			"id": 14,
+			"isbn_13": 9788412201819, 
+			"cover_page": "https://m.media-amazon.com/images/P/8412201817.01._SCLZZZZZZZ_SX500_.jpg",
+			"editor": "LIBELLIO ",
+			"publication_date": "4 juin 2020",
+			"language": "Français",
+			"pages_number": 270 ,
+			"height":"22.86",
+			"width": "15.24",
+			"thickness": "1.55",
+			"work_id": 8
+		},
+		{
+			"id": 15,
+			"isbn_13": 9798491974306, 
+			"cover_page": "https://m.media-amazon.com/images/P/B09HPF3K5J.01._SCLZZZZZZZ_SX500_.jpg",
+			"editor": "Independently published",
+			"publication_date": "7 octobre 2021",
+			"language": "Français",
+			"pages_number": 191,
+			"height":"22.86",
+			"width": "15.24",
+			"thickness": "1.12",
+			"work_id": 9
+		},
+		{
+			"id": 16,
+			"isbn_13": 9782218939709, 
+			"cover_page": "https://m.media-amazon.com/images/I/51-jucVzPNL._SY291_BO1,204,203,200_QL40_ML2_.jpg",
+			"editor": "Hatier",
+			"publication_date": "31 août 2011",
+			"language": "Français",
+			"pages_number" : 352,
+			"height":"17.5",
+			"width": "12.6",
+			"thickness": "2",
+			"work_id": 9
+		},
+		{
+			"id": 17,
+			"isbn_13": 9782210758810, 
+			"cover_page": "https://m.media-amazon.com/images/I/61Hnm6vJH6L._AC_UY218_.jpg",
+			"editor": "MAGNARD",
+			"publication_date": "24 avril 2018",
+			"language": "Français",
+			"pages_number" : 160,
+			"height":"18",
+			"width": "13",
+			"thickness": "0.8",
+			"work_id": 10
+		},
+		{
+			"id": 18,
+			"isbn_13": 9798489937313, 
+			"cover_page": "https://m.media-amazon.com/images/I/81IhfdarSIL._AC_UY218_.jpg",
+			"editor": "Independently published",
+			"publication_date": "5 octobre 2021",
+			"language": "Français",
+			"pages_number" : 360,
+			"height":"22.86",
+			"width": "15.24",
+			"thickness": "2.08",
+			"work_id": 10
+		},
+		{
+			"id": 19,
+			"isbn_13": 9782218959158, 
+			"cover_page": "https://m.media-amazon.com/images/I/51ewFkFMWEL._SX358_BO1,204,203,200_.jpg",
+			"editor": "Hatier",
+			"publication_date": "14 décembre 2011",
+			"language": "Français",
+			"pages_number" : 160,
+			"height":"17.5",
+			"width": "12.6",
+			"thickness": "0.9",
+			"work_id": 11
+		},
+		{
+			"id": 20,
+			"isbn_13": 9782013949750, 
+			"cover_page": "https://m.media-amazon.com/images/I/81lEhkwBobL._AC_UY218_.jpg",
+			"editor": "Hachette Éducation",
+			"publication_date": "7 juin 2017",
+			"language": "Français",
+			"pages_number" : 192,
+			"height":"17.8",
+			"width": "12.5",
+			"thickness": "1",
+			"work_id": 11
+		},
+		{
+			"id": 21,
+			"isbn_13": 9782012706132, 
+			"cover_page": "https://m.media-amazon.com/images/I/81+xnjmjJgL._AC_UY218_.jpg",
+			"editor": "Hachette Éducation",
+			"publication_date": "26 août 2015",
+			"language": "Français",
+			"pages_number" : 176,
+			"height":"18",
+			"width": "12.5",
+			"thickness": "1",
+			"work_id": 12
 		}
 	],
 
 	"author_has_work": [ 
 		{
-			"id" : 1,
-			"work_id" :1,
-			"author_id" : 1
+			"id": 1,
+			"work_id": 1,
+			"author_id": 1
 		},
 		{
-			"id" : 2,
-			"work_id" :2,
-			"author_id" : 2
+			"id": 2,
+			"work_id": 2,
+			"author_id": 2
 		},
 		{
-			"id" : 3,
-			"work_id" :3,
-			"author_id" :3
+			"id": 3,
+			"work_id": 3,
+			"author_id":3
 		},
 		{
-			"id" : 4,
-			"work_id" :4,
-			"author_id" :4
+			"id": 4,
+			"work_id": 4,
+			"author_id":4
 		},
 		{
-			"id" : 5,
-			"work_id" :5,
-			"author_id" :5
+			"id": 5,
+			"work_id": 5,
+			"author_id":5
 		},
 		{
-			"id" : 6,
-			"work_id" :6,
-			"author_id" :6
+			"id": 6,
+			"work_id": 6,
+			"author_id":6
+		},
+		{
+			"id": 7,
+			"work_id": 7,
+			"author_id":7
+		},
+		{
+			"id": 8,
+			"work_id": 8,
+			"author_id":8
+		},
+		{
+			"id": 9,
+			"work_id": 9,
+			"author_id": 9
+		},
+		{
+			"id": 10,
+			"work_id": 10,
+			"author_id": 9
+		},
+		{
+			"id": 11,
+			"work_id": 11,
+			"author_id": 10
+		},
+		{
+			"id": 12,
+			"work_id": 12,
+			"author_id": 10
 		}
 	],
 
     "user_has_book" : [ 
         {
-        "id": 1,
-        "book_id" : 1,
-        "user_id" : 2,
-        "availability" : "disponible",
-        "status" : "bon état"
+			"id": 1,
+			"book_id": 1,
+			"user_id": 2,
+			"availability": "disponible",
+			"status": "bon état"
         },
         {
-        "id": 2,
-        "book_id" : 2,
-        "user_id" : 2,
-        "availability" : "donné",
-        "status" : "mauvais"
+			"id": 2,
+			"book_id": 2,
+			"user_id": 2,
+			"availability": "donné",
+			"status": "mauvais"
         },
         {
-        "id": 3,
-        "book_id" : 4,
-        "user_id" : 1,
-        "availability" : "disponible",
-        "status" : "correct"
+			"id": 3,
+			"book_id": 4,
+			"user_id": 1,
+			"availability": "disponible",
+			"status": "correct"
         },
         {
-        "id": 4,
-        "book_id" : 6,
-        "user_id" : 1,
-        "availability" : "disponible",
-        "status" : "mauvais"
+			"id": 4,
+			"book_id": 6,
+			"user_id": 1,
+			"availability": "disponible",
+			"status": "mauvais"
         },
         {
-        "id": 5,
-        "book_id" : 8,
-        "user_id" : 2,
-        "availability" : "disponible",
-        "status" : "correct"
+			"id": 5,
+			"book_id": 8,
+			"user_id": 2,
+			"availability": "disponible",
+			"status": "correct"
         }
-
-
-
     ]    
-
 }
