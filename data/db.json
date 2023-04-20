@@ -22,7 +22,7 @@
 		{
 			"id": 1,
 			"title": "Alice aux pays des merveilles",
-			"resume": "Tandis qu'elle s'ennuie sur la berge d'un fleuve, Alice voit tout à coup passer un lapin blanc, ce qui n'a rien d'exceptionnel, mais, chose plus surprenante, elle le voit également tirer une montre de la poche de son gilet. Intriguée, la voilà qui se lance à sa poursuite. Le lapin disparaît dans un grand terrier: elle décide d'y descendre à son tour. ",
+			"resume": "Tandis qu’elle s’ennuie sur la berge d’un fleuve, Alice voit tout à coup passer un lapin blanc, ce qui n’a rien d’exceptionnel, mais, chose plus surprenante, elle le voit également tirer une montre de la poche de son gilet. Intriguée, la voilà qui se lance à sa poursuite. Le lapin disparaît dans un grand terrier: elle décide d’y descendre à son tour. ",
 			"category_id": 4
 		},
 		{
@@ -40,7 +40,7 @@
 		{
 			"id": 4,
 			"title": "1984",
-			"resume": "dnsqmldjkmql,zlmq,qslk,ddqsdq",
+			"resume": "Année 1984 en Océanie. 1984 ? C’est en tout cas ce qu’il semble à Winston, qui ne saurait toutefois en jurer. Le passé a été réinventé, et les événements les plus récents sont susceptibles d’être modifiés. Winston est lui-même chargé de récrire les archives qui contredisent le présent et les promesses de Big Brother. Grâce à une technologie de pointe, ce dernier sait tout, voit tout. Liberté est Servitude. Ignorance est Puissance. Telles sont les devises du régime. Pourtant Winston refuse de perdre espoir. Avec l’insoumise Julia, ils vont tenter d’intégrer la Fraternité, une organisation ayant pour but de renverser Big Brother. Mais celui-ci veille...",
 			"category_id": 1
 		},
 		{
@@ -52,7 +52,7 @@
 		{
 			"id": 6,
 			"title": "Le Petit Prince",
-			"resume": "loremdnkjndlqskdjqlsjdqklzope o ,dqod ,qd qzpd,zq,dzqpokdqlmkdzqmldqpzq skqldjqsdq",
+			"resume": "\"Le premier soir, je me suis donc endormi sur le sable à mille milles de toute terre habitée. J’étais bien plus isolé qu’un naufragé sur un radeau au milieu de l’océan. Alors, vous imaginez ma surprise, au lever du jour, quand une drôle de petite voix m’a réveillé. Elle disait : “S’il vous plaît... dessine-moi un mouton !” J’ai bien regardé. Et j’ai vu ce petit bonhomme tout à fait extraordinaire qui me considérait gravement...\"",
 			"category_id": 4
 		},
 		{
@@ -182,7 +182,8 @@
 	"book": [
 		{
 			"id": 1,
-			"isbn_13": 9782215126423,
+			"isbn_13": 9782210740587
+			,
 			"cover_page": "https://m.media-amazon.com/images/I/91dswfXsBaL._AC_UL400_.jpg",
 			"editor": "MAGNARD",
 			"publication_date": "2 mai 2014",
@@ -195,8 +196,8 @@
 		},
 		{
 			"id": 2,
-			"isbn_13": 9782215126548,
-			"cover_page": "https://m.media-amazon.com/images/I/51CP2LpqpTL._SY291_BO1,204,203,200_QL40_ML2_.jpg",
+			"isbn_13": 9782070624522,
+			"cover_page": "https://images-eu.ssl-images-amazon.com/images/I/91Ad4FyTwHL._AC_UL232_SR232,232_.jpg",
 			"editor": "Gallimard Jeunesse",
 			"publication_date": "3 octobre 2016",
 			"language": "Français",
@@ -208,28 +209,28 @@
 		},
 		{
 			"id": 3,
-			"isbn_13": 9782070624522,
-			"cover_page": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/511RqGjjD2L._SX322_BO1,204,203,200_.jpg",
-			"editor": "J. Hetzel et A. Lacroix",
-			"publication_date": "10 octobre 1866",
+			"isbn_13": 9798524923523,
+			"cover_page": "https://m.media-amazon.com/images/I/61cQB+9H0lS._AC_UL400_.jpg",
+			"editor": "Independently published",
+			"publication_date": "28 juin 2021",
 			"language": "Français",
-			"pages_number": 799,
-			"height":"10",
-			"width": "15",
-			"thickness": "8",
+			"pages_number": 359,
+			"height":"20.32",
+			"width": "12.7",
+			"thickness": "2.29",
 			"work_id": 3
 		},
 		{
 			"id": 4,
-			"isbn_13": 9782211238465,
-			"cover_page": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/511RqGjjD2L._SX322_BO1,204,203,200_.jpg",
-			"editor": "Abridged",
-			"publication_date": "9 janvier 2019",
+			"isbn_13": 9782072878497,
+			"cover_page": "https://m.media-amazon.com/images/I/71UYvdDVyzL._AC_UL400_.jpg",
+			"editor": "FOLIO",
+			"publication_date": "28 mai 2020",
 			"language": "Français",
-			"pages_number": 324,
-			"height":"12.5",
-			"width": "18.9",
-			"thickness": "2.5",
+			"pages_number": 400,
+			"height":"17.9",
+			"width": "11",
+			"thickness": "1.5",
 			"work_id": 3
 		},
 		{
