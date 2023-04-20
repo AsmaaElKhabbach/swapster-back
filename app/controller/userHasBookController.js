@@ -97,8 +97,8 @@ const userHasBookController = {
 
 		// Est-ce qu'il y a eu du changement ?
 		if (userHasBookChanged == 0) {
-			res.status(409).json({ warn: "Pas de changement" });
-			return;
+			return next(new APIError(409, `Pas de changement`));
+
 		}
 
 		// Mise à jour en bdd
@@ -253,7 +253,7 @@ const userHasBookController = {
 		}
 		//  Si le livre n'est pas en bdd on renvoie une erreur
 		if (!checkBook) {
-			return rnext(new APIError(404, `Pas de livre avec l'id ${req.params.bookId}`));
+			return next(new APIError(404, `Pas de livre avec l'id ${req.params.bookId}`));
 
 		}
 

@@ -285,7 +285,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: "#/components/schemas/UserInfoResponse"
+ *               $ref: "#/components/responses/UserInfoResponse"
  */
 
 /*LOGOUT */
@@ -321,7 +321,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: "#/components/schemas/UserInfoResponse"
+ *               $ref: "#/components/responses/UserInfoResponse"
  */
 
 /*USER UPDATE*/
@@ -348,7 +348,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: "#/components/schemas/UserInfoResponse"
+ *               $ref: "#/components/responses/UserInfoResponse"
  */
 
 /*USER DELETE*/

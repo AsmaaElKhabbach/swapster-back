@@ -142,8 +142,8 @@ const userController = {
 
 		// Est-ce qu'il y a eu du changement ?
 		if (userHasChanged == 0) {
-			res.status(409).json({ warn: "Pas de changement" });
-			return;
+			return next(new APIError(409, `Pas de changement`));
+
 		}
 
 		// Mise à jour en bdd
