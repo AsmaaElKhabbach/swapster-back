@@ -75,7 +75,7 @@ const dataMapper = {
 	// Méthode pour récupérer les 10 derniers livres ajoutés
 	getLatestBooks: async () => {
 		// La requête : on interroge la bdd
-		const query = `SELECT "user_has_book"."created_at",
+		const query = `SELECT DISTINCT "user_has_book"."created_at",
 			"work"."title",
 			"author"."name" AS "author",
 			"book".*,
