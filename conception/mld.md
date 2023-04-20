@@ -1,4 +1,4 @@
-author (id, lastname, firstname)
+author (id, name)
 
 work (id, title, resume, #category_id)
 
