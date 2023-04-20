@@ -13,14 +13,14 @@ const userController = {
 			const checkUserName = await dataMapper.getOneUserByName(name);
 
 			if (checkUserName) {
-				return next (new APIError(409, "pseudo (name) déjà utilisé"));
+				return next(new APIError(409, "pseudo (name) déjà utilisé"));
 			};
 
 			const checkUserEmail = await dataMapper.getOneUserByEmail(email);
 
 
 			if (checkUserEmail) {
-				return next (new APIError(409, "email déjà utilisé"));
+				return next(new APIError(409, "email déjà utilisé"));
 			};
 
 			// On crée un objet user
@@ -37,7 +37,7 @@ const userController = {
 			return;
 
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 	},
 
@@ -48,11 +48,11 @@ const userController = {
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 
 		if (!checkUser) {
-			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
+			return next(new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
 		res.status(200).json(checkUser);
@@ -70,11 +70,11 @@ const userController = {
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 
 		if (!checkUser) {
-			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
+			return next(new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
 		// On récupère les données du front
@@ -87,11 +87,11 @@ const userController = {
 			try {
 				checkUserName = await dataMapper.getOneUserByName(name);
 			} catch (error) {
-				return next (new APIError(500, error.message));
+				return next(new APIError(500, error.message));
 			}
 
 			if (checkUserName) {
-				return next (new APIError(409, `le name ${name} existe déjà`));
+				return next(new APIError(409, `le name ${name} existe déjà`));
 			}
 
 			// Mise à jour dans la variable checkUser
@@ -106,11 +106,11 @@ const userController = {
 			try {
 				checkUserEmail = await dataMapper.getOneUserByEmail(email);
 			} catch (error) {
-				return next (new APIError(500, error.message));
+				return next(new APIError(500, error.message));
 			}
 
 			if (checkUserEmail) {
-				return next (new APIError(409, `l'email ${email} existe déjà`));
+				return next(new APIError(409, `l'email ${email} existe déjà`));
 			};
 
 			// Mise à jour dans la variable checkUser
@@ -132,7 +132,7 @@ const userController = {
 			const hashPassword = await bcrypt.hash(password, 10);
 
 			if (hashPassword == checkUser.password) {
-				return next (new APIError(409, "le mot de passe est le même"));
+				return next(new APIError(409, "le mot de passe est le même"));
 			}
 
 			// Mise à jour dans la variable checkUser
@@ -151,7 +151,7 @@ const userController = {
 			res.status(201).json(checkUser);
 			return;
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 	},
 
@@ -163,11 +163,11 @@ const userController = {
 		try {
 			checkUser = await dataMapper.getOneUserById(req.userId);
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 
 		if (!checkUser) {
-			return next (new APIError(404, `Pas de user avec l'id ${req.userId}`));
+			return next(new APIError(404, `Pas de user avec l'id ${req.userId}`));
 		}
 
 		// On le supprime de la BDD
@@ -176,7 +176,7 @@ const userController = {
 			res.status(200).json({ message: "User correctement supprimé" });
 			return;
 		} catch (error) {
-			return next (new APIError(500, error.message));
+			return next(new APIError(500, error.message));
 		}
 	}
 };

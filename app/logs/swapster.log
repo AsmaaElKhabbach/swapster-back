@@ -1,0 +1,9 @@
+{"name":"swapster","hostname":"teleporter","pid":349281,"level":30,"msg":"hi","time":"2023-04-20T08:41:31.277Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":349281,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T08:41:31.713Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":349351,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T08:41:37.337Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":349560,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T08:42:10.614Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":361366,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T08:45:14.667Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":363408,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T08:45:28.609Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":365214,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T08:45:33.926Z","v":0}
+{"name":"swapster","format":"pretty","hostname":"teleporter","pid":372882,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T08:48:39.093Z","v":0}
+{"name":"swapster","hostname":"teleporter","pid":375030,"level":30,"msg":"Listening on localhost:5000","time":"2023-04-20T08:49:08.262Z","v":0}
