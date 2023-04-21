@@ -37,7 +37,7 @@ BEGIN;
 	INSERT INTO "category"
 	("name")
 	VALUES
-	('Fiction d’action');
+	('Fiction d''action');
 	
 	INSERT INTO "category"
 	("name")
@@ -62,62 +62,62 @@ BEGIN;
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Alice aux pays des merveilles', 'Tandis qu’elle s’ennuie sur la berge d’un fleuve, Alice voit tout à coup passer un lapin blanc, ce qui n’a rien d’exceptionnel, mais, chose plus surprenante, elle le voit également tirer une montre de la poche de son gilet. Intriguée, la voilà qui se lance à sa poursuite. Le lapin disparaît dans un grand terrier: elle décide d’y descendre à son tour. ', 4);
+	('Alice aux pays des merveilles', 'Tandis qu''elle s''ennuie sur la berge d''un fleuve, Alice voit tout à coup passer un lapin blanc, ce qui n''a rien d''exceptionnel, mais, chose plus surprenante, elle le voit également tirer une montre de la poche de son gilet. Intriguée, la voilà qui se lance à sa poursuite. Le lapin disparaît dans un grand terrier: elle décide d''y descendre à son tour. ', 4);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Harry Potter et l’école des sorciers', 'Le jour de ses onze ans, Harry Potter, un orphelin élevé par un oncle et une tante qui le détestent, voit son existence bouleversée. Un géant vient le chercher pour l’emmener à Poudlard, une école de sorcellerie! Voler en balai, jeter des sorts, combattre les trolls : Harry Potter se révèle un sorcier doué. Mais un mystère entoure sa naissance et l’effroyable V…, le mage dont personne n’ose prononcer le nom.', 1);
+	('Harry Potter et l''école des sorciers', 'Le jour de ses onze ans, Harry Potter, un orphelin élevé par un oncle et une tante qui le détestent, voit son existence bouleversée. Un géant vient le chercher pour l''emmener à Poudlard, une école de sorcellerie! Voler en balai, jeter des sorts, combattre les trolls : Harry Potter se révèle un sorcier doué. Mais un mystère entoure sa naissance et l''effroyable V…, le mage dont personne n''ose prononcer le nom.', 1);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Les misérables', 'Ce livre est un vrai chef d’ oeuvre de la littérature française. Ce roman historique écrit par le grand Victor Hugo est très fidèle au condition de l’ époque. Je remercie le ministère de l’ éducation de l’ avoir mit au programme', 5);
+	('Les misérables', 'Ce livre est un vrai chef d'' oeuvre de la littérature française. Ce roman historique écrit par le grand Victor Hugo est très fidèle au condition de l'' époque. Je remercie le ministère de l'' éducation de l'' avoir mit au programme', 5);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('1984', 'Année 1984 en Océanie. 1984 ? C’est en tout cas ce qu’il semble à Winston, qui ne saurait toutefois en jurer. Le passé a été réinventé, et les événements les plus récents sont susceptibles d’être modifiés. Winston est lui-même chargé de récrire les archives qui contredisent le présent et les promesses de Big Brother. Grâce à une technologie de pointe, ce dernier sait tout, voit tout. Liberté est Servitude. Ignorance est Puissance. Telles sont les devises du régime. Pourtant Winston refuse de perdre espoir. Avec l’insoumise Julia, ils vont tenter d’intégrer la Fraternité, une organisation ayant pour but de renverser Big Brother. Mais celui-ci veille...', 1);
+	('1984', 'Année 1984 en Océanie. 1984 ? C''est en tout cas ce qu''il semble à Winston, qui ne saurait toutefois en jurer. Le passé a été réinventé, et les événements les plus récents sont susceptibles d''être modifiés. Winston est lui-même chargé de récrire les archives qui contredisent le présent et les promesses de Big Brother. Grâce à une technologie de pointe, ce dernier sait tout, voit tout. Liberté est Servitude. Ignorance est Puissance. Telles sont les devises du régime. Pourtant Winston refuse de perdre espoir. Avec l''insoumise Julia, ils vont tenter d''intégrer la Fraternité, une organisation ayant pour but de renverser Big Brother. Mais celui-ci veille...', 1);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Pierre et Jean', 'Au cours d’une partie de pêche familiale en compagnie de Mme Rosémilly, les deux frères, pour séduire la jeune femme, se livrent à une compétition acharnée à la rame. Le lecteur découvre que sous une apparence d’union et d’affection, une vraie rivalité oppose les deux frères.', 3);
+	('Pierre et Jean', 'Au cours d''une partie de pêche familiale en compagnie de Mme Rosémilly, les deux frères, pour séduire la jeune femme, se livrent à une compétition acharnée à la rame. Le lecteur découvre que sous une apparence d''union et d''affection, une vraie rivalité oppose les deux frères.', 3);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Le Petit Prince', '"Le premier soir, je me suis donc endormi sur le sable à mille milles de toute terre habitée. J’étais bien plus isolé qu’un naufragé sur un radeau au milieu de l’océan. Alors, vous imaginez ma surprise, au lever du jour, quand une drôle de petite voix m’a réveillé. Elle disait : “S’il vous plaît... dessine-moi un mouton !” J’ai bien regardé. Et j’ai vu ce petit bonhomme tout à fait extraordinaire qui me considérait gravement..."', 4);
+	('Le Petit Prince', '"Le premier soir, je me suis donc endormi sur le sable à mille milles de toute terre habitée. J''étais bien plus isolé qu''un naufragé sur un radeau au milieu de l''océan. Alors, vous imaginez ma surprise, au lever du jour, quand une drôle de petite voix m''a réveillé. Elle disait : “S''il vous plaît... dessine-moi un mouton !” J''ai bien regardé. Et j''ai vu ce petit bonhomme tout à fait extraordinaire qui me considérait gravement..."', 4);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Cent ans de solitude', 'À Macondo, petit village isolé d’Amérique du Sud, l’illustre famille Buendia est condamnée à cent ans de solitude par la prophétie du gitan Melquiades… Dans un tourbillon de révolutions, de guerres civiles, de fléaux et de destructions, elle vit une épopée mythique, à la saveur inoubliable, qui traverse les trois âges de la vie : naissance, vie et décadence… Ce roman époustouflant est un chef-d’œuvre du XXe siècle.', 7);
+	('Cent ans de solitude', 'À Macondo, petit village isolé d''Amérique du Sud, l''illustre famille Buendia est condamnée à cent ans de solitude par la prophétie du gitan Melquiades… Dans un tourbillon de révolutions, de guerres civiles, de fléaux et de destructions, elle vit une épopée mythique, à la saveur inoubliable, qui traverse les trois âges de la vie : naissance, vie et décadence… Ce roman époustouflant est un chef-d''œuvre du XXe siècle.', 7);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Le meilleur des mondes', 'Voici près d’un siècle, dans d’étourdissantes visions, Aldous Huxley imagine une civilisation future jusque dans ses rouages les plus surprenants : un État Mondial, parfaitement hiérarchisé, a cantonné les derniers humains " sauvages " dans des réserves. La culture in vitro des fœtus a engendré le règne des " Alphas ", génétiquement déterminés à être l’élite dirigeante. Les castes inférieures, elles, sont conditionnées pour se satisfaire pleinement de leur sort. Dans cette société où le bonheur est loi, famille, monogamie, sentiments sont bannis. Le meilleur des mondes est possible. Aujourd’hui, il nous paraît même familier...', 4);
+	('Le meilleur des mondes', 'Voici près d''un siècle, dans d''étourdissantes visions, Aldous Huxley imagine une civilisation future jusque dans ses rouages les plus surprenants : un État Mondial, parfaitement hiérarchisé, a cantonné les derniers humains " sauvages " dans des réserves. La culture in vitro des fœtus a engendré le règne des " Alphas ", génétiquement déterminés à être l''élite dirigeante. Les castes inférieures, elles, sont conditionnées pour se satisfaire pleinement de leur sort. Dans cette société où le bonheur est loi, famille, monogamie, sentiments sont bannis. Le meilleur des mondes est possible. Aujourd''hui, il nous paraît même familier...', 4);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Le Tour du monde en 80 jours', '"Le Tour du monde en 80 jours" est un roman d’aventures de Jules Verne paru en 1872. Il relate l’histoire de Phileas Fogg, (un gentleman anglais), et de son fidèle serviteur Jean Passepartout. Lorsque Phileas Fogg apprend dans le journal local qu’il est possible de réaliser le tour du monde en moins de 80 jours grâce à l’ouverture d’une nouvelle voie de chemin de fer en Inde, il parie 20.000 livres avec ses confrères du Reform Club qu’il parviendra à réaliser ce voyage dans le temps imparti. Une aventure semée d’embûches et de péripéties à la découverte de contrées encore méconnues au XIXe siècle. Alternant récit de voyage et succession de données scientifiques, Jules Verne nous fait découvrir les avancées technologiques de l’époque au travers d’une épopée inoubliable.', 6);
+	('Le Tour du monde en 80 jours', '"Le Tour du monde en 80 jours" est un roman d''aventures de Jules Verne paru en 1872. Il relate l''histoire de Phileas Fogg, (un gentleman anglais), et de son fidèle serviteur Jean Passepartout. Lorsque Phileas Fogg apprend dans le journal local qu''il est possible de réaliser le tour du monde en moins de 80 jours grâce à l''ouverture d''une nouvelle voie de chemin de fer en Inde, il parie 20.000 livres avec ses confrères du Reform Club qu''il parviendra à réaliser ce voyage dans le temps imparti. Une aventure semée d''embûches et de péripéties à la découverte de contrées encore méconnues au XIXe siècle. Alternant récit de voyage et succession de données scientifiques, Jules Verne nous fait découvrir les avancées technologiques de l''époque au travers d''une épopée inoubliable.', 6);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Vingt-Mille Lieues sous les mers', 'Dans ce roman d’aventures, l’un des plus emblématiques du XIXe siècle, la foisonnante imagination de Jules Verne nous plonge au cœur des profondeurs, en compagnie du sombre capitaine Nemo.', 8);
+	('Vingt-Mille Lieues sous les mers', 'Dans ce roman d''aventures, l''un des plus emblématiques du XIXe siècle, la foisonnante imagination de Jules Verne nous plonge au cœur des profondeurs, en compagnie du sombre capitaine Nemo.', 8);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('Le Bourgeois gentilhomme', 'Monsieur Jourdain prétend sortir de sa condition bourgeoise en singeant les manières d’un noble. Mais, avec une naïveté qui n’a d’égale que sa prétention, il  se laisse duper par l’apparence d’un hôte qu’on lui présente comme le fils du Grand Turc et auquel il destine sa fille.', 9);
+	('Le Bourgeois gentilhomme', 'Monsieur Jourdain prétend sortir de sa condition bourgeoise en singeant les manières d''un noble. Mais, avec une naïveté qui n''a d''égale que sa prétention, il  se laisse duper par l''apparence d''un hôte qu''on lui présente comme le fils du Grand Turc et auquel il destine sa fille.', 9);
 	
 	INSERT INTO "work"
 	("title", "resume", "category_id")
 	VALUES
-	('L’Avare', '« La peste soit de l’avarice et des avaricieux ! »... Car tous ceux qui ont le malheur de fréquenter Harpagon ont à se plaindre de lui, tous ont à subir la tyrannie de ce vieillard irascible rongé par le désir de posséder toujours plus d’argent et d’en dépenser le moins possible. Harpagon refuse à ses enfants des mariages d’amour et impose à tous les pires supplices au nom de cet argent qu’il entasse dans sa « chère cassette ». Mais un jour, la cassette disparaît...', 10);
+	('L''Avare', '« La peste soit de l''avarice et des avaricieux ! »... Car tous ceux qui ont le malheur de fréquenter Harpagon ont à se plaindre de lui, tous ont à subir la tyrannie de ce vieillard irascible rongé par le désir de posséder toujours plus d''argent et d''en dépenser le moins possible. Harpagon refuse à ses enfants des mariages d''amour et impose à tous les pires supplices au nom de cet argent qu''il entasse dans sa « chère cassette ». Mais un jour, la cassette disparaît...', 10);
 	
 	INSERT INTO "author"
 	("name")
@@ -172,7 +172,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9782210740587', 'https://m.media-amazon.com/images/I/91dswfXsBaL._AC_UL400_.jpg', 'MAGNARD', '2 mai 2014', 'Français', '160', '18', '13 ', '0.9', 1);
+	('9782210740587', 'https://m.media-amazon.com/images/I/91dswfXsBaL._AC_UL400_.jpg', 'Magnard', '2 mai 2014', 'Français', '160', '18', '13 ', '0.9', 1);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
@@ -187,7 +187,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9782072878497', 'https://m.media-amazon.com/images/I/71UYvdDVyzL._AC_UL400_.jpg', 'FOLIO', '28 mai 2020', 'Français', '400', '17.9', '11', '1.5', 3);
+	('9782072878497', 'https://m.media-amazon.com/images/I/71UYvdDVyzL._AC_UL400_.jpg', 'Folio', '28 mai 2020', 'Français', '400', '17.9', '11', '1.5', 3);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
@@ -222,7 +222,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9782757893272', 'https://cdn.cultura.com/cdn-cgi/image/width=768/media/pim/TITELIVE/55_9782757893272_1_75.jpg', 'POINTS', '25 mars 2022', 'Français', '480', '17.8', '10.9', '2.5', 7);
+	('9782757893272', 'https://cdn.cultura.com/cdn-cgi/image/width=768/media/pim/TITELIVE/55_9782757893272_1_75.jpg', 'Points', '25 mars 2022', 'Français', '480', '17.8', '10.9', '2.5', 7);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
@@ -237,7 +237,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9788412201819', 'https://m.media-amazon.com/images/P/8412201817.01._SCLZZZZZZZ_SX500_.jpg', 'LIBELLIO ', '4 juin 2020', 'Français', '270', '22.86', '15.24', '1.55', 8);
+	('9788412201819', 'https://m.media-amazon.com/images/P/8412201817.01._SCLZZZZZZZ_SX500_.jpg', 'Libellio ', '4 juin 2020', 'Français', '270', '22.86', '15.24', '1.55', 8);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
@@ -252,7 +252,7 @@ BEGIN;
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
 	VALUES
-	('9782210758810', 'https://m.media-amazon.com/images/I/61Hnm6vJH6L._AC_UY218_.jpg', 'MAGNARD', '24 avril 2018', 'Français', '160', '18', '13', '0.8', 10);
+	('9782210758810', 'https://m.media-amazon.com/images/I/61Hnm6vJH6L._AC_UY218_.jpg', 'Magnard', '24 avril 2018', 'Français', '160', '18', '13', '0.8', 10);
 	
 	INSERT INTO "book"
 	("isbn_13", "cover_page", "editor", "publication_date", "language", "pages_number", "height", "width", "thickness", "work_id")
